@@ -1,4 +1,4 @@
-# AlignMixup (CVPR 2022)
+## AlignMixup (CVPR 2022)
 This repo consists of the official Pytorch code for our CVPR 2022 paper AlignMixup: Improving Representations By Interpolating Aligned Features (https://arxiv.org/pdf/2103.15375.pdf) 
 
 ### Requirements
