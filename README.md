@@ -15,7 +15,7 @@ tar==1.34
 py-virtualenv==16.7.6
 
 
-## Dataset Preparation  
+### Dataset Preparation  
 
 1. For CIFAR-10/100, the dataset will automatically be downloaded, if there does not exist any CIFAR-10/100 directory in the path specified while executing the code.  
 2. For Tiny-Imagenet-200, you can download the dataset from [here](http://cs231n.stanford.edu/tiny-imagenet-200.zip). Unzip it and specify its path in the code.  
