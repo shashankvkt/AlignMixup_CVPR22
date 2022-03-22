@@ -1,5 +1,5 @@
-## AlignMixup (CVPR 2022)
-This repo consists of the official Pytorch code for our CVPR 2022 paper AlignMixup: Improving Representations By Interpolating Aligned Features  
+# AlignMixup (CVPR 2022)
+This repo consists of the official Pytorch code for our CVPR 2022 paper AlignMixup: Improving Representations By Interpolating Aligned Features (https://arxiv.org/pdf/2103.15375.pdf) 
 
 ### Requirements
 This code has been tested with  
@@ -15,6 +15,17 @@ tar==1.34
 py-virtualenv==16.7.6
 
 
+## Dataset Preparation  
+
+1. For CIFAR-10/100, the dataset will automatically be downloaded, if there does not exist any CIFAR-10/100 directory in the path specified while executing the code.  
+2. For Tiny-Imagenet-200, you can download the dataset from [here](http://cs231n.stanford.edu/tiny-imagenet-200.zip). Unzip it and specify its path in the code.  
+
+Alternatively, you can run the following command in your terminal if you have ```wget``` installed to download it to your current directory:  
+```
+wget http://cs231n.stanford.edu/tiny-imagenet-200.zip
+```
+
+
 ### How to run experiments for CIFAR-10
 
 #### AlignMixup PreActResnet18
@@ -22,8 +33,8 @@ py-virtualenv==16.7.6
 cd cifar10_100  
 
 python main.py --dataset cifar10 --data_dir path_to_cifar10_directory \
-					--save_dir path_to_save_checkpoints --network resnet --epochs 2000 \
-					--alpha 2.0 --num_classes 10 --manualSeed 8492 
+		--save_dir path_to_save_checkpoints --network resnet --epochs 2000 \
+		--alpha 2.0 --num_classes 10 --manualSeed 8492 
 ```
 
 ####  AlignMixup WRN 16x8
@@ -31,8 +42,8 @@ python main.py --dataset cifar10 --data_dir path_to_cifar10_directory \
 cd cifar10_100  
 
 python main.py --dataset cifar10 --data_dir path_to_cifar10_directory \
-					--save_dir path_to_save_checkpoints --network wideresnet --epochs 2000 \
-					--alpha 2.0 --num_classes 10 --manualSeed 8492
+		--save_dir path_to_save_checkpoints --network wideresnet --epochs 2000 \
+		--alpha 2.0 --num_classes 10 --manualSeed 8492
 ```
 
 
@@ -44,8 +55,8 @@ python main.py --dataset cifar10 --data_dir path_to_cifar10_directory \
 cd cifar10_100  
 
 python main.py --dataset cifar100 --data_dir path_to_cifar100_directory \
-					--save_dir path_to_save_checkpoints --network resnet --epochs 2000 \
-					--alpha 2.0 --num_classes 100 --manualSeed 8492 
+		--save_dir path_to_save_checkpoints --network resnet --epochs 2000 \
+		--alpha 2.0 --num_classes 100 --manualSeed 8492 
 ```
 
 ####  AlignMixup WRN 16x8
@@ -53,8 +64,8 @@ python main.py --dataset cifar100 --data_dir path_to_cifar100_directory \
 cd cifar10_100  
 
 python main.py --dataset cifar100 --data_dir path_to_cifar100_directory \
-					--save_dir path_to_save_checkpoints --network wideresnet --epochs 2000 \
-					--alpha 2.0 --num_classes 100 --manualSeed 8492 
+		--save_dir path_to_save_checkpoints --network wideresnet --epochs 2000 \
+		--alpha 2.0 --num_classes 100 --manualSeed 8492 
 ```
 
 
@@ -66,9 +77,9 @@ python main.py --dataset cifar100 --data_dir path_to_cifar100_directory \
 cd tiny_imgnet  
 
 python main.py  --train_dir path_to_train_directory \
-					--val_dir path_to_val_directory \
-					--save_dir path_to_save_checkpoints --epochs 1200 \
-					--alpha 2.0 --num_classes 200 --manualSeed 8492
+		--val_dir path_to_val_directory \
+		--save_dir path_to_save_checkpoints --epochs 1200 \
+		--alpha 2.0 --num_classes 200 --manualSeed 8492
 ```
 
 
@@ -103,6 +114,11 @@ python main.py --data_dir path_to_imagenet_directory --save_dir path_to_save_che
 | CIFAR-100      | WRN 16x8  | 81.23%     | [log](logfiles/cifar100/log_wrn16x8.txt)|  
 | Tiny-Imagenet  | Resnet-18 | 66.87%     | [log](logfiles/TI/log.txt)              |  
 | Imagenet       | Resnet-50 | 79.32%     | [log](logfiles/imnet/log.txt)           |  
+
+## Acknowledgement
+The code for Sinkhorn-Knopp algorithm is adapted and modified based on this amazing repository by [Daniel Daza](https://github.com/dfdazac/wassdistance)
+
+
 
 
 ## Citation
