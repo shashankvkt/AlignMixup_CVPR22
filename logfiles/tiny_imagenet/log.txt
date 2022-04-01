@@ -1,0 +1,2527 @@
+ got the python script
+
+=============== RUN 1561396 ===============
+Running ...
+Namespace(alpha=2.0, batch_size=256, decay=0.0001, epochs=1200, gammas=[0.1, 0.1], lr_=0.1, manualSeed=None, momentum=0.9, ngpu=1, num_classes=200, resume='', save_dir='/nfs/pyrex/raid6/svenkata/weights/AlignMixup_CVPR22/tiny_imagenet/', schedule=[600, 900], start_epoch=0, train_dir='/nfs/pyrex/raid6/svenkata/Datasets/tiny-imagenet-200/train', val_dir='/nfs/pyrex/raid6/svenkata/Datasets/tiny-imagenet-200/val', workers=8)
+DataParallel(
+  (module): Resnet_classifier(
+    (encoder): ResNet(
+      (conv1): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (layer1): Sequential(
+        (0): PreActBlock(
+          (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (shortcut): Sequential()
+        )
+        (1): PreActBlock(
+          (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (shortcut): Sequential()
+        )
+      )
+      (layer2): Sequential(
+        (0): PreActBlock(
+          (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (shortcut): Sequential(
+            (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          )
+        )
+        (1): PreActBlock(
+          (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (shortcut): Sequential()
+        )
+      )
+      (layer3): Sequential(
+        (0): PreActBlock(
+          (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (shortcut): Sequential(
+            (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          )
+        )
+        (1): PreActBlock(
+          (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (shortcut): Sequential()
+        )
+      )
+      (layer4): Sequential(
+        (0): PreActBlock(
+          (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (shortcut): Sequential(
+            (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          )
+        )
+        (1): PreActBlock(
+          (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (shortcut): Sequential()
+        )
+      )
+    )
+    (classifier): Linear(in_features=512, out_features=200, bias=True)
+  )
+)
+epoch: 0 --> Train loss = 0.0192 Train Accuracy = 3.1090 
+------> epoch: 0 --> Test loss = 0.0166 Test Accuracy = 10.6800 
+Saving..
+epoch: 1 --> Train loss = 0.0176 Train Accuracy = 6.8670 
+------> epoch: 1 --> Test loss = 0.0149 Test Accuracy = 17.1600 
+Saving..
+epoch: 2 --> Train loss = 0.0166 Train Accuracy = 9.8940 
+------> epoch: 2 --> Test loss = 0.0140 Test Accuracy = 22.6200 
+Saving..
+epoch: 3 --> Train loss = 0.0158 Train Accuracy = 12.8650 
+------> epoch: 3 --> Test loss = 0.0131 Test Accuracy = 25.4100 
+Saving..
+epoch: 4 --> Train loss = 0.0152 Train Accuracy = 15.0030 
+------> epoch: 4 --> Test loss = 0.0118 Test Accuracy = 32.8700 
+Saving..
+epoch: 5 --> Train loss = 0.0148 Train Accuracy = 16.6050 
+------> epoch: 5 --> Test loss = 0.0112 Test Accuracy = 34.7400 
+Saving..
+epoch: 6 --> Train loss = 0.0143 Train Accuracy = 18.9600 
+------> epoch: 6 --> Test loss = 0.0105 Test Accuracy = 38.1800 
+Saving..
+epoch: 7 --> Train loss = 0.0139 Train Accuracy = 19.9820 
+------> epoch: 7 --> Test loss = 0.0105 Test Accuracy = 38.3300 
+Saving..
+epoch: 8 --> Train loss = 0.0136 Train Accuracy = 20.4220 
+------> epoch: 8 --> Test loss = 0.0097 Test Accuracy = 42.5200 
+Saving..
+epoch: 9 --> Train loss = 0.0133 Train Accuracy = 22.5030 
+------> epoch: 9 --> Test loss = 0.0102 Test Accuracy = 40.6300 
+epoch: 10 --> Train loss = 0.0132 Train Accuracy = 23.8340 
+------> epoch: 10 --> Test loss = 0.0091 Test Accuracy = 45.5800 
+Saving..
+epoch: 11 --> Train loss = 0.0129 Train Accuracy = 24.3200 
+------> epoch: 11 --> Test loss = 0.0091 Test Accuracy = 46.3300 
+Saving..
+epoch: 12 --> Train loss = 0.0127 Train Accuracy = 26.0190 
+------> epoch: 12 --> Test loss = 0.0090 Test Accuracy = 46.6200 
+Saving..
+epoch: 13 --> Train loss = 0.0124 Train Accuracy = 26.6710 
+------> epoch: 13 --> Test loss = 0.0091 Test Accuracy = 46.0700 
+epoch: 14 --> Train loss = 0.0121 Train Accuracy = 26.1720 
+------> epoch: 14 --> Test loss = 0.0082 Test Accuracy = 50.7600 
+Saving..
+epoch: 15 --> Train loss = 0.0122 Train Accuracy = 29.6790 
+------> epoch: 15 --> Test loss = 0.0092 Test Accuracy = 46.7300 
+epoch: 16 --> Train loss = 0.0118 Train Accuracy = 28.3620 
+------> epoch: 16 --> Test loss = 0.0081 Test Accuracy = 52.0500 
+Saving..
+epoch: 17 --> Train loss = 0.0119 Train Accuracy = 30.0830 
+------> epoch: 17 --> Test loss = 0.0081 Test Accuracy = 51.8900 
+epoch: 18 --> Train loss = 0.0120 Train Accuracy = 29.1780 
+------> epoch: 18 --> Test loss = 0.0083 Test Accuracy = 51.3300 
+epoch: 19 --> Train loss = 0.0117 Train Accuracy = 28.6530 
+------> epoch: 19 --> Test loss = 0.0081 Test Accuracy = 51.6200 
+epoch: 20 --> Train loss = 0.0116 Train Accuracy = 30.6650 
+------> epoch: 20 --> Test loss = 0.0082 Test Accuracy = 51.3700 
+epoch: 21 --> Train loss = 0.0117 Train Accuracy = 28.6130 
+------> epoch: 21 --> Test loss = 0.0080 Test Accuracy = 53.4300 
+Saving..
+epoch: 22 --> Train loss = 0.0114 Train Accuracy = 31.5050 
+------> epoch: 22 --> Test loss = 0.0078 Test Accuracy = 53.6700 
+Saving..
+epoch: 23 --> Train loss = 0.0114 Train Accuracy = 31.2880 
+------> epoch: 23 --> Test loss = 0.0079 Test Accuracy = 52.3500 
+epoch: 24 --> Train loss = 0.0113 Train Accuracy = 30.4670 
+------> epoch: 24 --> Test loss = 0.0078 Test Accuracy = 53.3900 
+epoch: 25 --> Train loss = 0.0112 Train Accuracy = 32.1210 
+------> epoch: 25 --> Test loss = 0.0080 Test Accuracy = 52.7900 
+epoch: 26 --> Train loss = 0.0111 Train Accuracy = 32.6200 
+------> epoch: 26 --> Test loss = 0.0080 Test Accuracy = 52.1900 
+epoch: 27 --> Train loss = 0.0112 Train Accuracy = 32.9520 
+------> epoch: 27 --> Test loss = 0.0077 Test Accuracy = 54.3200 
+Saving..
+epoch: 28 --> Train loss = 0.0111 Train Accuracy = 33.3740 
+------> epoch: 28 --> Test loss = 0.0080 Test Accuracy = 54.2900 
+epoch: 29 --> Train loss = 0.0110 Train Accuracy = 32.1640 
+------> epoch: 29 --> Test loss = 0.0076 Test Accuracy = 54.0200 
+epoch: 30 --> Train loss = 0.0110 Train Accuracy = 33.4010 
+------> epoch: 30 --> Test loss = 0.0083 Test Accuracy = 52.0000 
+epoch: 31 --> Train loss = 0.0108 Train Accuracy = 32.6090 
+------> epoch: 31 --> Test loss = 0.0076 Test Accuracy = 55.6000 
+Saving..
+epoch: 32 --> Train loss = 0.0108 Train Accuracy = 31.7970 
+------> epoch: 32 --> Test loss = 0.0082 Test Accuracy = 52.4300 
+epoch: 33 --> Train loss = 0.0107 Train Accuracy = 35.1650 
+------> epoch: 33 --> Test loss = 0.0079 Test Accuracy = 54.2400 
+epoch: 34 --> Train loss = 0.0107 Train Accuracy = 34.8720 
+------> epoch: 34 --> Test loss = 0.0077 Test Accuracy = 54.4300 
+epoch: 35 --> Train loss = 0.0106 Train Accuracy = 33.9260 
+------> epoch: 35 --> Test loss = 0.0077 Test Accuracy = 55.0000 
+epoch: 36 --> Train loss = 0.0107 Train Accuracy = 34.7300 
+------> epoch: 36 --> Test loss = 0.0080 Test Accuracy = 52.8000 
+epoch: 37 --> Train loss = 0.0105 Train Accuracy = 34.0120 
+------> epoch: 37 --> Test loss = 0.0078 Test Accuracy = 55.0600 
+epoch: 38 --> Train loss = 0.0106 Train Accuracy = 34.5550 
+------> epoch: 38 --> Test loss = 0.0079 Test Accuracy = 54.5000 
+epoch: 39 --> Train loss = 0.0104 Train Accuracy = 34.3940 
+------> epoch: 39 --> Test loss = 0.0077 Test Accuracy = 54.1500 
+epoch: 40 --> Train loss = 0.0104 Train Accuracy = 32.9730 
+------> epoch: 40 --> Test loss = 0.0079 Test Accuracy = 54.0400 
+epoch: 41 --> Train loss = 0.0104 Train Accuracy = 33.3160 
+------> epoch: 41 --> Test loss = 0.0085 Test Accuracy = 52.2100 
+epoch: 42 --> Train loss = 0.0106 Train Accuracy = 33.0960 
+------> epoch: 42 --> Test loss = 0.0079 Test Accuracy = 54.3000 
+epoch: 43 --> Train loss = 0.0105 Train Accuracy = 32.6770 
+------> epoch: 43 --> Test loss = 0.0081 Test Accuracy = 53.1700 
+epoch: 44 --> Train loss = 0.0103 Train Accuracy = 31.6160 
+------> epoch: 44 --> Test loss = 0.0076 Test Accuracy = 55.8500 
+Saving..
+epoch: 45 --> Train loss = 0.0105 Train Accuracy = 35.1310 
+------> epoch: 45 --> Test loss = 0.0077 Test Accuracy = 55.1400 
+epoch: 46 --> Train loss = 0.0105 Train Accuracy = 33.4750 
+------> epoch: 46 --> Test loss = 0.0078 Test Accuracy = 55.3200 
+epoch: 47 --> Train loss = 0.0103 Train Accuracy = 36.4760 
+------> epoch: 47 --> Test loss = 0.0079 Test Accuracy = 55.0700 
+epoch: 48 --> Train loss = 0.0102 Train Accuracy = 33.8490 
+------> epoch: 48 --> Test loss = 0.0075 Test Accuracy = 55.5400 
+epoch: 49 --> Train loss = 0.0102 Train Accuracy = 35.7060 
+------> epoch: 49 --> Test loss = 0.0079 Test Accuracy = 54.3700 
+epoch: 50 --> Train loss = 0.0102 Train Accuracy = 37.5250 
+------> epoch: 50 --> Test loss = 0.0075 Test Accuracy = 56.5700 
+Saving..
+epoch: 51 --> Train loss = 0.0100 Train Accuracy = 36.7360 
+------> epoch: 51 --> Test loss = 0.0078 Test Accuracy = 54.9400 
+epoch: 52 --> Train loss = 0.0103 Train Accuracy = 37.5100 
+------> epoch: 52 --> Test loss = 0.0076 Test Accuracy = 56.3100 
+epoch: 53 --> Train loss = 0.0100 Train Accuracy = 35.6430 
+------> epoch: 53 --> Test loss = 0.0077 Test Accuracy = 55.5800 
+epoch: 54 --> Train loss = 0.0100 Train Accuracy = 34.8340 
+------> epoch: 54 --> Test loss = 0.0079 Test Accuracy = 54.7300 
+epoch: 55 --> Train loss = 0.0100 Train Accuracy = 39.1870 
+------> epoch: 55 --> Test loss = 0.0079 Test Accuracy = 54.7800 
+epoch: 56 --> Train loss = 0.0102 Train Accuracy = 35.7010 
+------> epoch: 56 --> Test loss = 0.0081 Test Accuracy = 54.2600 
+epoch: 57 --> Train loss = 0.0100 Train Accuracy = 37.1440 
+------> epoch: 57 --> Test loss = 0.0075 Test Accuracy = 56.3800 
+epoch: 58 --> Train loss = 0.0100 Train Accuracy = 37.0390 
+------> epoch: 58 --> Test loss = 0.0076 Test Accuracy = 55.7500 
+epoch: 59 --> Train loss = 0.0099 Train Accuracy = 35.7960 
+------> epoch: 59 --> Test loss = 0.0084 Test Accuracy = 52.2500 
+epoch: 60 --> Train loss = 0.0102 Train Accuracy = 34.3290 
+------> epoch: 60 --> Test loss = 0.0081 Test Accuracy = 54.9700 
+epoch: 61 --> Train loss = 0.0101 Train Accuracy = 35.8010 
+------> epoch: 61 --> Test loss = 0.0079 Test Accuracy = 54.7900 
+epoch: 62 --> Train loss = 0.0101 Train Accuracy = 36.7350 
+------> epoch: 62 --> Test loss = 0.0078 Test Accuracy = 55.1200 
+epoch: 63 --> Train loss = 0.0100 Train Accuracy = 36.2500 
+------> epoch: 63 --> Test loss = 0.0078 Test Accuracy = 55.3300 
+epoch: 64 --> Train loss = 0.0100 Train Accuracy = 34.9770 
+------> epoch: 64 --> Test loss = 0.0078 Test Accuracy = 55.7100 
+epoch: 65 --> Train loss = 0.0097 Train Accuracy = 35.9150 
+------> epoch: 65 --> Test loss = 0.0082 Test Accuracy = 52.9700 
+epoch: 66 --> Train loss = 0.0099 Train Accuracy = 36.3520 
+------> epoch: 66 --> Test loss = 0.0081 Test Accuracy = 53.6800 
+epoch: 67 --> Train loss = 0.0096 Train Accuracy = 35.5700 
+------> epoch: 67 --> Test loss = 0.0075 Test Accuracy = 57.0500 
+Saving..
+epoch: 68 --> Train loss = 0.0099 Train Accuracy = 36.4960 
+------> epoch: 68 --> Test loss = 0.0080 Test Accuracy = 53.5700 
+epoch: 69 --> Train loss = 0.0098 Train Accuracy = 37.1810 
+------> epoch: 69 --> Test loss = 0.0082 Test Accuracy = 53.6700 
+epoch: 70 --> Train loss = 0.0098 Train Accuracy = 36.3760 
+------> epoch: 70 --> Test loss = 0.0079 Test Accuracy = 54.6600 
+epoch: 71 --> Train loss = 0.0098 Train Accuracy = 35.7770 
+------> epoch: 71 --> Test loss = 0.0077 Test Accuracy = 56.3000 
+epoch: 72 --> Train loss = 0.0100 Train Accuracy = 38.0290 
+------> epoch: 72 --> Test loss = 0.0076 Test Accuracy = 55.7800 
+epoch: 73 --> Train loss = 0.0095 Train Accuracy = 39.2010 
+------> epoch: 73 --> Test loss = 0.0076 Test Accuracy = 56.3600 
+epoch: 74 --> Train loss = 0.0097 Train Accuracy = 37.0180 
+------> epoch: 74 --> Test loss = 0.0081 Test Accuracy = 54.1900 
+epoch: 75 --> Train loss = 0.0097 Train Accuracy = 37.7370 
+------> epoch: 75 --> Test loss = 0.0073 Test Accuracy = 57.3500 
+Saving..
+epoch: 76 --> Train loss = 0.0099 Train Accuracy = 35.9650 
+------> epoch: 76 --> Test loss = 0.0079 Test Accuracy = 54.1700 
+epoch: 77 --> Train loss = 0.0097 Train Accuracy = 38.5120 
+------> epoch: 77 --> Test loss = 0.0079 Test Accuracy = 54.3300 
+epoch: 78 --> Train loss = 0.0096 Train Accuracy = 39.6560 
+------> epoch: 78 --> Test loss = 0.0079 Test Accuracy = 54.9500 
+epoch: 79 --> Train loss = 0.0095 Train Accuracy = 38.4280 
+------> epoch: 79 --> Test loss = 0.0080 Test Accuracy = 54.0600 
+epoch: 80 --> Train loss = 0.0098 Train Accuracy = 37.2680 
+------> epoch: 80 --> Test loss = 0.0079 Test Accuracy = 54.5600 
+epoch: 81 --> Train loss = 0.0098 Train Accuracy = 37.9620 
+------> epoch: 81 --> Test loss = 0.0078 Test Accuracy = 55.6100 
+epoch: 82 --> Train loss = 0.0097 Train Accuracy = 39.1690 
+------> epoch: 82 --> Test loss = 0.0079 Test Accuracy = 54.7800 
+epoch: 83 --> Train loss = 0.0096 Train Accuracy = 36.6080 
+------> epoch: 83 --> Test loss = 0.0079 Test Accuracy = 54.7700 
+epoch: 84 --> Train loss = 0.0097 Train Accuracy = 38.1150 
+------> epoch: 84 --> Test loss = 0.0078 Test Accuracy = 54.4500 
+epoch: 85 --> Train loss = 0.0096 Train Accuracy = 37.6840 
+------> epoch: 85 --> Test loss = 0.0078 Test Accuracy = 56.1500 
+epoch: 86 --> Train loss = 0.0095 Train Accuracy = 38.0340 
+------> epoch: 86 --> Test loss = 0.0078 Test Accuracy = 55.2400 
+epoch: 87 --> Train loss = 0.0096 Train Accuracy = 36.7160 
+------> epoch: 87 --> Test loss = 0.0079 Test Accuracy = 55.4600 
+epoch: 88 --> Train loss = 0.0096 Train Accuracy = 38.0470 
+------> epoch: 88 --> Test loss = 0.0081 Test Accuracy = 53.8300 
+epoch: 89 --> Train loss = 0.0096 Train Accuracy = 37.5270 
+------> epoch: 89 --> Test loss = 0.0079 Test Accuracy = 54.0300 
+epoch: 90 --> Train loss = 0.0098 Train Accuracy = 38.9410 
+------> epoch: 90 --> Test loss = 0.0077 Test Accuracy = 56.4900 
+epoch: 91 --> Train loss = 0.0094 Train Accuracy = 39.7690 
+------> epoch: 91 --> Test loss = 0.0078 Test Accuracy = 55.1700 
+epoch: 92 --> Train loss = 0.0098 Train Accuracy = 38.6810 
+------> epoch: 92 --> Test loss = 0.0076 Test Accuracy = 56.4800 
+epoch: 93 --> Train loss = 0.0097 Train Accuracy = 39.8810 
+------> epoch: 93 --> Test loss = 0.0077 Test Accuracy = 56.0600 
+epoch: 94 --> Train loss = 0.0095 Train Accuracy = 39.2890 
+------> epoch: 94 --> Test loss = 0.0081 Test Accuracy = 53.8100 
+epoch: 95 --> Train loss = 0.0094 Train Accuracy = 39.3880 
+------> epoch: 95 --> Test loss = 0.0079 Test Accuracy = 55.8600 
+epoch: 96 --> Train loss = 0.0093 Train Accuracy = 41.4670 
+------> epoch: 96 --> Test loss = 0.0080 Test Accuracy = 53.7800 
+epoch: 97 --> Train loss = 0.0095 Train Accuracy = 43.8370 
+------> epoch: 97 --> Test loss = 0.0082 Test Accuracy = 54.3200 
+epoch: 98 --> Train loss = 0.0093 Train Accuracy = 37.1590 
+------> epoch: 98 --> Test loss = 0.0083 Test Accuracy = 53.6200 
+epoch: 99 --> Train loss = 0.0094 Train Accuracy = 41.3550 
+------> epoch: 99 --> Test loss = 0.0077 Test Accuracy = 55.7800 
+epoch: 100 --> Train loss = 0.0093 Train Accuracy = 40.8630 
+------> epoch: 100 --> Test loss = 0.0077 Test Accuracy = 55.6200 
+epoch: 101 --> Train loss = 0.0092 Train Accuracy = 38.5370 
+------> epoch: 101 --> Test loss = 0.0078 Test Accuracy = 54.2300 
+epoch: 102 --> Train loss = 0.0093 Train Accuracy = 39.7730 
+------> epoch: 102 --> Test loss = 0.0080 Test Accuracy = 55.3700 
+epoch: 103 --> Train loss = 0.0092 Train Accuracy = 39.0600 
+------> epoch: 103 --> Test loss = 0.0080 Test Accuracy = 55.2300 
+epoch: 104 --> Train loss = 0.0095 Train Accuracy = 41.7440 
+------> epoch: 104 --> Test loss = 0.0076 Test Accuracy = 56.1700 
+epoch: 105 --> Train loss = 0.0095 Train Accuracy = 39.3810 
+------> epoch: 105 --> Test loss = 0.0076 Test Accuracy = 56.4800 
+epoch: 106 --> Train loss = 0.0093 Train Accuracy = 41.2650 
+------> epoch: 106 --> Test loss = 0.0081 Test Accuracy = 54.6200 
+epoch: 107 --> Train loss = 0.0092 Train Accuracy = 39.8440 
+------> epoch: 107 --> Test loss = 0.0079 Test Accuracy = 55.5800 
+epoch: 108 --> Train loss = 0.0094 Train Accuracy = 39.2450 
+------> epoch: 108 --> Test loss = 0.0083 Test Accuracy = 52.9300 
+epoch: 109 --> Train loss = 0.0095 Train Accuracy = 38.2470 
+------> epoch: 109 --> Test loss = 0.0078 Test Accuracy = 55.4400 
+epoch: 110 --> Train loss = 0.0094 Train Accuracy = 37.1710 
+------> epoch: 110 --> Test loss = 0.0080 Test Accuracy = 55.0100 
+epoch: 111 --> Train loss = 0.0095 Train Accuracy = 37.3740 
+------> epoch: 111 --> Test loss = 0.0075 Test Accuracy = 57.4000 
+Saving..
+epoch: 112 --> Train loss = 0.0095 Train Accuracy = 38.7630 
+------> epoch: 112 --> Test loss = 0.0083 Test Accuracy = 53.8800 
+epoch: 113 --> Train loss = 0.0092 Train Accuracy = 39.9620 
+------> epoch: 113 --> Test loss = 0.0076 Test Accuracy = 56.4500 
+epoch: 114 --> Train loss = 0.0094 Train Accuracy = 38.1550 
+------> epoch: 114 --> Test loss = 0.0082 Test Accuracy = 52.9900 
+epoch: 115 --> Train loss = 0.0094 Train Accuracy = 40.2420 
+------> epoch: 115 --> Test loss = 0.0082 Test Accuracy = 53.5700 
+epoch: 116 --> Train loss = 0.0095 Train Accuracy = 40.6770 
+------> epoch: 116 --> Test loss = 0.0079 Test Accuracy = 55.2300 
+epoch: 117 --> Train loss = 0.0093 Train Accuracy = 38.4640 
+------> epoch: 117 --> Test loss = 0.0078 Test Accuracy = 54.8700 
+epoch: 118 --> Train loss = 0.0093 Train Accuracy = 40.5130 
+------> epoch: 118 --> Test loss = 0.0080 Test Accuracy = 55.5800 
+epoch: 119 --> Train loss = 0.0094 Train Accuracy = 41.0360 
+------> epoch: 119 --> Test loss = 0.0078 Test Accuracy = 55.1700 
+epoch: 120 --> Train loss = 0.0094 Train Accuracy = 37.0440 
+------> epoch: 120 --> Test loss = 0.0078 Test Accuracy = 55.3400 
+epoch: 121 --> Train loss = 0.0095 Train Accuracy = 39.4330 
+------> epoch: 121 --> Test loss = 0.0081 Test Accuracy = 54.0500 
+epoch: 122 --> Train loss = 0.0095 Train Accuracy = 39.2760 
+------> epoch: 122 --> Test loss = 0.0081 Test Accuracy = 53.8400 
+epoch: 123 --> Train loss = 0.0093 Train Accuracy = 38.7100 
+------> epoch: 123 --> Test loss = 0.0076 Test Accuracy = 56.3500 
+epoch: 124 --> Train loss = 0.0091 Train Accuracy = 40.7820 
+------> epoch: 124 --> Test loss = 0.0076 Test Accuracy = 56.0000 
+epoch: 125 --> Train loss = 0.0092 Train Accuracy = 40.5920 
+------> epoch: 125 --> Test loss = 0.0079 Test Accuracy = 54.8600 
+epoch: 126 --> Train loss = 0.0092 Train Accuracy = 41.2800 
+------> epoch: 126 --> Test loss = 0.0079 Test Accuracy = 55.3400 
+epoch: 127 --> Train loss = 0.0094 Train Accuracy = 37.4020 
+------> epoch: 127 --> Test loss = 0.0074 Test Accuracy = 57.2800 
+epoch: 128 --> Train loss = 0.0092 Train Accuracy = 39.6950 
+------> epoch: 128 --> Test loss = 0.0080 Test Accuracy = 54.9000 
+epoch: 129 --> Train loss = 0.0093 Train Accuracy = 37.7690 
+------> epoch: 129 --> Test loss = 0.0079 Test Accuracy = 55.4900 
+epoch: 130 --> Train loss = 0.0092 Train Accuracy = 39.3660 
+------> epoch: 130 --> Test loss = 0.0076 Test Accuracy = 56.6800 
+epoch: 131 --> Train loss = 0.0091 Train Accuracy = 41.3410 
+------> epoch: 131 --> Test loss = 0.0077 Test Accuracy = 56.0700 
+epoch: 132 --> Train loss = 0.0093 Train Accuracy = 40.1280 
+------> epoch: 132 --> Test loss = 0.0079 Test Accuracy = 54.8900 
+epoch: 133 --> Train loss = 0.0093 Train Accuracy = 38.7850 
+------> epoch: 133 --> Test loss = 0.0079 Test Accuracy = 55.0100 
+epoch: 134 --> Train loss = 0.0091 Train Accuracy = 37.8450 
+------> epoch: 134 --> Test loss = 0.0077 Test Accuracy = 57.1200 
+epoch: 135 --> Train loss = 0.0094 Train Accuracy = 41.6700 
+------> epoch: 135 --> Test loss = 0.0083 Test Accuracy = 53.9700 
+epoch: 136 --> Train loss = 0.0093 Train Accuracy = 41.6340 
+------> epoch: 136 --> Test loss = 0.0076 Test Accuracy = 56.2800 
+epoch: 137 --> Train loss = 0.0090 Train Accuracy = 38.8230 
+------> epoch: 137 --> Test loss = 0.0077 Test Accuracy = 56.5000 
+epoch: 138 --> Train loss = 0.0093 Train Accuracy = 39.5010 
+------> epoch: 138 --> Test loss = 0.0080 Test Accuracy = 53.9700 
+epoch: 139 --> Train loss = 0.0092 Train Accuracy = 41.4780 
+------> epoch: 139 --> Test loss = 0.0076 Test Accuracy = 57.0900 
+epoch: 140 --> Train loss = 0.0093 Train Accuracy = 38.4990 
+------> epoch: 140 --> Test loss = 0.0080 Test Accuracy = 54.2000 
+epoch: 141 --> Train loss = 0.0093 Train Accuracy = 39.4820 
+------> epoch: 141 --> Test loss = 0.0086 Test Accuracy = 52.3200 
+epoch: 142 --> Train loss = 0.0093 Train Accuracy = 39.6500 
+------> epoch: 142 --> Test loss = 0.0079 Test Accuracy = 54.7600 
+epoch: 143 --> Train loss = 0.0092 Train Accuracy = 40.0580 
+------> epoch: 143 --> Test loss = 0.0077 Test Accuracy = 56.3000 
+epoch: 144 --> Train loss = 0.0090 Train Accuracy = 42.0420 
+------> epoch: 144 --> Test loss = 0.0076 Test Accuracy = 57.3400 
+epoch: 145 --> Train loss = 0.0093 Train Accuracy = 39.4540 
+------> epoch: 145 --> Test loss = 0.0075 Test Accuracy = 56.7500 
+epoch: 146 --> Train loss = 0.0090 Train Accuracy = 39.0530 
+------> epoch: 146 --> Test loss = 0.0083 Test Accuracy = 54.8200 
+epoch: 147 --> Train loss = 0.0092 Train Accuracy = 38.7030 
+------> epoch: 147 --> Test loss = 0.0075 Test Accuracy = 56.8100 
+epoch: 148 --> Train loss = 0.0091 Train Accuracy = 42.7880 
+------> epoch: 148 --> Test loss = 0.0085 Test Accuracy = 53.9800 
+epoch: 149 --> Train loss = 0.0093 Train Accuracy = 39.2470 
+------> epoch: 149 --> Test loss = 0.0077 Test Accuracy = 55.6800 
+epoch: 150 --> Train loss = 0.0093 Train Accuracy = 42.3580 
+------> epoch: 150 --> Test loss = 0.0079 Test Accuracy = 55.8100 
+epoch: 151 --> Train loss = 0.0091 Train Accuracy = 38.7020 
+------> epoch: 151 --> Test loss = 0.0084 Test Accuracy = 53.0800 
+epoch: 152 --> Train loss = 0.0091 Train Accuracy = 39.4010 
+------> epoch: 152 --> Test loss = 0.0078 Test Accuracy = 56.0200 
+epoch: 153 --> Train loss = 0.0092 Train Accuracy = 41.1640 
+------> epoch: 153 --> Test loss = 0.0078 Test Accuracy = 55.6600 
+epoch: 154 --> Train loss = 0.0093 Train Accuracy = 39.8940 
+------> epoch: 154 --> Test loss = 0.0077 Test Accuracy = 55.1100 
+epoch: 155 --> Train loss = 0.0091 Train Accuracy = 40.3520 
+------> epoch: 155 --> Test loss = 0.0080 Test Accuracy = 55.5100 
+epoch: 156 --> Train loss = 0.0092 Train Accuracy = 39.9370 
+------> epoch: 156 --> Test loss = 0.0077 Test Accuracy = 56.4300 
+epoch: 157 --> Train loss = 0.0094 Train Accuracy = 42.2390 
+------> epoch: 157 --> Test loss = 0.0074 Test Accuracy = 57.2700 
+epoch: 158 --> Train loss = 0.0093 Train Accuracy = 45.9380 
+------> epoch: 158 --> Test loss = 0.0080 Test Accuracy = 54.7800 
+epoch: 159 --> Train loss = 0.0091 Train Accuracy = 40.2380 
+------> epoch: 159 --> Test loss = 0.0086 Test Accuracy = 52.2800 
+epoch: 160 --> Train loss = 0.0093 Train Accuracy = 40.0020 
+------> epoch: 160 --> Test loss = 0.0079 Test Accuracy = 55.5000 
+epoch: 161 --> Train loss = 0.0090 Train Accuracy = 41.1140 
+------> epoch: 161 --> Test loss = 0.0078 Test Accuracy = 55.8000 
+epoch: 162 --> Train loss = 0.0092 Train Accuracy = 39.1360 
+------> epoch: 162 --> Test loss = 0.0082 Test Accuracy = 54.0400 
+epoch: 163 --> Train loss = 0.0093 Train Accuracy = 43.2640 
+------> epoch: 163 --> Test loss = 0.0080 Test Accuracy = 54.9800 
+epoch: 164 --> Train loss = 0.0092 Train Accuracy = 37.5350 
+------> epoch: 164 --> Test loss = 0.0076 Test Accuracy = 57.0800 
+epoch: 165 --> Train loss = 0.0092 Train Accuracy = 41.2240 
+------> epoch: 165 --> Test loss = 0.0075 Test Accuracy = 56.6200 
+epoch: 166 --> Train loss = 0.0091 Train Accuracy = 43.7840 
+------> epoch: 166 --> Test loss = 0.0079 Test Accuracy = 55.0600 
+epoch: 167 --> Train loss = 0.0094 Train Accuracy = 43.5040 
+------> epoch: 167 --> Test loss = 0.0078 Test Accuracy = 55.5400 
+epoch: 168 --> Train loss = 0.0092 Train Accuracy = 39.0130 
+------> epoch: 168 --> Test loss = 0.0081 Test Accuracy = 54.1400 
+epoch: 169 --> Train loss = 0.0094 Train Accuracy = 39.0650 
+------> epoch: 169 --> Test loss = 0.0080 Test Accuracy = 54.3200 
+epoch: 170 --> Train loss = 0.0092 Train Accuracy = 40.2870 
+------> epoch: 170 --> Test loss = 0.0080 Test Accuracy = 54.8700 
+epoch: 171 --> Train loss = 0.0093 Train Accuracy = 39.0710 
+------> epoch: 171 --> Test loss = 0.0077 Test Accuracy = 55.7000 
+epoch: 172 --> Train loss = 0.0093 Train Accuracy = 38.1020 
+------> epoch: 172 --> Test loss = 0.0081 Test Accuracy = 54.9200 
+epoch: 173 --> Train loss = 0.0091 Train Accuracy = 41.8410 
+------> epoch: 173 --> Test loss = 0.0081 Test Accuracy = 55.2900 
+epoch: 174 --> Train loss = 0.0092 Train Accuracy = 41.4640 
+------> epoch: 174 --> Test loss = 0.0077 Test Accuracy = 56.3000 
+epoch: 175 --> Train loss = 0.0092 Train Accuracy = 42.6330 
+------> epoch: 175 --> Test loss = 0.0079 Test Accuracy = 55.6500 
+epoch: 176 --> Train loss = 0.0090 Train Accuracy = 42.7960 
+------> epoch: 176 --> Test loss = 0.0079 Test Accuracy = 55.6200 
+epoch: 177 --> Train loss = 0.0089 Train Accuracy = 41.2650 
+------> epoch: 177 --> Test loss = 0.0078 Test Accuracy = 55.8400 
+epoch: 178 --> Train loss = 0.0089 Train Accuracy = 44.4160 
+------> epoch: 178 --> Test loss = 0.0080 Test Accuracy = 54.7400 
+epoch: 179 --> Train loss = 0.0090 Train Accuracy = 42.0110 
+------> epoch: 179 --> Test loss = 0.0077 Test Accuracy = 56.2300 
+epoch: 180 --> Train loss = 0.0090 Train Accuracy = 40.5790 
+------> epoch: 180 --> Test loss = 0.0078 Test Accuracy = 56.0300 
+epoch: 181 --> Train loss = 0.0091 Train Accuracy = 42.4900 
+------> epoch: 181 --> Test loss = 0.0082 Test Accuracy = 54.1400 
+epoch: 182 --> Train loss = 0.0089 Train Accuracy = 39.5530 
+------> epoch: 182 --> Test loss = 0.0079 Test Accuracy = 55.4100 
+epoch: 183 --> Train loss = 0.0090 Train Accuracy = 37.4560 
+------> epoch: 183 --> Test loss = 0.0079 Test Accuracy = 55.6500 
+epoch: 184 --> Train loss = 0.0094 Train Accuracy = 39.3500 
+------> epoch: 184 --> Test loss = 0.0078 Test Accuracy = 55.5500 
+epoch: 185 --> Train loss = 0.0093 Train Accuracy = 40.2280 
+------> epoch: 185 --> Test loss = 0.0082 Test Accuracy = 53.7900 
+epoch: 186 --> Train loss = 0.0092 Train Accuracy = 37.5650 
+------> epoch: 186 --> Test loss = 0.0082 Test Accuracy = 54.4300 
+epoch: 187 --> Train loss = 0.0091 Train Accuracy = 41.8920 
+------> epoch: 187 --> Test loss = 0.0078 Test Accuracy = 55.4400 
+epoch: 188 --> Train loss = 0.0092 Train Accuracy = 38.9570 
+------> epoch: 188 --> Test loss = 0.0080 Test Accuracy = 55.4300 
+epoch: 189 --> Train loss = 0.0091 Train Accuracy = 41.3640 
+------> epoch: 189 --> Test loss = 0.0076 Test Accuracy = 56.3600 
+epoch: 190 --> Train loss = 0.0090 Train Accuracy = 40.6490 
+------> epoch: 190 --> Test loss = 0.0080 Test Accuracy = 54.4800 
+epoch: 191 --> Train loss = 0.0091 Train Accuracy = 41.1800 
+------> epoch: 191 --> Test loss = 0.0080 Test Accuracy = 54.7000 
+epoch: 192 --> Train loss = 0.0089 Train Accuracy = 38.9500 
+------> epoch: 192 --> Test loss = 0.0080 Test Accuracy = 55.7100 
+epoch: 193 --> Train loss = 0.0092 Train Accuracy = 39.8120 
+------> epoch: 193 --> Test loss = 0.0082 Test Accuracy = 53.7900 
+epoch: 194 --> Train loss = 0.0088 Train Accuracy = 39.9000 
+------> epoch: 194 --> Test loss = 0.0078 Test Accuracy = 55.7300 
+epoch: 195 --> Train loss = 0.0091 Train Accuracy = 39.6380 
+------> epoch: 195 --> Test loss = 0.0082 Test Accuracy = 53.9400 
+epoch: 196 --> Train loss = 0.0089 Train Accuracy = 41.0010 
+------> epoch: 196 --> Test loss = 0.0081 Test Accuracy = 54.9500 
+epoch: 197 --> Train loss = 0.0091 Train Accuracy = 42.7410 
+------> epoch: 197 --> Test loss = 0.0080 Test Accuracy = 54.3100 
+epoch: 198 --> Train loss = 0.0091 Train Accuracy = 42.6670 
+------> epoch: 198 --> Test loss = 0.0082 Test Accuracy = 55.0600 
+epoch: 199 --> Train loss = 0.0091 Train Accuracy = 40.8750 
+------> epoch: 199 --> Test loss = 0.0081 Test Accuracy = 54.2000 
+epoch: 200 --> Train loss = 0.0093 Train Accuracy = 40.3930 
+------> epoch: 200 --> Test loss = 0.0079 Test Accuracy = 55.2000 
+epoch: 201 --> Train loss = 0.0088 Train Accuracy = 43.1450 
+------> epoch: 201 --> Test loss = 0.0075 Test Accuracy = 57.6900 
+Saving..
+epoch: 202 --> Train loss = 0.0089 Train Accuracy = 40.9190 
+------> epoch: 202 --> Test loss = 0.0077 Test Accuracy = 56.4700 
+epoch: 203 --> Train loss = 0.0091 Train Accuracy = 40.8830 
+------> epoch: 203 --> Test loss = 0.0076 Test Accuracy = 56.8500 
+epoch: 204 --> Train loss = 0.0092 Train Accuracy = 40.1400 
+------> epoch: 204 --> Test loss = 0.0080 Test Accuracy = 55.5700 
+epoch: 205 --> Train loss = 0.0090 Train Accuracy = 42.4710 
+------> epoch: 205 --> Test loss = 0.0083 Test Accuracy = 52.9200 
+epoch: 206 --> Train loss = 0.0091 Train Accuracy = 41.4850 
+------> epoch: 206 --> Test loss = 0.0079 Test Accuracy = 55.1600 
+epoch: 207 --> Train loss = 0.0092 Train Accuracy = 38.6370 
+------> epoch: 207 --> Test loss = 0.0083 Test Accuracy = 54.3600 
+epoch: 208 --> Train loss = 0.0091 Train Accuracy = 41.7490 
+------> epoch: 208 --> Test loss = 0.0082 Test Accuracy = 54.8300 
+epoch: 209 --> Train loss = 0.0089 Train Accuracy = 38.8250 
+------> epoch: 209 --> Test loss = 0.0083 Test Accuracy = 54.1500 
+epoch: 210 --> Train loss = 0.0092 Train Accuracy = 40.9640 
+------> epoch: 210 --> Test loss = 0.0080 Test Accuracy = 55.4200 
+epoch: 211 --> Train loss = 0.0091 Train Accuracy = 42.1220 
+------> epoch: 211 --> Test loss = 0.0081 Test Accuracy = 54.6700 
+epoch: 212 --> Train loss = 0.0088 Train Accuracy = 41.5300 
+------> epoch: 212 --> Test loss = 0.0080 Test Accuracy = 55.0900 
+epoch: 213 --> Train loss = 0.0090 Train Accuracy = 41.9060 
+------> epoch: 213 --> Test loss = 0.0077 Test Accuracy = 56.1400 
+epoch: 214 --> Train loss = 0.0091 Train Accuracy = 42.5370 
+------> epoch: 214 --> Test loss = 0.0084 Test Accuracy = 54.3500 
+epoch: 215 --> Train loss = 0.0089 Train Accuracy = 41.6290 
+------> epoch: 215 --> Test loss = 0.0080 Test Accuracy = 55.0700 
+epoch: 216 --> Train loss = 0.0090 Train Accuracy = 42.6080 
+------> epoch: 216 --> Test loss = 0.0076 Test Accuracy = 57.0600 
+epoch: 217 --> Train loss = 0.0090 Train Accuracy = 42.8400 
+------> epoch: 217 --> Test loss = 0.0082 Test Accuracy = 54.5500 
+epoch: 218 --> Train loss = 0.0091 Train Accuracy = 40.4830 
+------> epoch: 218 --> Test loss = 0.0081 Test Accuracy = 54.2600 
+epoch: 219 --> Train loss = 0.0090 Train Accuracy = 41.7100 
+------> epoch: 219 --> Test loss = 0.0080 Test Accuracy = 55.4500 
+epoch: 220 --> Train loss = 0.0091 Train Accuracy = 41.3450 
+------> epoch: 220 --> Test loss = 0.0083 Test Accuracy = 54.5000 
+epoch: 221 --> Train loss = 0.0088 Train Accuracy = 39.4070 
+------> epoch: 221 --> Test loss = 0.0083 Test Accuracy = 53.7000 
+epoch: 222 --> Train loss = 0.0093 Train Accuracy = 43.8880 
+------> epoch: 222 --> Test loss = 0.0081 Test Accuracy = 54.9200 
+epoch: 223 --> Train loss = 0.0090 Train Accuracy = 40.3260 
+------> epoch: 223 --> Test loss = 0.0079 Test Accuracy = 55.7600 
+epoch: 224 --> Train loss = 0.0091 Train Accuracy = 40.6100 
+------> epoch: 224 --> Test loss = 0.0081 Test Accuracy = 54.9300 
+epoch: 225 --> Train loss = 0.0089 Train Accuracy = 39.7720 
+------> epoch: 225 --> Test loss = 0.0080 Test Accuracy = 54.2700 
+epoch: 226 --> Train loss = 0.0091 Train Accuracy = 39.7640 
+------> epoch: 226 --> Test loss = 0.0082 Test Accuracy = 54.8600 
+epoch: 227 --> Train loss = 0.0094 Train Accuracy = 40.0820 
+------> epoch: 227 --> Test loss = 0.0079 Test Accuracy = 55.7700 
+epoch: 228 --> Train loss = 0.0092 Train Accuracy = 41.8040 
+------> epoch: 228 --> Test loss = 0.0079 Test Accuracy = 55.8300 
+epoch: 229 --> Train loss = 0.0091 Train Accuracy = 43.7400 
+------> epoch: 229 --> Test loss = 0.0080 Test Accuracy = 55.4200 
+epoch: 230 --> Train loss = 0.0089 Train Accuracy = 41.6400 
+------> epoch: 230 --> Test loss = 0.0079 Test Accuracy = 56.6200 
+epoch: 231 --> Train loss = 0.0093 Train Accuracy = 36.9760 
+------> epoch: 231 --> Test loss = 0.0079 Test Accuracy = 55.1200 
+epoch: 232 --> Train loss = 0.0089 Train Accuracy = 39.6840 
+------> epoch: 232 --> Test loss = 0.0082 Test Accuracy = 54.7600 
+epoch: 233 --> Train loss = 0.0088 Train Accuracy = 40.8080 
+------> epoch: 233 --> Test loss = 0.0078 Test Accuracy = 56.2900 
+epoch: 234 --> Train loss = 0.0089 Train Accuracy = 41.2550 
+------> epoch: 234 --> Test loss = 0.0082 Test Accuracy = 54.0200 
+epoch: 235 --> Train loss = 0.0089 Train Accuracy = 40.4350 
+------> epoch: 235 --> Test loss = 0.0072 Test Accuracy = 58.9600 
+Saving..
+epoch: 236 --> Train loss = 0.0088 Train Accuracy = 40.2560 
+------> epoch: 236 --> Test loss = 0.0077 Test Accuracy = 56.9300 
+epoch: 237 --> Train loss = 0.0091 Train Accuracy = 42.0380 
+------> epoch: 237 --> Test loss = 0.0078 Test Accuracy = 56.2400 
+epoch: 238 --> Train loss = 0.0090 Train Accuracy = 45.3630 
+------> epoch: 238 --> Test loss = 0.0080 Test Accuracy = 55.3700 
+epoch: 239 --> Train loss = 0.0093 Train Accuracy = 41.6200 
+------> epoch: 239 --> Test loss = 0.0080 Test Accuracy = 54.5200 
+epoch: 240 --> Train loss = 0.0089 Train Accuracy = 40.7350 
+------> epoch: 240 --> Test loss = 0.0082 Test Accuracy = 54.6000 
+epoch: 241 --> Train loss = 0.0090 Train Accuracy = 43.4290 
+------> epoch: 241 --> Test loss = 0.0079 Test Accuracy = 56.3500 
+epoch: 242 --> Train loss = 0.0092 Train Accuracy = 39.8390 
+------> epoch: 242 --> Test loss = 0.0081 Test Accuracy = 54.5900 
+epoch: 243 --> Train loss = 0.0089 Train Accuracy = 42.6570 
+------> epoch: 243 --> Test loss = 0.0083 Test Accuracy = 53.7900 
+epoch: 244 --> Train loss = 0.0090 Train Accuracy = 38.6090 
+------> epoch: 244 --> Test loss = 0.0081 Test Accuracy = 54.4500 
+epoch: 245 --> Train loss = 0.0088 Train Accuracy = 36.2240 
+------> epoch: 245 --> Test loss = 0.0079 Test Accuracy = 55.6400 
+epoch: 246 --> Train loss = 0.0090 Train Accuracy = 40.1360 
+------> epoch: 246 --> Test loss = 0.0080 Test Accuracy = 54.4700 
+epoch: 247 --> Train loss = 0.0090 Train Accuracy = 39.0640 
+------> epoch: 247 --> Test loss = 0.0079 Test Accuracy = 55.9100 
+epoch: 248 --> Train loss = 0.0090 Train Accuracy = 39.9270 
+------> epoch: 248 --> Test loss = 0.0076 Test Accuracy = 56.9800 
+epoch: 249 --> Train loss = 0.0089 Train Accuracy = 42.7550 
+------> epoch: 249 --> Test loss = 0.0078 Test Accuracy = 55.6900 
+epoch: 250 --> Train loss = 0.0090 Train Accuracy = 43.8380 
+------> epoch: 250 --> Test loss = 0.0082 Test Accuracy = 53.8000 
+epoch: 251 --> Train loss = 0.0089 Train Accuracy = 43.8600 
+------> epoch: 251 --> Test loss = 0.0079 Test Accuracy = 55.4200 
+epoch: 252 --> Train loss = 0.0090 Train Accuracy = 43.2890 
+------> epoch: 252 --> Test loss = 0.0078 Test Accuracy = 55.3100 
+epoch: 253 --> Train loss = 0.0090 Train Accuracy = 41.5550 
+------> epoch: 253 --> Test loss = 0.0079 Test Accuracy = 55.1400 
+epoch: 254 --> Train loss = 0.0088 Train Accuracy = 41.1310 
+------> epoch: 254 --> Test loss = 0.0081 Test Accuracy = 54.1300 
+epoch: 255 --> Train loss = 0.0091 Train Accuracy = 42.6450 
+------> epoch: 255 --> Test loss = 0.0078 Test Accuracy = 55.8300 
+epoch: 256 --> Train loss = 0.0090 Train Accuracy = 41.5780 
+------> epoch: 256 --> Test loss = 0.0087 Test Accuracy = 51.8100 
+epoch: 257 --> Train loss = 0.0089 Train Accuracy = 42.9800 
+------> epoch: 257 --> Test loss = 0.0079 Test Accuracy = 56.1900 
+epoch: 258 --> Train loss = 0.0088 Train Accuracy = 39.4800 
+------> epoch: 258 --> Test loss = 0.0084 Test Accuracy = 53.2400 
+epoch: 259 --> Train loss = 0.0090 Train Accuracy = 41.6650 
+------> epoch: 259 --> Test loss = 0.0080 Test Accuracy = 54.6600 
+epoch: 260 --> Train loss = 0.0089 Train Accuracy = 42.8710 
+------> epoch: 260 --> Test loss = 0.0077 Test Accuracy = 55.6800 
+epoch: 261 --> Train loss = 0.0088 Train Accuracy = 41.3720 
+------> epoch: 261 --> Test loss = 0.0078 Test Accuracy = 56.5000 
+epoch: 262 --> Train loss = 0.0091 Train Accuracy = 36.9290 
+------> epoch: 262 --> Test loss = 0.0083 Test Accuracy = 53.4800 
+epoch: 263 --> Train loss = 0.0088 Train Accuracy = 38.6350 
+------> epoch: 263 --> Test loss = 0.0082 Test Accuracy = 53.0300 
+epoch: 264 --> Train loss = 0.0089 Train Accuracy = 41.8790 
+------> epoch: 264 --> Test loss = 0.0083 Test Accuracy = 53.7800 
+epoch: 265 --> Train loss = 0.0092 Train Accuracy = 42.6570 
+------> epoch: 265 --> Test loss = 0.0080 Test Accuracy = 55.4400 
+epoch: 266 --> Train loss = 0.0090 Train Accuracy = 40.3590 
+------> epoch: 266 --> Test loss = 0.0078 Test Accuracy = 56.1000 
+epoch: 267 --> Train loss = 0.0089 Train Accuracy = 41.9210 
+------> epoch: 267 --> Test loss = 0.0081 Test Accuracy = 54.4400 
+epoch: 268 --> Train loss = 0.0091 Train Accuracy = 44.6630 
+------> epoch: 268 --> Test loss = 0.0082 Test Accuracy = 55.2300 
+epoch: 269 --> Train loss = 0.0090 Train Accuracy = 41.9250 
+------> epoch: 269 --> Test loss = 0.0080 Test Accuracy = 55.9800 
+epoch: 270 --> Train loss = 0.0088 Train Accuracy = 42.4640 
+------> epoch: 270 --> Test loss = 0.0079 Test Accuracy = 55.1300 
+epoch: 271 --> Train loss = 0.0088 Train Accuracy = 42.0040 
+------> epoch: 271 --> Test loss = 0.0081 Test Accuracy = 54.9600 
+epoch: 272 --> Train loss = 0.0088 Train Accuracy = 43.1270 
+------> epoch: 272 --> Test loss = 0.0082 Test Accuracy = 54.0200 
+epoch: 273 --> Train loss = 0.0090 Train Accuracy = 40.6660 
+------> epoch: 273 --> Test loss = 0.0084 Test Accuracy = 53.2700 
+epoch: 274 --> Train loss = 0.0090 Train Accuracy = 41.3760 
+------> epoch: 274 --> Test loss = 0.0078 Test Accuracy = 56.2100 
+epoch: 275 --> Train loss = 0.0088 Train Accuracy = 43.4870 
+------> epoch: 275 --> Test loss = 0.0078 Test Accuracy = 55.3000 
+epoch: 276 --> Train loss = 0.0091 Train Accuracy = 44.3800 
+------> epoch: 276 --> Test loss = 0.0078 Test Accuracy = 55.2500 
+epoch: 277 --> Train loss = 0.0088 Train Accuracy = 40.4120 
+------> epoch: 277 --> Test loss = 0.0077 Test Accuracy = 56.6500 
+epoch: 278 --> Train loss = 0.0090 Train Accuracy = 42.2790 
+------> epoch: 278 --> Test loss = 0.0084 Test Accuracy = 54.9300 
+epoch: 279 --> Train loss = 0.0092 Train Accuracy = 39.7390 
+------> epoch: 279 --> Test loss = 0.0087 Test Accuracy = 52.1800 
+epoch: 280 --> Train loss = 0.0089 Train Accuracy = 40.8330 
+------> epoch: 280 --> Test loss = 0.0081 Test Accuracy = 54.5200 
+epoch: 281 --> Train loss = 0.0090 Train Accuracy = 39.7950 
+------> epoch: 281 --> Test loss = 0.0078 Test Accuracy = 55.0700 
+epoch: 282 --> Train loss = 0.0090 Train Accuracy = 43.0790 
+------> epoch: 282 --> Test loss = 0.0081 Test Accuracy = 54.5600 
+epoch: 283 --> Train loss = 0.0089 Train Accuracy = 44.4440 
+------> epoch: 283 --> Test loss = 0.0079 Test Accuracy = 55.5600 
+epoch: 284 --> Train loss = 0.0089 Train Accuracy = 37.6010 
+------> epoch: 284 --> Test loss = 0.0084 Test Accuracy = 53.2100 
+epoch: 285 --> Train loss = 0.0089 Train Accuracy = 41.2760 
+------> epoch: 285 --> Test loss = 0.0080 Test Accuracy = 55.1000 
+epoch: 286 --> Train loss = 0.0091 Train Accuracy = 42.1380 
+------> epoch: 286 --> Test loss = 0.0083 Test Accuracy = 53.3000 
+epoch: 287 --> Train loss = 0.0089 Train Accuracy = 40.0730 
+------> epoch: 287 --> Test loss = 0.0085 Test Accuracy = 53.1100 
+epoch: 288 --> Train loss = 0.0089 Train Accuracy = 40.3000 
+------> epoch: 288 --> Test loss = 0.0079 Test Accuracy = 55.5500 
+epoch: 289 --> Train loss = 0.0089 Train Accuracy = 42.6660 
+------> epoch: 289 --> Test loss = 0.0080 Test Accuracy = 54.5900 
+epoch: 290 --> Train loss = 0.0088 Train Accuracy = 39.6700 
+------> epoch: 290 --> Test loss = 0.0078 Test Accuracy = 56.9400 
+epoch: 291 --> Train loss = 0.0086 Train Accuracy = 42.7810 
+------> epoch: 291 --> Test loss = 0.0084 Test Accuracy = 53.1900 
+epoch: 292 --> Train loss = 0.0089 Train Accuracy = 42.8880 
+------> epoch: 292 --> Test loss = 0.0078 Test Accuracy = 55.8300 
+epoch: 293 --> Train loss = 0.0088 Train Accuracy = 41.8400 
+------> epoch: 293 --> Test loss = 0.0081 Test Accuracy = 54.0000 
+epoch: 294 --> Train loss = 0.0088 Train Accuracy = 40.4050 
+------> epoch: 294 --> Test loss = 0.0080 Test Accuracy = 54.4000 
+epoch: 295 --> Train loss = 0.0089 Train Accuracy = 39.9790 
+------> epoch: 295 --> Test loss = 0.0079 Test Accuracy = 56.0400 
+epoch: 296 --> Train loss = 0.0087 Train Accuracy = 44.1590 
+------> epoch: 296 --> Test loss = 0.0078 Test Accuracy = 56.2600 
+epoch: 297 --> Train loss = 0.0089 Train Accuracy = 39.4220 
+------> epoch: 297 --> Test loss = 0.0082 Test Accuracy = 53.4500 
+epoch: 298 --> Train loss = 0.0087 Train Accuracy = 39.0540 
+------> epoch: 298 --> Test loss = 0.0078 Test Accuracy = 55.8300 
+epoch: 299 --> Train loss = 0.0089 Train Accuracy = 41.7870 
+------> epoch: 299 --> Test loss = 0.0080 Test Accuracy = 53.8200 
+epoch: 300 --> Train loss = 0.0085 Train Accuracy = 40.5890 
+------> epoch: 300 --> Test loss = 0.0077 Test Accuracy = 55.9000 
+epoch: 301 --> Train loss = 0.0090 Train Accuracy = 44.3430 
+------> epoch: 301 --> Test loss = 0.0081 Test Accuracy = 54.7600 
+epoch: 302 --> Train loss = 0.0089 Train Accuracy = 40.8620 
+------> epoch: 302 --> Test loss = 0.0083 Test Accuracy = 54.3200 
+epoch: 303 --> Train loss = 0.0090 Train Accuracy = 37.7470 
+------> epoch: 303 --> Test loss = 0.0083 Test Accuracy = 53.4800 
+epoch: 304 --> Train loss = 0.0090 Train Accuracy = 41.0800 
+------> epoch: 304 --> Test loss = 0.0081 Test Accuracy = 53.9300 
+epoch: 305 --> Train loss = 0.0088 Train Accuracy = 41.7150 
+------> epoch: 305 --> Test loss = 0.0079 Test Accuracy = 55.6200 
+epoch: 306 --> Train loss = 0.0088 Train Accuracy = 40.4210 
+------> epoch: 306 --> Test loss = 0.0077 Test Accuracy = 55.5900 
+epoch: 307 --> Train loss = 0.0090 Train Accuracy = 42.1100 
+------> epoch: 307 --> Test loss = 0.0079 Test Accuracy = 55.0500 
+epoch: 308 --> Train loss = 0.0089 Train Accuracy = 43.7950 
+------> epoch: 308 --> Test loss = 0.0080 Test Accuracy = 54.6400 
+epoch: 309 --> Train loss = 0.0090 Train Accuracy = 41.9140 
+------> epoch: 309 --> Test loss = 0.0082 Test Accuracy = 53.3900 
+epoch: 310 --> Train loss = 0.0091 Train Accuracy = 36.1500 
+------> epoch: 310 --> Test loss = 0.0081 Test Accuracy = 54.8200 
+epoch: 311 --> Train loss = 0.0088 Train Accuracy = 44.5860 
+------> epoch: 311 --> Test loss = 0.0087 Test Accuracy = 52.3000 
+epoch: 312 --> Train loss = 0.0090 Train Accuracy = 40.2020 
+------> epoch: 312 --> Test loss = 0.0078 Test Accuracy = 56.5600 
+epoch: 313 --> Train loss = 0.0090 Train Accuracy = 42.6180 
+------> epoch: 313 --> Test loss = 0.0077 Test Accuracy = 55.6800 
+epoch: 314 --> Train loss = 0.0089 Train Accuracy = 38.5060 
+------> epoch: 314 --> Test loss = 0.0085 Test Accuracy = 53.4800 
+epoch: 315 --> Train loss = 0.0087 Train Accuracy = 42.5850 
+------> epoch: 315 --> Test loss = 0.0084 Test Accuracy = 54.3600 
+epoch: 316 --> Train loss = 0.0089 Train Accuracy = 40.8210 
+------> epoch: 316 --> Test loss = 0.0079 Test Accuracy = 55.3600 
+epoch: 317 --> Train loss = 0.0089 Train Accuracy = 41.7440 
+------> epoch: 317 --> Test loss = 0.0083 Test Accuracy = 53.7000 
+epoch: 318 --> Train loss = 0.0091 Train Accuracy = 38.4200 
+------> epoch: 318 --> Test loss = 0.0085 Test Accuracy = 53.5200 
+epoch: 319 --> Train loss = 0.0088 Train Accuracy = 40.5140 
+------> epoch: 319 --> Test loss = 0.0081 Test Accuracy = 54.1900 
+epoch: 320 --> Train loss = 0.0090 Train Accuracy = 41.8740 
+------> epoch: 320 --> Test loss = 0.0081 Test Accuracy = 54.4300 
+epoch: 321 --> Train loss = 0.0086 Train Accuracy = 42.9320 
+------> epoch: 321 --> Test loss = 0.0084 Test Accuracy = 53.3700 
+epoch: 322 --> Train loss = 0.0090 Train Accuracy = 42.4180 
+------> epoch: 322 --> Test loss = 0.0083 Test Accuracy = 53.9700 
+epoch: 323 --> Train loss = 0.0088 Train Accuracy = 41.4600 
+------> epoch: 323 --> Test loss = 0.0081 Test Accuracy = 54.7700 
+epoch: 324 --> Train loss = 0.0087 Train Accuracy = 39.5320 
+------> epoch: 324 --> Test loss = 0.0081 Test Accuracy = 54.5300 
+epoch: 325 --> Train loss = 0.0090 Train Accuracy = 42.3660 
+------> epoch: 325 --> Test loss = 0.0081 Test Accuracy = 54.5200 
+epoch: 326 --> Train loss = 0.0090 Train Accuracy = 42.9680 
+------> epoch: 326 --> Test loss = 0.0078 Test Accuracy = 56.1600 
+epoch: 327 --> Train loss = 0.0089 Train Accuracy = 40.8520 
+------> epoch: 327 --> Test loss = 0.0078 Test Accuracy = 55.6900 
+epoch: 328 --> Train loss = 0.0088 Train Accuracy = 42.5140 
+------> epoch: 328 --> Test loss = 0.0077 Test Accuracy = 56.5600 
+epoch: 329 --> Train loss = 0.0089 Train Accuracy = 44.0140 
+------> epoch: 329 --> Test loss = 0.0085 Test Accuracy = 52.4800 
+epoch: 330 --> Train loss = 0.0089 Train Accuracy = 39.8350 
+------> epoch: 330 --> Test loss = 0.0083 Test Accuracy = 53.1300 
+epoch: 331 --> Train loss = 0.0088 Train Accuracy = 40.2770 
+------> epoch: 331 --> Test loss = 0.0083 Test Accuracy = 53.6300 
+epoch: 332 --> Train loss = 0.0090 Train Accuracy = 43.5040 
+------> epoch: 332 --> Test loss = 0.0080 Test Accuracy = 55.3100 
+epoch: 333 --> Train loss = 0.0090 Train Accuracy = 39.1100 
+------> epoch: 333 --> Test loss = 0.0080 Test Accuracy = 54.4300 
+epoch: 334 --> Train loss = 0.0089 Train Accuracy = 42.3620 
+------> epoch: 334 --> Test loss = 0.0080 Test Accuracy = 54.7100 
+epoch: 335 --> Train loss = 0.0092 Train Accuracy = 39.5020 
+------> epoch: 335 --> Test loss = 0.0079 Test Accuracy = 55.3000 
+epoch: 336 --> Train loss = 0.0089 Train Accuracy = 40.6170 
+------> epoch: 336 --> Test loss = 0.0079 Test Accuracy = 55.3300 
+epoch: 337 --> Train loss = 0.0090 Train Accuracy = 42.6990 
+------> epoch: 337 --> Test loss = 0.0078 Test Accuracy = 55.9900 
+epoch: 338 --> Train loss = 0.0090 Train Accuracy = 38.1390 
+------> epoch: 338 --> Test loss = 0.0082 Test Accuracy = 55.0800 
+epoch: 339 --> Train loss = 0.0089 Train Accuracy = 41.6260 
+------> epoch: 339 --> Test loss = 0.0082 Test Accuracy = 53.3700 
+epoch: 340 --> Train loss = 0.0088 Train Accuracy = 41.4580 
+------> epoch: 340 --> Test loss = 0.0083 Test Accuracy = 53.3000 
+epoch: 341 --> Train loss = 0.0088 Train Accuracy = 43.5900 
+------> epoch: 341 --> Test loss = 0.0076 Test Accuracy = 56.7200 
+epoch: 342 --> Train loss = 0.0089 Train Accuracy = 39.9600 
+------> epoch: 342 --> Test loss = 0.0082 Test Accuracy = 54.2300 
+epoch: 343 --> Train loss = 0.0090 Train Accuracy = 39.4710 
+------> epoch: 343 --> Test loss = 0.0083 Test Accuracy = 54.5700 
+epoch: 344 --> Train loss = 0.0091 Train Accuracy = 42.7600 
+------> epoch: 344 --> Test loss = 0.0081 Test Accuracy = 55.7200 
+epoch: 345 --> Train loss = 0.0088 Train Accuracy = 41.6680 
+------> epoch: 345 --> Test loss = 0.0079 Test Accuracy = 55.5000 
+epoch: 346 --> Train loss = 0.0087 Train Accuracy = 40.4370 
+------> epoch: 346 --> Test loss = 0.0078 Test Accuracy = 55.9200 
+epoch: 347 --> Train loss = 0.0089 Train Accuracy = 42.5490 
+------> epoch: 347 --> Test loss = 0.0079 Test Accuracy = 55.3700 
+epoch: 348 --> Train loss = 0.0087 Train Accuracy = 42.0550 
+------> epoch: 348 --> Test loss = 0.0084 Test Accuracy = 53.7200 
+epoch: 349 --> Train loss = 0.0089 Train Accuracy = 42.2430 
+------> epoch: 349 --> Test loss = 0.0079 Test Accuracy = 55.2500 
+epoch: 350 --> Train loss = 0.0090 Train Accuracy = 40.9990 
+------> epoch: 350 --> Test loss = 0.0081 Test Accuracy = 54.6100 
+epoch: 351 --> Train loss = 0.0088 Train Accuracy = 40.7970 
+------> epoch: 351 --> Test loss = 0.0080 Test Accuracy = 54.9200 
+epoch: 352 --> Train loss = 0.0087 Train Accuracy = 42.2640 
+------> epoch: 352 --> Test loss = 0.0085 Test Accuracy = 53.0500 
+epoch: 353 --> Train loss = 0.0088 Train Accuracy = 39.0600 
+------> epoch: 353 --> Test loss = 0.0079 Test Accuracy = 55.0600 
+epoch: 354 --> Train loss = 0.0089 Train Accuracy = 40.6220 
+------> epoch: 354 --> Test loss = 0.0081 Test Accuracy = 54.2100 
+epoch: 355 --> Train loss = 0.0088 Train Accuracy = 42.9280 
+------> epoch: 355 --> Test loss = 0.0079 Test Accuracy = 55.4800 
+epoch: 356 --> Train loss = 0.0087 Train Accuracy = 41.6070 
+------> epoch: 356 --> Test loss = 0.0080 Test Accuracy = 54.9300 
+epoch: 357 --> Train loss = 0.0087 Train Accuracy = 42.6160 
+------> epoch: 357 --> Test loss = 0.0080 Test Accuracy = 54.7200 
+epoch: 358 --> Train loss = 0.0088 Train Accuracy = 42.7490 
+------> epoch: 358 --> Test loss = 0.0077 Test Accuracy = 56.4400 
+epoch: 359 --> Train loss = 0.0089 Train Accuracy = 38.0470 
+------> epoch: 359 --> Test loss = 0.0086 Test Accuracy = 52.0400 
+epoch: 360 --> Train loss = 0.0088 Train Accuracy = 43.8340 
+------> epoch: 360 --> Test loss = 0.0085 Test Accuracy = 53.0900 
+epoch: 361 --> Train loss = 0.0087 Train Accuracy = 40.9930 
+------> epoch: 361 --> Test loss = 0.0078 Test Accuracy = 56.0800 
+epoch: 362 --> Train loss = 0.0088 Train Accuracy = 41.0590 
+------> epoch: 362 --> Test loss = 0.0080 Test Accuracy = 55.5000 
+epoch: 363 --> Train loss = 0.0088 Train Accuracy = 42.5750 
+------> epoch: 363 --> Test loss = 0.0077 Test Accuracy = 56.9700 
+epoch: 364 --> Train loss = 0.0091 Train Accuracy = 39.8770 
+------> epoch: 364 --> Test loss = 0.0081 Test Accuracy = 54.4500 
+epoch: 365 --> Train loss = 0.0090 Train Accuracy = 41.1920 
+------> epoch: 365 --> Test loss = 0.0079 Test Accuracy = 55.5100 
+epoch: 366 --> Train loss = 0.0089 Train Accuracy = 41.4420 
+------> epoch: 366 --> Test loss = 0.0083 Test Accuracy = 54.3000 
+epoch: 367 --> Train loss = 0.0086 Train Accuracy = 45.1840 
+------> epoch: 367 --> Test loss = 0.0082 Test Accuracy = 54.4200 
+epoch: 368 --> Train loss = 0.0087 Train Accuracy = 43.5000 
+------> epoch: 368 --> Test loss = 0.0078 Test Accuracy = 55.8600 
+epoch: 369 --> Train loss = 0.0091 Train Accuracy = 41.1910 
+------> epoch: 369 --> Test loss = 0.0079 Test Accuracy = 55.0000 
+epoch: 370 --> Train loss = 0.0087 Train Accuracy = 40.6390 
+------> epoch: 370 --> Test loss = 0.0084 Test Accuracy = 53.3600 
+epoch: 371 --> Train loss = 0.0088 Train Accuracy = 43.5320 
+------> epoch: 371 --> Test loss = 0.0080 Test Accuracy = 54.2500 
+epoch: 372 --> Train loss = 0.0089 Train Accuracy = 41.7960 
+------> epoch: 372 --> Test loss = 0.0079 Test Accuracy = 55.0500 
+epoch: 373 --> Train loss = 0.0088 Train Accuracy = 42.8610 
+------> epoch: 373 --> Test loss = 0.0080 Test Accuracy = 55.1100 
+epoch: 374 --> Train loss = 0.0090 Train Accuracy = 40.7990 
+------> epoch: 374 --> Test loss = 0.0080 Test Accuracy = 55.4800 
+epoch: 375 --> Train loss = 0.0088 Train Accuracy = 37.8000 
+------> epoch: 375 --> Test loss = 0.0079 Test Accuracy = 55.8500 
+epoch: 376 --> Train loss = 0.0087 Train Accuracy = 41.9890 
+------> epoch: 376 --> Test loss = 0.0080 Test Accuracy = 55.9500 
+epoch: 377 --> Train loss = 0.0088 Train Accuracy = 39.2650 
+------> epoch: 377 --> Test loss = 0.0079 Test Accuracy = 55.5800 
+epoch: 378 --> Train loss = 0.0092 Train Accuracy = 38.9540 
+------> epoch: 378 --> Test loss = 0.0076 Test Accuracy = 56.9100 
+epoch: 379 --> Train loss = 0.0087 Train Accuracy = 38.9780 
+------> epoch: 379 --> Test loss = 0.0080 Test Accuracy = 55.5200 
+epoch: 380 --> Train loss = 0.0090 Train Accuracy = 40.4890 
+------> epoch: 380 --> Test loss = 0.0080 Test Accuracy = 55.5900 
+epoch: 381 --> Train loss = 0.0089 Train Accuracy = 37.6300 
+------> epoch: 381 --> Test loss = 0.0079 Test Accuracy = 55.2600 
+epoch: 382 --> Train loss = 0.0086 Train Accuracy = 41.9510 
+------> epoch: 382 --> Test loss = 0.0081 Test Accuracy = 54.5900 
+epoch: 383 --> Train loss = 0.0090 Train Accuracy = 40.6500 
+------> epoch: 383 --> Test loss = 0.0079 Test Accuracy = 55.2600 
+epoch: 384 --> Train loss = 0.0090 Train Accuracy = 41.0490 
+------> epoch: 384 --> Test loss = 0.0081 Test Accuracy = 54.4100 
+epoch: 385 --> Train loss = 0.0088 Train Accuracy = 42.3430 
+------> epoch: 385 --> Test loss = 0.0077 Test Accuracy = 56.6600 
+epoch: 386 --> Train loss = 0.0088 Train Accuracy = 39.2330 
+------> epoch: 386 --> Test loss = 0.0083 Test Accuracy = 54.4000 
+epoch: 387 --> Train loss = 0.0087 Train Accuracy = 39.7930 
+------> epoch: 387 --> Test loss = 0.0082 Test Accuracy = 54.0800 
+epoch: 388 --> Train loss = 0.0087 Train Accuracy = 44.8030 
+------> epoch: 388 --> Test loss = 0.0079 Test Accuracy = 56.3500 
+epoch: 389 --> Train loss = 0.0089 Train Accuracy = 40.1520 
+------> epoch: 389 --> Test loss = 0.0080 Test Accuracy = 56.1300 
+epoch: 390 --> Train loss = 0.0086 Train Accuracy = 39.0050 
+------> epoch: 390 --> Test loss = 0.0086 Test Accuracy = 52.0100 
+epoch: 391 --> Train loss = 0.0087 Train Accuracy = 40.5370 
+------> epoch: 391 --> Test loss = 0.0081 Test Accuracy = 55.2800 
+epoch: 392 --> Train loss = 0.0087 Train Accuracy = 42.7740 
+------> epoch: 392 --> Test loss = 0.0080 Test Accuracy = 55.1400 
+epoch: 393 --> Train loss = 0.0088 Train Accuracy = 42.2650 
+------> epoch: 393 --> Test loss = 0.0077 Test Accuracy = 56.3300 
+epoch: 394 --> Train loss = 0.0088 Train Accuracy = 39.3500 
+------> epoch: 394 --> Test loss = 0.0078 Test Accuracy = 57.2600 
+epoch: 395 --> Train loss = 0.0087 Train Accuracy = 41.2480 
+------> epoch: 395 --> Test loss = 0.0078 Test Accuracy = 55.2200 
+epoch: 396 --> Train loss = 0.0087 Train Accuracy = 38.9990 
+------> epoch: 396 --> Test loss = 0.0083 Test Accuracy = 53.7200 
+epoch: 397 --> Train loss = 0.0089 Train Accuracy = 40.8550 
+------> epoch: 397 --> Test loss = 0.0076 Test Accuracy = 57.8800 
+epoch: 398 --> Train loss = 0.0088 Train Accuracy = 42.9400 
+------> epoch: 398 --> Test loss = 0.0079 Test Accuracy = 55.5500 
+epoch: 399 --> Train loss = 0.0088 Train Accuracy = 42.5220 
+------> epoch: 399 --> Test loss = 0.0081 Test Accuracy = 54.9500 
+epoch: 400 --> Train loss = 0.0087 Train Accuracy = 41.7450 
+------> epoch: 400 --> Test loss = 0.0080 Test Accuracy = 55.0900 
+epoch: 401 --> Train loss = 0.0086 Train Accuracy = 42.1420 
+------> epoch: 401 --> Test loss = 0.0077 Test Accuracy = 56.6900 
+epoch: 402 --> Train loss = 0.0087 Train Accuracy = 39.8140 
+------> epoch: 402 --> Test loss = 0.0081 Test Accuracy = 54.8100 
+epoch: 403 --> Train loss = 0.0089 Train Accuracy = 43.5530 
+------> epoch: 403 --> Test loss = 0.0078 Test Accuracy = 55.7300 
+epoch: 404 --> Train loss = 0.0090 Train Accuracy = 42.7770 
+------> epoch: 404 --> Test loss = 0.0084 Test Accuracy = 52.7200 
+epoch: 405 --> Train loss = 0.0088 Train Accuracy = 43.2040 
+------> epoch: 405 --> Test loss = 0.0079 Test Accuracy = 55.7200 
+epoch: 406 --> Train loss = 0.0086 Train Accuracy = 39.8840 
+------> epoch: 406 --> Test loss = 0.0082 Test Accuracy = 53.5900 
+epoch: 407 --> Train loss = 0.0089 Train Accuracy = 41.9210 
+------> epoch: 407 --> Test loss = 0.0079 Test Accuracy = 55.4900 
+epoch: 408 --> Train loss = 0.0088 Train Accuracy = 40.5960 
+------> epoch: 408 --> Test loss = 0.0078 Test Accuracy = 56.3300 
+epoch: 409 --> Train loss = 0.0086 Train Accuracy = 42.7610 
+------> epoch: 409 --> Test loss = 0.0080 Test Accuracy = 55.2600 
+epoch: 410 --> Train loss = 0.0089 Train Accuracy = 39.3040 
+------> epoch: 410 --> Test loss = 0.0079 Test Accuracy = 55.3500 
+epoch: 411 --> Train loss = 0.0089 Train Accuracy = 39.3810 
+------> epoch: 411 --> Test loss = 0.0080 Test Accuracy = 55.8300 
+epoch: 412 --> Train loss = 0.0088 Train Accuracy = 41.3020 
+------> epoch: 412 --> Test loss = 0.0081 Test Accuracy = 54.2500 
+epoch: 413 --> Train loss = 0.0086 Train Accuracy = 43.6740 
+------> epoch: 413 --> Test loss = 0.0083 Test Accuracy = 53.7200 
+epoch: 414 --> Train loss = 0.0087 Train Accuracy = 40.0800 
+------> epoch: 414 --> Test loss = 0.0084 Test Accuracy = 53.7200 
+epoch: 415 --> Train loss = 0.0089 Train Accuracy = 42.9010 
+------> epoch: 415 --> Test loss = 0.0080 Test Accuracy = 54.9600 
+epoch: 416 --> Train loss = 0.0089 Train Accuracy = 41.4840 
+------> epoch: 416 --> Test loss = 0.0082 Test Accuracy = 53.9000 
+epoch: 417 --> Train loss = 0.0089 Train Accuracy = 44.2970 
+------> epoch: 417 --> Test loss = 0.0080 Test Accuracy = 55.0900 
+epoch: 418 --> Train loss = 0.0088 Train Accuracy = 39.5870 
+------> epoch: 418 --> Test loss = 0.0086 Test Accuracy = 51.8900 
+epoch: 419 --> Train loss = 0.0089 Train Accuracy = 41.7870 
+------> epoch: 419 --> Test loss = 0.0077 Test Accuracy = 55.8500 
+epoch: 420 --> Train loss = 0.0089 Train Accuracy = 40.6680 
+------> epoch: 420 --> Test loss = 0.0077 Test Accuracy = 55.8200 
+epoch: 421 --> Train loss = 0.0087 Train Accuracy = 39.4840 
+------> epoch: 421 --> Test loss = 0.0077 Test Accuracy = 56.9600 
+epoch: 422 --> Train loss = 0.0087 Train Accuracy = 40.0140 
+------> epoch: 422 --> Test loss = 0.0082 Test Accuracy = 54.4600 
+epoch: 423 --> Train loss = 0.0088 Train Accuracy = 40.1110 
+------> epoch: 423 --> Test loss = 0.0083 Test Accuracy = 53.1900 
+epoch: 424 --> Train loss = 0.0087 Train Accuracy = 43.7170 
+------> epoch: 424 --> Test loss = 0.0080 Test Accuracy = 54.3200 
+epoch: 425 --> Train loss = 0.0087 Train Accuracy = 41.9230 
+------> epoch: 425 --> Test loss = 0.0080 Test Accuracy = 55.3300 
+epoch: 426 --> Train loss = 0.0088 Train Accuracy = 39.5780 
+------> epoch: 426 --> Test loss = 0.0088 Test Accuracy = 51.4300 
+epoch: 427 --> Train loss = 0.0089 Train Accuracy = 43.2450 
+------> epoch: 427 --> Test loss = 0.0079 Test Accuracy = 55.1400 
+epoch: 428 --> Train loss = 0.0088 Train Accuracy = 38.5610 
+------> epoch: 428 --> Test loss = 0.0080 Test Accuracy = 55.1500 
+epoch: 429 --> Train loss = 0.0087 Train Accuracy = 39.4170 
+------> epoch: 429 --> Test loss = 0.0078 Test Accuracy = 56.6000 
+epoch: 430 --> Train loss = 0.0088 Train Accuracy = 40.0630 
+------> epoch: 430 --> Test loss = 0.0078 Test Accuracy = 55.2200 
+epoch: 431 --> Train loss = 0.0087 Train Accuracy = 43.2530 
+------> epoch: 431 --> Test loss = 0.0081 Test Accuracy = 54.5100 
+epoch: 432 --> Train loss = 0.0089 Train Accuracy = 41.8800 
+------> epoch: 432 --> Test loss = 0.0077 Test Accuracy = 55.0900 
+epoch: 433 --> Train loss = 0.0091 Train Accuracy = 38.6770 
+------> epoch: 433 --> Test loss = 0.0082 Test Accuracy = 54.0100 
+epoch: 434 --> Train loss = 0.0089 Train Accuracy = 40.0800 
+------> epoch: 434 --> Test loss = 0.0082 Test Accuracy = 53.9400 
+epoch: 435 --> Train loss = 0.0091 Train Accuracy = 38.5400 
+------> epoch: 435 --> Test loss = 0.0083 Test Accuracy = 53.5600 
+epoch: 436 --> Train loss = 0.0089 Train Accuracy = 43.1320 
+------> epoch: 436 --> Test loss = 0.0081 Test Accuracy = 54.5500 
+epoch: 437 --> Train loss = 0.0088 Train Accuracy = 41.8850 
+------> epoch: 437 --> Test loss = 0.0080 Test Accuracy = 54.4700 
+epoch: 438 --> Train loss = 0.0089 Train Accuracy = 41.3660 
+------> epoch: 438 --> Test loss = 0.0085 Test Accuracy = 53.5900 
+epoch: 439 --> Train loss = 0.0086 Train Accuracy = 40.3650 
+------> epoch: 439 --> Test loss = 0.0079 Test Accuracy = 55.8200 
+epoch: 440 --> Train loss = 0.0091 Train Accuracy = 37.9650 
+------> epoch: 440 --> Test loss = 0.0082 Test Accuracy = 54.6700 
+epoch: 441 --> Train loss = 0.0088 Train Accuracy = 42.5330 
+------> epoch: 441 --> Test loss = 0.0083 Test Accuracy = 53.7900 
+epoch: 442 --> Train loss = 0.0089 Train Accuracy = 41.6660 
+------> epoch: 442 --> Test loss = 0.0077 Test Accuracy = 55.8300 
+epoch: 443 --> Train loss = 0.0089 Train Accuracy = 39.4830 
+------> epoch: 443 --> Test loss = 0.0084 Test Accuracy = 53.7600 
+epoch: 444 --> Train loss = 0.0087 Train Accuracy = 42.6580 
+------> epoch: 444 --> Test loss = 0.0081 Test Accuracy = 54.1100 
+epoch: 445 --> Train loss = 0.0088 Train Accuracy = 41.6330 
+------> epoch: 445 --> Test loss = 0.0080 Test Accuracy = 55.5400 
+epoch: 446 --> Train loss = 0.0088 Train Accuracy = 40.9660 
+------> epoch: 446 --> Test loss = 0.0084 Test Accuracy = 53.0900 
+epoch: 447 --> Train loss = 0.0090 Train Accuracy = 40.8720 
+------> epoch: 447 --> Test loss = 0.0081 Test Accuracy = 54.7400 
+epoch: 448 --> Train loss = 0.0088 Train Accuracy = 41.6380 
+------> epoch: 448 --> Test loss = 0.0078 Test Accuracy = 55.5600 
+epoch: 449 --> Train loss = 0.0089 Train Accuracy = 38.2220 
+------> epoch: 449 --> Test loss = 0.0079 Test Accuracy = 55.3100 
+epoch: 450 --> Train loss = 0.0089 Train Accuracy = 42.8010 
+------> epoch: 450 --> Test loss = 0.0080 Test Accuracy = 54.9200 
+epoch: 451 --> Train loss = 0.0089 Train Accuracy = 45.2790 
+------> epoch: 451 --> Test loss = 0.0079 Test Accuracy = 55.1200 
+epoch: 452 --> Train loss = 0.0087 Train Accuracy = 41.7050 
+------> epoch: 452 --> Test loss = 0.0077 Test Accuracy = 56.0800 
+epoch: 453 --> Train loss = 0.0088 Train Accuracy = 38.3410 
+------> epoch: 453 --> Test loss = 0.0081 Test Accuracy = 54.9400 
+epoch: 454 --> Train loss = 0.0088 Train Accuracy = 43.5150 
+------> epoch: 454 --> Test loss = 0.0078 Test Accuracy = 55.8000 
+epoch: 455 --> Train loss = 0.0087 Train Accuracy = 41.4870 
+------> epoch: 455 --> Test loss = 0.0079 Test Accuracy = 55.0000 
+epoch: 456 --> Train loss = 0.0090 Train Accuracy = 42.9050 
+------> epoch: 456 --> Test loss = 0.0079 Test Accuracy = 56.1600 
+epoch: 457 --> Train loss = 0.0088 Train Accuracy = 40.2420 
+------> epoch: 457 --> Test loss = 0.0080 Test Accuracy = 55.3600 
+epoch: 458 --> Train loss = 0.0087 Train Accuracy = 41.6620 
+------> epoch: 458 --> Test loss = 0.0080 Test Accuracy = 55.1100 
+epoch: 459 --> Train loss = 0.0089 Train Accuracy = 41.4570 
+------> epoch: 459 --> Test loss = 0.0080 Test Accuracy = 54.9800 
+epoch: 460 --> Train loss = 0.0090 Train Accuracy = 39.0140 
+------> epoch: 460 --> Test loss = 0.0081 Test Accuracy = 54.8400 
+epoch: 461 --> Train loss = 0.0087 Train Accuracy = 42.2480 
+------> epoch: 461 --> Test loss = 0.0077 Test Accuracy = 56.4600 
+epoch: 462 --> Train loss = 0.0088 Train Accuracy = 43.4480 
+------> epoch: 462 --> Test loss = 0.0078 Test Accuracy = 55.9600 
+epoch: 463 --> Train loss = 0.0087 Train Accuracy = 42.4260 
+------> epoch: 463 --> Test loss = 0.0081 Test Accuracy = 54.5400 
+epoch: 464 --> Train loss = 0.0088 Train Accuracy = 40.6080 
+------> epoch: 464 --> Test loss = 0.0082 Test Accuracy = 53.7700 
+epoch: 465 --> Train loss = 0.0087 Train Accuracy = 41.4270 
+------> epoch: 465 --> Test loss = 0.0081 Test Accuracy = 55.3000 
+epoch: 466 --> Train loss = 0.0089 Train Accuracy = 38.6280 
+------> epoch: 466 --> Test loss = 0.0078 Test Accuracy = 56.4900 
+epoch: 467 --> Train loss = 0.0088 Train Accuracy = 41.9180 
+------> epoch: 467 --> Test loss = 0.0081 Test Accuracy = 54.0500 
+epoch: 468 --> Train loss = 0.0086 Train Accuracy = 42.3290 
+------> epoch: 468 --> Test loss = 0.0081 Test Accuracy = 55.4300 
+epoch: 469 --> Train loss = 0.0089 Train Accuracy = 41.2130 
+------> epoch: 469 --> Test loss = 0.0079 Test Accuracy = 55.3900 
+epoch: 470 --> Train loss = 0.0089 Train Accuracy = 42.5960 
+------> epoch: 470 --> Test loss = 0.0081 Test Accuracy = 54.7500 
+epoch: 471 --> Train loss = 0.0087 Train Accuracy = 42.1070 
+------> epoch: 471 --> Test loss = 0.0081 Test Accuracy = 55.1900 
+epoch: 472 --> Train loss = 0.0091 Train Accuracy = 41.0590 
+------> epoch: 472 --> Test loss = 0.0079 Test Accuracy = 55.2400 
+epoch: 473 --> Train loss = 0.0085 Train Accuracy = 37.8870 
+------> epoch: 473 --> Test loss = 0.0079 Test Accuracy = 55.1300 
+epoch: 474 --> Train loss = 0.0087 Train Accuracy = 44.1450 
+------> epoch: 474 --> Test loss = 0.0082 Test Accuracy = 54.3100 
+epoch: 475 --> Train loss = 0.0088 Train Accuracy = 42.6600 
+------> epoch: 475 --> Test loss = 0.0079 Test Accuracy = 55.1800 
+epoch: 476 --> Train loss = 0.0087 Train Accuracy = 39.8050 
+------> epoch: 476 --> Test loss = 0.0079 Test Accuracy = 55.4800 
+epoch: 477 --> Train loss = 0.0088 Train Accuracy = 40.8510 
+------> epoch: 477 --> Test loss = 0.0078 Test Accuracy = 55.6900 
+epoch: 478 --> Train loss = 0.0085 Train Accuracy = 40.4540 
+------> epoch: 478 --> Test loss = 0.0082 Test Accuracy = 54.5400 
+epoch: 479 --> Train loss = 0.0088 Train Accuracy = 42.6020 
+------> epoch: 479 --> Test loss = 0.0079 Test Accuracy = 55.5500 
+epoch: 480 --> Train loss = 0.0087 Train Accuracy = 41.9000 
+------> epoch: 480 --> Test loss = 0.0082 Test Accuracy = 54.1400 
+epoch: 481 --> Train loss = 0.0088 Train Accuracy = 40.1060 
+------> epoch: 481 --> Test loss = 0.0081 Test Accuracy = 54.3200 
+epoch: 482 --> Train loss = 0.0088 Train Accuracy = 43.6370 
+------> epoch: 482 --> Test loss = 0.0084 Test Accuracy = 54.0500 
+epoch: 483 --> Train loss = 0.0087 Train Accuracy = 40.3120 
+------> epoch: 483 --> Test loss = 0.0080 Test Accuracy = 55.5400 
+epoch: 484 --> Train loss = 0.0088 Train Accuracy = 39.9830 
+------> epoch: 484 --> Test loss = 0.0091 Test Accuracy = 50.6500 
+epoch: 485 --> Train loss = 0.0086 Train Accuracy = 42.9530 
+------> epoch: 485 --> Test loss = 0.0079 Test Accuracy = 55.5200 
+epoch: 486 --> Train loss = 0.0089 Train Accuracy = 45.3670 
+------> epoch: 486 --> Test loss = 0.0082 Test Accuracy = 54.4400 
+epoch: 487 --> Train loss = 0.0089 Train Accuracy = 39.9810 
+------> epoch: 487 --> Test loss = 0.0079 Test Accuracy = 55.1600 
+epoch: 488 --> Train loss = 0.0087 Train Accuracy = 43.0070 
+------> epoch: 488 --> Test loss = 0.0085 Test Accuracy = 53.1600 
+epoch: 489 --> Train loss = 0.0088 Train Accuracy = 43.4200 
+------> epoch: 489 --> Test loss = 0.0080 Test Accuracy = 55.5100 
+epoch: 490 --> Train loss = 0.0086 Train Accuracy = 41.1610 
+------> epoch: 490 --> Test loss = 0.0082 Test Accuracy = 54.7600 
+epoch: 491 --> Train loss = 0.0087 Train Accuracy = 42.7190 
+------> epoch: 491 --> Test loss = 0.0081 Test Accuracy = 55.0000 
+epoch: 492 --> Train loss = 0.0089 Train Accuracy = 41.9010 
+------> epoch: 492 --> Test loss = 0.0082 Test Accuracy = 54.5100 
+epoch: 493 --> Train loss = 0.0088 Train Accuracy = 43.1680 
+------> epoch: 493 --> Test loss = 0.0080 Test Accuracy = 55.4400 
+epoch: 494 --> Train loss = 0.0089 Train Accuracy = 40.7750 
+------> epoch: 494 --> Test loss = 0.0081 Test Accuracy = 54.8200 
+epoch: 495 --> Train loss = 0.0086 Train Accuracy = 42.8240 
+------> epoch: 495 --> Test loss = 0.0081 Test Accuracy = 55.3900 
+epoch: 496 --> Train loss = 0.0087 Train Accuracy = 40.7640 
+------> epoch: 496 --> Test loss = 0.0083 Test Accuracy = 54.0300 
+epoch: 497 --> Train loss = 0.0088 Train Accuracy = 42.7990 
+------> epoch: 497 --> Test loss = 0.0078 Test Accuracy = 56.0200 
+epoch: 498 --> Train loss = 0.0089 Train Accuracy = 40.1610 
+------> epoch: 498 --> Test loss = 0.0083 Test Accuracy = 53.8600 
+epoch: 499 --> Train loss = 0.0086 Train Accuracy = 38.9410 
+------> epoch: 499 --> Test loss = 0.0080 Test Accuracy = 54.8400 
+epoch: 500 --> Train loss = 0.0086 Train Accuracy = 43.5920 
+------> epoch: 500 --> Test loss = 0.0080 Test Accuracy = 55.3900 
+epoch: 501 --> Train loss = 0.0088 Train Accuracy = 41.4570 
+------> epoch: 501 --> Test loss = 0.0082 Test Accuracy = 54.5200 
+epoch: 502 --> Train loss = 0.0087 Train Accuracy = 39.3740 
+------> epoch: 502 --> Test loss = 0.0083 Test Accuracy = 53.9700 
+epoch: 503 --> Train loss = 0.0087 Train Accuracy = 39.8850 
+------> epoch: 503 --> Test loss = 0.0081 Test Accuracy = 54.3000 
+epoch: 504 --> Train loss = 0.0087 Train Accuracy = 41.4630 
+------> epoch: 504 --> Test loss = 0.0081 Test Accuracy = 54.6500 
+epoch: 505 --> Train loss = 0.0089 Train Accuracy = 39.6730 
+------> epoch: 505 --> Test loss = 0.0078 Test Accuracy = 55.6800 
+epoch: 506 --> Train loss = 0.0088 Train Accuracy = 40.3870 
+------> epoch: 506 --> Test loss = 0.0081 Test Accuracy = 54.6400 
+epoch: 507 --> Train loss = 0.0087 Train Accuracy = 41.6150 
+------> epoch: 507 --> Test loss = 0.0081 Test Accuracy = 54.5000 
+epoch: 508 --> Train loss = 0.0090 Train Accuracy = 42.6970 
+------> epoch: 508 --> Test loss = 0.0083 Test Accuracy = 53.1900 
+epoch: 509 --> Train loss = 0.0089 Train Accuracy = 41.7600 
+------> epoch: 509 --> Test loss = 0.0078 Test Accuracy = 55.7500 
+epoch: 510 --> Train loss = 0.0086 Train Accuracy = 41.7460 
+------> epoch: 510 --> Test loss = 0.0076 Test Accuracy = 56.1600 
+epoch: 511 --> Train loss = 0.0088 Train Accuracy = 42.7050 
+------> epoch: 511 --> Test loss = 0.0085 Test Accuracy = 53.2000 
+epoch: 512 --> Train loss = 0.0087 Train Accuracy = 41.0380 
+------> epoch: 512 --> Test loss = 0.0080 Test Accuracy = 55.1200 
+epoch: 513 --> Train loss = 0.0089 Train Accuracy = 44.8450 
+------> epoch: 513 --> Test loss = 0.0081 Test Accuracy = 54.6000 
+epoch: 514 --> Train loss = 0.0087 Train Accuracy = 42.9180 
+------> epoch: 514 --> Test loss = 0.0082 Test Accuracy = 54.2400 
+epoch: 515 --> Train loss = 0.0088 Train Accuracy = 41.4300 
+------> epoch: 515 --> Test loss = 0.0083 Test Accuracy = 53.6700 
+epoch: 516 --> Train loss = 0.0088 Train Accuracy = 44.0360 
+------> epoch: 516 --> Test loss = 0.0078 Test Accuracy = 55.4700 
+epoch: 517 --> Train loss = 0.0086 Train Accuracy = 43.1380 
+------> epoch: 517 --> Test loss = 0.0079 Test Accuracy = 55.9300 
+epoch: 518 --> Train loss = 0.0086 Train Accuracy = 42.4740 
+------> epoch: 518 --> Test loss = 0.0084 Test Accuracy = 52.0900 
+epoch: 519 --> Train loss = 0.0087 Train Accuracy = 39.7680 
+------> epoch: 519 --> Test loss = 0.0081 Test Accuracy = 54.6300 
+epoch: 520 --> Train loss = 0.0087 Train Accuracy = 42.8340 
+------> epoch: 520 --> Test loss = 0.0080 Test Accuracy = 55.0300 
+epoch: 521 --> Train loss = 0.0087 Train Accuracy = 43.2580 
+------> epoch: 521 --> Test loss = 0.0080 Test Accuracy = 54.9000 
+epoch: 522 --> Train loss = 0.0088 Train Accuracy = 42.2530 
+------> epoch: 522 --> Test loss = 0.0080 Test Accuracy = 55.3400 
+epoch: 523 --> Train loss = 0.0087 Train Accuracy = 39.7300 
+------> epoch: 523 --> Test loss = 0.0079 Test Accuracy = 56.0000 
+epoch: 524 --> Train loss = 0.0088 Train Accuracy = 39.4220 
+------> epoch: 524 --> Test loss = 0.0084 Test Accuracy = 53.0400 
+epoch: 525 --> Train loss = 0.0087 Train Accuracy = 42.5490 
+------> epoch: 525 --> Test loss = 0.0082 Test Accuracy = 54.7500 
+epoch: 526 --> Train loss = 0.0087 Train Accuracy = 42.8010 
+------> epoch: 526 --> Test loss = 0.0081 Test Accuracy = 55.1000 
+epoch: 527 --> Train loss = 0.0088 Train Accuracy = 40.0560 
+------> epoch: 527 --> Test loss = 0.0079 Test Accuracy = 55.4700 
+epoch: 528 --> Train loss = 0.0085 Train Accuracy = 40.5640 
+------> epoch: 528 --> Test loss = 0.0079 Test Accuracy = 55.5000 
+epoch: 529 --> Train loss = 0.0085 Train Accuracy = 42.1090 
+------> epoch: 529 --> Test loss = 0.0078 Test Accuracy = 56.7200 
+epoch: 530 --> Train loss = 0.0087 Train Accuracy = 39.8000 
+------> epoch: 530 --> Test loss = 0.0081 Test Accuracy = 55.1900 
+epoch: 531 --> Train loss = 0.0087 Train Accuracy = 42.8930 
+------> epoch: 531 --> Test loss = 0.0081 Test Accuracy = 54.3900 
+epoch: 532 --> Train loss = 0.0089 Train Accuracy = 42.5510 
+------> epoch: 532 --> Test loss = 0.0078 Test Accuracy = 55.7400 
+epoch: 533 --> Train loss = 0.0086 Train Accuracy = 39.1030 
+------> epoch: 533 --> Test loss = 0.0084 Test Accuracy = 52.6100 
+epoch: 534 --> Train loss = 0.0085 Train Accuracy = 40.2430 
+------> epoch: 534 --> Test loss = 0.0082 Test Accuracy = 54.8500 
+epoch: 535 --> Train loss = 0.0088 Train Accuracy = 41.1990 
+------> epoch: 535 --> Test loss = 0.0080 Test Accuracy = 55.1900 
+epoch: 536 --> Train loss = 0.0085 Train Accuracy = 40.4350 
+------> epoch: 536 --> Test loss = 0.0081 Test Accuracy = 55.2600 
+epoch: 537 --> Train loss = 0.0087 Train Accuracy = 42.1220 
+------> epoch: 537 --> Test loss = 0.0086 Test Accuracy = 52.7100 
+epoch: 538 --> Train loss = 0.0089 Train Accuracy = 44.7470 
+------> epoch: 538 --> Test loss = 0.0083 Test Accuracy = 54.2100 
+epoch: 539 --> Train loss = 0.0088 Train Accuracy = 43.7260 
+------> epoch: 539 --> Test loss = 0.0082 Test Accuracy = 55.0400 
+epoch: 540 --> Train loss = 0.0088 Train Accuracy = 42.0220 
+------> epoch: 540 --> Test loss = 0.0080 Test Accuracy = 54.9300 
+epoch: 541 --> Train loss = 0.0090 Train Accuracy = 38.5480 
+------> epoch: 541 --> Test loss = 0.0079 Test Accuracy = 55.5700 
+epoch: 542 --> Train loss = 0.0087 Train Accuracy = 41.3970 
+------> epoch: 542 --> Test loss = 0.0083 Test Accuracy = 53.7300 
+epoch: 543 --> Train loss = 0.0089 Train Accuracy = 41.3200 
+------> epoch: 543 --> Test loss = 0.0081 Test Accuracy = 55.6600 
+epoch: 544 --> Train loss = 0.0087 Train Accuracy = 41.9830 
+------> epoch: 544 --> Test loss = 0.0077 Test Accuracy = 56.5100 
+epoch: 545 --> Train loss = 0.0088 Train Accuracy = 38.6310 
+------> epoch: 545 --> Test loss = 0.0079 Test Accuracy = 55.1600 
+epoch: 546 --> Train loss = 0.0087 Train Accuracy = 36.8080 
+------> epoch: 546 --> Test loss = 0.0085 Test Accuracy = 52.8100 
+epoch: 547 --> Train loss = 0.0088 Train Accuracy = 42.1600 
+------> epoch: 547 --> Test loss = 0.0083 Test Accuracy = 53.4300 
+epoch: 548 --> Train loss = 0.0086 Train Accuracy = 39.7410 
+------> epoch: 548 --> Test loss = 0.0080 Test Accuracy = 55.4200 
+epoch: 549 --> Train loss = 0.0087 Train Accuracy = 41.9110 
+------> epoch: 549 --> Test loss = 0.0083 Test Accuracy = 54.0300 
+epoch: 550 --> Train loss = 0.0087 Train Accuracy = 45.4700 
+------> epoch: 550 --> Test loss = 0.0086 Test Accuracy = 52.3000 
+epoch: 551 --> Train loss = 0.0088 Train Accuracy = 41.8180 
+------> epoch: 551 --> Test loss = 0.0083 Test Accuracy = 54.5600 
+epoch: 552 --> Train loss = 0.0086 Train Accuracy = 40.9330 
+------> epoch: 552 --> Test loss = 0.0083 Test Accuracy = 54.4600 
+epoch: 553 --> Train loss = 0.0086 Train Accuracy = 40.5170 
+------> epoch: 553 --> Test loss = 0.0081 Test Accuracy = 54.5000 
+epoch: 554 --> Train loss = 0.0087 Train Accuracy = 43.6820 
+------> epoch: 554 --> Test loss = 0.0079 Test Accuracy = 56.2400 
+epoch: 555 --> Train loss = 0.0085 Train Accuracy = 42.4070 
+------> epoch: 555 --> Test loss = 0.0080 Test Accuracy = 54.9100 
+epoch: 556 --> Train loss = 0.0087 Train Accuracy = 44.0320 
+------> epoch: 556 --> Test loss = 0.0082 Test Accuracy = 54.8100 
+epoch: 557 --> Train loss = 0.0088 Train Accuracy = 41.0150 
+------> epoch: 557 --> Test loss = 0.0080 Test Accuracy = 55.2600 
+epoch: 558 --> Train loss = 0.0087 Train Accuracy = 40.2740 
+------> epoch: 558 --> Test loss = 0.0081 Test Accuracy = 55.2700 
+epoch: 559 --> Train loss = 0.0088 Train Accuracy = 39.9230 
+------> epoch: 559 --> Test loss = 0.0079 Test Accuracy = 54.6800 
+epoch: 560 --> Train loss = 0.0088 Train Accuracy = 42.5060 
+------> epoch: 560 --> Test loss = 0.0076 Test Accuracy = 56.6700 
+epoch: 561 --> Train loss = 0.0087 Train Accuracy = 41.3060 
+------> epoch: 561 --> Test loss = 0.0078 Test Accuracy = 55.4400 
+epoch: 562 --> Train loss = 0.0087 Train Accuracy = 42.0130 
+------> epoch: 562 --> Test loss = 0.0083 Test Accuracy = 53.2600 
+epoch: 563 --> Train loss = 0.0085 Train Accuracy = 43.7870 
+------> epoch: 563 --> Test loss = 0.0080 Test Accuracy = 54.8500 
+epoch: 564 --> Train loss = 0.0089 Train Accuracy = 41.9790 
+------> epoch: 564 --> Test loss = 0.0078 Test Accuracy = 56.4500 
+epoch: 565 --> Train loss = 0.0087 Train Accuracy = 42.0630 
+------> epoch: 565 --> Test loss = 0.0086 Test Accuracy = 52.6200 
+epoch: 566 --> Train loss = 0.0088 Train Accuracy = 42.3340 
+------> epoch: 566 --> Test loss = 0.0079 Test Accuracy = 56.3100 
+epoch: 567 --> Train loss = 0.0088 Train Accuracy = 41.4850 
+------> epoch: 567 --> Test loss = 0.0080 Test Accuracy = 54.7400 
+epoch: 568 --> Train loss = 0.0085 Train Accuracy = 42.0390 
+------> epoch: 568 --> Test loss = 0.0081 Test Accuracy = 55.2500 
+epoch: 569 --> Train loss = 0.0085 Train Accuracy = 41.8520 
+------> epoch: 569 --> Test loss = 0.0084 Test Accuracy = 53.4500 
+epoch: 570 --> Train loss = 0.0087 Train Accuracy = 44.0720 
+------> epoch: 570 --> Test loss = 0.0080 Test Accuracy = 55.0300 
+epoch: 571 --> Train loss = 0.0088 Train Accuracy = 41.4430 
+------> epoch: 571 --> Test loss = 0.0077 Test Accuracy = 56.3900 
+epoch: 572 --> Train loss = 0.0087 Train Accuracy = 40.6580 
+------> epoch: 572 --> Test loss = 0.0079 Test Accuracy = 55.6800 
+epoch: 573 --> Train loss = 0.0086 Train Accuracy = 42.3310 
+------> epoch: 573 --> Test loss = 0.0082 Test Accuracy = 53.9200 
+epoch: 574 --> Train loss = 0.0086 Train Accuracy = 41.5690 
+------> epoch: 574 --> Test loss = 0.0083 Test Accuracy = 54.2300 
+epoch: 575 --> Train loss = 0.0087 Train Accuracy = 43.6240 
+------> epoch: 575 --> Test loss = 0.0078 Test Accuracy = 56.1400 
+epoch: 576 --> Train loss = 0.0084 Train Accuracy = 39.9180 
+------> epoch: 576 --> Test loss = 0.0081 Test Accuracy = 54.7300 
+epoch: 577 --> Train loss = 0.0086 Train Accuracy = 44.0550 
+------> epoch: 577 --> Test loss = 0.0079 Test Accuracy = 55.7100 
+epoch: 578 --> Train loss = 0.0089 Train Accuracy = 41.3280 
+------> epoch: 578 --> Test loss = 0.0082 Test Accuracy = 55.1100 
+epoch: 579 --> Train loss = 0.0087 Train Accuracy = 43.0220 
+------> epoch: 579 --> Test loss = 0.0079 Test Accuracy = 55.6400 
+epoch: 580 --> Train loss = 0.0088 Train Accuracy = 40.8760 
+------> epoch: 580 --> Test loss = 0.0081 Test Accuracy = 54.3400 
+epoch: 581 --> Train loss = 0.0088 Train Accuracy = 43.7080 
+------> epoch: 581 --> Test loss = 0.0081 Test Accuracy = 54.4400 
+epoch: 582 --> Train loss = 0.0086 Train Accuracy = 39.6130 
+------> epoch: 582 --> Test loss = 0.0080 Test Accuracy = 55.3900 
+epoch: 583 --> Train loss = 0.0086 Train Accuracy = 42.3060 
+------> epoch: 583 --> Test loss = 0.0076 Test Accuracy = 56.1300 
+epoch: 584 --> Train loss = 0.0089 Train Accuracy = 42.9780 
+------> epoch: 584 --> Test loss = 0.0082 Test Accuracy = 54.9900 
+epoch: 585 --> Train loss = 0.0086 Train Accuracy = 41.1480 
+------> epoch: 585 --> Test loss = 0.0082 Test Accuracy = 54.3400 
+epoch: 586 --> Train loss = 0.0087 Train Accuracy = 43.4420 
+------> epoch: 586 --> Test loss = 0.0080 Test Accuracy = 54.9400 
+epoch: 587 --> Train loss = 0.0086 Train Accuracy = 45.5980 
+------> epoch: 587 --> Test loss = 0.0079 Test Accuracy = 56.1600 
+epoch: 588 --> Train loss = 0.0085 Train Accuracy = 41.5610 
+------> epoch: 588 --> Test loss = 0.0086 Test Accuracy = 51.7100 
+epoch: 589 --> Train loss = 0.0087 Train Accuracy = 40.1620 
+------> epoch: 589 --> Test loss = 0.0081 Test Accuracy = 55.3400 
+epoch: 590 --> Train loss = 0.0088 Train Accuracy = 42.9050 
+------> epoch: 590 --> Test loss = 0.0080 Test Accuracy = 55.4400 
+epoch: 591 --> Train loss = 0.0087 Train Accuracy = 38.4950 
+------> epoch: 591 --> Test loss = 0.0080 Test Accuracy = 55.3500 
+epoch: 592 --> Train loss = 0.0087 Train Accuracy = 40.5230 
+------> epoch: 592 --> Test loss = 0.0084 Test Accuracy = 54.3000 
+epoch: 593 --> Train loss = 0.0087 Train Accuracy = 41.7670 
+------> epoch: 593 --> Test loss = 0.0082 Test Accuracy = 54.1400 
+epoch: 594 --> Train loss = 0.0085 Train Accuracy = 41.9920 
+------> epoch: 594 --> Test loss = 0.0083 Test Accuracy = 53.8500 
+epoch: 595 --> Train loss = 0.0086 Train Accuracy = 40.3300 
+------> epoch: 595 --> Test loss = 0.0081 Test Accuracy = 55.2500 
+epoch: 596 --> Train loss = 0.0090 Train Accuracy = 43.1450 
+------> epoch: 596 --> Test loss = 0.0082 Test Accuracy = 54.5500 
+epoch: 597 --> Train loss = 0.0087 Train Accuracy = 40.7380 
+------> epoch: 597 --> Test loss = 0.0085 Test Accuracy = 53.4300 
+epoch: 598 --> Train loss = 0.0085 Train Accuracy = 42.3650 
+------> epoch: 598 --> Test loss = 0.0079 Test Accuracy = 55.6900 
+epoch: 599 --> Train loss = 0.0086 Train Accuracy = 39.9500 
+------> epoch: 599 --> Test loss = 0.0079 Test Accuracy = 55.7300 
+epoch: 600 --> Train loss = 0.0079 Train Accuracy = 46.1990 
+------> epoch: 600 --> Test loss = 0.0064 Test Accuracy = 63.6600 
+Saving..
+epoch: 601 --> Train loss = 0.0075 Train Accuracy = 47.3870 
+------> epoch: 601 --> Test loss = 0.0063 Test Accuracy = 63.8000 
+Saving..
+epoch: 602 --> Train loss = 0.0074 Train Accuracy = 46.2130 
+------> epoch: 602 --> Test loss = 0.0063 Test Accuracy = 64.4800 
+Saving..
+epoch: 603 --> Train loss = 0.0075 Train Accuracy = 46.8090 
+------> epoch: 603 --> Test loss = 0.0063 Test Accuracy = 64.2900 
+epoch: 604 --> Train loss = 0.0074 Train Accuracy = 43.0310 
+------> epoch: 604 --> Test loss = 0.0065 Test Accuracy = 64.0500 
+epoch: 605 --> Train loss = 0.0074 Train Accuracy = 46.5370 
+------> epoch: 605 --> Test loss = 0.0063 Test Accuracy = 63.9800 
+epoch: 606 --> Train loss = 0.0074 Train Accuracy = 44.8620 
+------> epoch: 606 --> Test loss = 0.0067 Test Accuracy = 63.7000 
+epoch: 607 --> Train loss = 0.0073 Train Accuracy = 47.0620 
+------> epoch: 607 --> Test loss = 0.0064 Test Accuracy = 64.3600 
+epoch: 608 --> Train loss = 0.0074 Train Accuracy = 44.2590 
+------> epoch: 608 --> Test loss = 0.0064 Test Accuracy = 64.1700 
+epoch: 609 --> Train loss = 0.0072 Train Accuracy = 42.6950 
+------> epoch: 609 --> Test loss = 0.0063 Test Accuracy = 64.4100 
+epoch: 610 --> Train loss = 0.0070 Train Accuracy = 46.3760 
+------> epoch: 610 --> Test loss = 0.0063 Test Accuracy = 64.7900 
+Saving..
+epoch: 611 --> Train loss = 0.0073 Train Accuracy = 49.7950 
+------> epoch: 611 --> Test loss = 0.0065 Test Accuracy = 64.4300 
+epoch: 612 --> Train loss = 0.0073 Train Accuracy = 46.2170 
+------> epoch: 612 --> Test loss = 0.0063 Test Accuracy = 64.6200 
+epoch: 613 --> Train loss = 0.0071 Train Accuracy = 47.0110 
+------> epoch: 613 --> Test loss = 0.0063 Test Accuracy = 64.7400 
+epoch: 614 --> Train loss = 0.0071 Train Accuracy = 45.3250 
+------> epoch: 614 --> Test loss = 0.0066 Test Accuracy = 63.8700 
+epoch: 615 --> Train loss = 0.0070 Train Accuracy = 44.1320 
+------> epoch: 615 --> Test loss = 0.0064 Test Accuracy = 64.6400 
+epoch: 616 --> Train loss = 0.0074 Train Accuracy = 48.2840 
+------> epoch: 616 --> Test loss = 0.0065 Test Accuracy = 63.9500 
+epoch: 617 --> Train loss = 0.0070 Train Accuracy = 47.4320 
+------> epoch: 617 --> Test loss = 0.0065 Test Accuracy = 64.0400 
+epoch: 618 --> Train loss = 0.0070 Train Accuracy = 48.5490 
+------> epoch: 618 --> Test loss = 0.0066 Test Accuracy = 63.8600 
+epoch: 619 --> Train loss = 0.0072 Train Accuracy = 45.3660 
+------> epoch: 619 --> Test loss = 0.0065 Test Accuracy = 63.8900 
+epoch: 620 --> Train loss = 0.0072 Train Accuracy = 48.3860 
+------> epoch: 620 --> Test loss = 0.0067 Test Accuracy = 64.0200 
+epoch: 621 --> Train loss = 0.0071 Train Accuracy = 47.7860 
+------> epoch: 621 --> Test loss = 0.0065 Test Accuracy = 64.0300 
+epoch: 622 --> Train loss = 0.0071 Train Accuracy = 46.9220 
+------> epoch: 622 --> Test loss = 0.0065 Test Accuracy = 64.6800 
+epoch: 623 --> Train loss = 0.0071 Train Accuracy = 46.4580 
+------> epoch: 623 --> Test loss = 0.0065 Test Accuracy = 63.8500 
+epoch: 624 --> Train loss = 0.0071 Train Accuracy = 47.1850 
+------> epoch: 624 --> Test loss = 0.0065 Test Accuracy = 64.2800 
+epoch: 625 --> Train loss = 0.0072 Train Accuracy = 44.3730 
+------> epoch: 625 --> Test loss = 0.0065 Test Accuracy = 64.1200 
+epoch: 626 --> Train loss = 0.0069 Train Accuracy = 43.3340 
+------> epoch: 626 --> Test loss = 0.0064 Test Accuracy = 64.7100 
+epoch: 627 --> Train loss = 0.0069 Train Accuracy = 45.0260 
+------> epoch: 627 --> Test loss = 0.0063 Test Accuracy = 65.0900 
+Saving..
+epoch: 628 --> Train loss = 0.0071 Train Accuracy = 45.9630 
+------> epoch: 628 --> Test loss = 0.0063 Test Accuracy = 64.4500 
+epoch: 629 --> Train loss = 0.0071 Train Accuracy = 45.1710 
+------> epoch: 629 --> Test loss = 0.0063 Test Accuracy = 64.6700 
+epoch: 630 --> Train loss = 0.0072 Train Accuracy = 49.1850 
+------> epoch: 630 --> Test loss = 0.0062 Test Accuracy = 64.9000 
+epoch: 631 --> Train loss = 0.0072 Train Accuracy = 48.7680 
+------> epoch: 631 --> Test loss = 0.0066 Test Accuracy = 64.2000 
+epoch: 632 --> Train loss = 0.0070 Train Accuracy = 45.5100 
+------> epoch: 632 --> Test loss = 0.0063 Test Accuracy = 64.6900 
+epoch: 633 --> Train loss = 0.0069 Train Accuracy = 44.9350 
+------> epoch: 633 --> Test loss = 0.0064 Test Accuracy = 64.3300 
+epoch: 634 --> Train loss = 0.0074 Train Accuracy = 47.7190 
+------> epoch: 634 --> Test loss = 0.0068 Test Accuracy = 63.5600 
+epoch: 635 --> Train loss = 0.0070 Train Accuracy = 47.5280 
+------> epoch: 635 --> Test loss = 0.0063 Test Accuracy = 64.5900 
+epoch: 636 --> Train loss = 0.0070 Train Accuracy = 48.5950 
+------> epoch: 636 --> Test loss = 0.0068 Test Accuracy = 63.8300 
+epoch: 637 --> Train loss = 0.0070 Train Accuracy = 47.1730 
+------> epoch: 637 --> Test loss = 0.0062 Test Accuracy = 64.6500 
+epoch: 638 --> Train loss = 0.0070 Train Accuracy = 43.4600 
+------> epoch: 638 --> Test loss = 0.0062 Test Accuracy = 64.5000 
+epoch: 639 --> Train loss = 0.0068 Train Accuracy = 47.9020 
+------> epoch: 639 --> Test loss = 0.0067 Test Accuracy = 63.7200 
+epoch: 640 --> Train loss = 0.0070 Train Accuracy = 49.8290 
+------> epoch: 640 --> Test loss = 0.0063 Test Accuracy = 64.4600 
+epoch: 641 --> Train loss = 0.0072 Train Accuracy = 49.4080 
+------> epoch: 641 --> Test loss = 0.0064 Test Accuracy = 63.7400 
+epoch: 642 --> Train loss = 0.0070 Train Accuracy = 46.7010 
+------> epoch: 642 --> Test loss = 0.0065 Test Accuracy = 63.9900 
+epoch: 643 --> Train loss = 0.0069 Train Accuracy = 44.7390 
+------> epoch: 643 --> Test loss = 0.0063 Test Accuracy = 64.7400 
+epoch: 644 --> Train loss = 0.0071 Train Accuracy = 48.1300 
+------> epoch: 644 --> Test loss = 0.0063 Test Accuracy = 64.4600 
+epoch: 645 --> Train loss = 0.0069 Train Accuracy = 44.5940 
+------> epoch: 645 --> Test loss = 0.0065 Test Accuracy = 64.3900 
+epoch: 646 --> Train loss = 0.0072 Train Accuracy = 46.6890 
+------> epoch: 646 --> Test loss = 0.0067 Test Accuracy = 63.8800 
+epoch: 647 --> Train loss = 0.0070 Train Accuracy = 47.0600 
+------> epoch: 647 --> Test loss = 0.0063 Test Accuracy = 64.8400 
+epoch: 648 --> Train loss = 0.0070 Train Accuracy = 46.2130 
+------> epoch: 648 --> Test loss = 0.0063 Test Accuracy = 64.3800 
+epoch: 649 --> Train loss = 0.0068 Train Accuracy = 51.4210 
+------> epoch: 649 --> Test loss = 0.0066 Test Accuracy = 64.1200 
+epoch: 650 --> Train loss = 0.0068 Train Accuracy = 43.6620 
+------> epoch: 650 --> Test loss = 0.0065 Test Accuracy = 64.6500 
+epoch: 651 --> Train loss = 0.0071 Train Accuracy = 49.6900 
+------> epoch: 651 --> Test loss = 0.0066 Test Accuracy = 63.8900 
+epoch: 652 --> Train loss = 0.0068 Train Accuracy = 49.8310 
+------> epoch: 652 --> Test loss = 0.0065 Test Accuracy = 64.1300 
+epoch: 653 --> Train loss = 0.0070 Train Accuracy = 48.8360 
+------> epoch: 653 --> Test loss = 0.0065 Test Accuracy = 63.4400 
+epoch: 654 --> Train loss = 0.0070 Train Accuracy = 46.4230 
+------> epoch: 654 --> Test loss = 0.0067 Test Accuracy = 63.6000 
+epoch: 655 --> Train loss = 0.0071 Train Accuracy = 46.4200 
+------> epoch: 655 --> Test loss = 0.0064 Test Accuracy = 64.2000 
+epoch: 656 --> Train loss = 0.0069 Train Accuracy = 49.6300 
+------> epoch: 656 --> Test loss = 0.0064 Test Accuracy = 64.1500 
+epoch: 657 --> Train loss = 0.0069 Train Accuracy = 48.6180 
+------> epoch: 657 --> Test loss = 0.0064 Test Accuracy = 64.1900 
+epoch: 658 --> Train loss = 0.0068 Train Accuracy = 43.8320 
+------> epoch: 658 --> Test loss = 0.0065 Test Accuracy = 63.7100 
+epoch: 659 --> Train loss = 0.0069 Train Accuracy = 47.6750 
+------> epoch: 659 --> Test loss = 0.0065 Test Accuracy = 64.2400 
+epoch: 660 --> Train loss = 0.0070 Train Accuracy = 44.4530 
+------> epoch: 660 --> Test loss = 0.0065 Test Accuracy = 64.2600 
+epoch: 661 --> Train loss = 0.0071 Train Accuracy = 45.1070 
+------> epoch: 661 --> Test loss = 0.0065 Test Accuracy = 64.5600 
+epoch: 662 --> Train loss = 0.0068 Train Accuracy = 47.2340 
+------> epoch: 662 --> Test loss = 0.0064 Test Accuracy = 64.5300 
+epoch: 663 --> Train loss = 0.0071 Train Accuracy = 47.0150 
+------> epoch: 663 --> Test loss = 0.0065 Test Accuracy = 64.4600 
+epoch: 664 --> Train loss = 0.0070 Train Accuracy = 48.8250 
+------> epoch: 664 --> Test loss = 0.0066 Test Accuracy = 63.8200 
+epoch: 665 --> Train loss = 0.0070 Train Accuracy = 47.6910 
+------> epoch: 665 --> Test loss = 0.0065 Test Accuracy = 63.9300 
+epoch: 666 --> Train loss = 0.0070 Train Accuracy = 44.3760 
+------> epoch: 666 --> Test loss = 0.0064 Test Accuracy = 64.3900 
+epoch: 667 --> Train loss = 0.0070 Train Accuracy = 47.9710 
+------> epoch: 667 --> Test loss = 0.0064 Test Accuracy = 63.8000 
+epoch: 668 --> Train loss = 0.0069 Train Accuracy = 42.1880 
+------> epoch: 668 --> Test loss = 0.0065 Test Accuracy = 64.4900 
+epoch: 669 --> Train loss = 0.0071 Train Accuracy = 46.1640 
+------> epoch: 669 --> Test loss = 0.0067 Test Accuracy = 63.5500 
+epoch: 670 --> Train loss = 0.0068 Train Accuracy = 44.7310 
+------> epoch: 670 --> Test loss = 0.0064 Test Accuracy = 64.5400 
+epoch: 671 --> Train loss = 0.0069 Train Accuracy = 48.9930 
+------> epoch: 671 --> Test loss = 0.0064 Test Accuracy = 64.5500 
+epoch: 672 --> Train loss = 0.0068 Train Accuracy = 43.3060 
+------> epoch: 672 --> Test loss = 0.0065 Test Accuracy = 63.7200 
+epoch: 673 --> Train loss = 0.0070 Train Accuracy = 46.7810 
+------> epoch: 673 --> Test loss = 0.0068 Test Accuracy = 63.9600 
+epoch: 674 --> Train loss = 0.0069 Train Accuracy = 48.3640 
+------> epoch: 674 --> Test loss = 0.0066 Test Accuracy = 64.5400 
+epoch: 675 --> Train loss = 0.0069 Train Accuracy = 44.4840 
+------> epoch: 675 --> Test loss = 0.0065 Test Accuracy = 64.4100 
+epoch: 676 --> Train loss = 0.0070 Train Accuracy = 46.9630 
+------> epoch: 676 --> Test loss = 0.0065 Test Accuracy = 64.4300 
+epoch: 677 --> Train loss = 0.0070 Train Accuracy = 45.7800 
+------> epoch: 677 --> Test loss = 0.0066 Test Accuracy = 64.1100 
+epoch: 678 --> Train loss = 0.0071 Train Accuracy = 44.1190 
+------> epoch: 678 --> Test loss = 0.0065 Test Accuracy = 63.9400 
+epoch: 679 --> Train loss = 0.0069 Train Accuracy = 49.2260 
+------> epoch: 679 --> Test loss = 0.0066 Test Accuracy = 63.9000 
+epoch: 680 --> Train loss = 0.0068 Train Accuracy = 47.4590 
+------> epoch: 680 --> Test loss = 0.0064 Test Accuracy = 64.1600 
+epoch: 681 --> Train loss = 0.0069 Train Accuracy = 44.0150 
+------> epoch: 681 --> Test loss = 0.0065 Test Accuracy = 63.4900 
+epoch: 682 --> Train loss = 0.0070 Train Accuracy = 43.9190 
+------> epoch: 682 --> Test loss = 0.0066 Test Accuracy = 64.0200 
+epoch: 683 --> Train loss = 0.0068 Train Accuracy = 48.3730 
+------> epoch: 683 --> Test loss = 0.0064 Test Accuracy = 64.1800 
+epoch: 684 --> Train loss = 0.0070 Train Accuracy = 43.9880 
+------> epoch: 684 --> Test loss = 0.0064 Test Accuracy = 64.0100 
+epoch: 685 --> Train loss = 0.0071 Train Accuracy = 48.9710 
+------> epoch: 685 --> Test loss = 0.0064 Test Accuracy = 64.6400 
+epoch: 686 --> Train loss = 0.0068 Train Accuracy = 49.5130 
+------> epoch: 686 --> Test loss = 0.0065 Test Accuracy = 64.2000 
+epoch: 687 --> Train loss = 0.0068 Train Accuracy = 47.9970 
+------> epoch: 687 --> Test loss = 0.0064 Test Accuracy = 64.2100 
+epoch: 688 --> Train loss = 0.0069 Train Accuracy = 48.5600 
+------> epoch: 688 --> Test loss = 0.0065 Test Accuracy = 64.5400 
+epoch: 689 --> Train loss = 0.0068 Train Accuracy = 49.7170 
+------> epoch: 689 --> Test loss = 0.0067 Test Accuracy = 63.4800 
+epoch: 690 --> Train loss = 0.0069 Train Accuracy = 50.4990 
+------> epoch: 690 --> Test loss = 0.0067 Test Accuracy = 64.1200 
+epoch: 691 --> Train loss = 0.0070 Train Accuracy = 43.3850 
+------> epoch: 691 --> Test loss = 0.0066 Test Accuracy = 63.9400 
+epoch: 692 --> Train loss = 0.0070 Train Accuracy = 48.7020 
+------> epoch: 692 --> Test loss = 0.0064 Test Accuracy = 64.4000 
+epoch: 693 --> Train loss = 0.0070 Train Accuracy = 48.2990 
+------> epoch: 693 --> Test loss = 0.0067 Test Accuracy = 64.1600 
+epoch: 694 --> Train loss = 0.0068 Train Accuracy = 47.7870 
+------> epoch: 694 --> Test loss = 0.0068 Test Accuracy = 63.1900 
+epoch: 695 --> Train loss = 0.0069 Train Accuracy = 50.0700 
+------> epoch: 695 --> Test loss = 0.0064 Test Accuracy = 64.2500 
+epoch: 696 --> Train loss = 0.0069 Train Accuracy = 44.0840 
+------> epoch: 696 --> Test loss = 0.0065 Test Accuracy = 63.7500 
+epoch: 697 --> Train loss = 0.0068 Train Accuracy = 50.8020 
+------> epoch: 697 --> Test loss = 0.0065 Test Accuracy = 64.1800 
+epoch: 698 --> Train loss = 0.0068 Train Accuracy = 52.8890 
+------> epoch: 698 --> Test loss = 0.0065 Test Accuracy = 64.3000 
+epoch: 699 --> Train loss = 0.0067 Train Accuracy = 47.3460 
+------> epoch: 699 --> Test loss = 0.0065 Test Accuracy = 64.2200 
+epoch: 700 --> Train loss = 0.0068 Train Accuracy = 50.7210 
+------> epoch: 700 --> Test loss = 0.0065 Test Accuracy = 64.1300 
+epoch: 701 --> Train loss = 0.0069 Train Accuracy = 46.2910 
+------> epoch: 701 --> Test loss = 0.0067 Test Accuracy = 63.8700 
+epoch: 702 --> Train loss = 0.0068 Train Accuracy = 48.5570 
+------> epoch: 702 --> Test loss = 0.0067 Test Accuracy = 63.4600 
+epoch: 703 --> Train loss = 0.0070 Train Accuracy = 47.2330 
+------> epoch: 703 --> Test loss = 0.0067 Test Accuracy = 63.3300 
+epoch: 704 --> Train loss = 0.0069 Train Accuracy = 46.7560 
+------> epoch: 704 --> Test loss = 0.0067 Test Accuracy = 64.0100 
+epoch: 705 --> Train loss = 0.0070 Train Accuracy = 46.5930 
+------> epoch: 705 --> Test loss = 0.0067 Test Accuracy = 63.5200 
+epoch: 706 --> Train loss = 0.0069 Train Accuracy = 48.0270 
+------> epoch: 706 --> Test loss = 0.0067 Test Accuracy = 63.5300 
+epoch: 707 --> Train loss = 0.0070 Train Accuracy = 50.7550 
+------> epoch: 707 --> Test loss = 0.0066 Test Accuracy = 63.4700 
+epoch: 708 --> Train loss = 0.0069 Train Accuracy = 46.6720 
+------> epoch: 708 --> Test loss = 0.0065 Test Accuracy = 64.2100 
+epoch: 709 --> Train loss = 0.0069 Train Accuracy = 48.9240 
+------> epoch: 709 --> Test loss = 0.0067 Test Accuracy = 64.2800 
+epoch: 710 --> Train loss = 0.0070 Train Accuracy = 45.4960 
+------> epoch: 710 --> Test loss = 0.0065 Test Accuracy = 63.8400 
+epoch: 711 --> Train loss = 0.0070 Train Accuracy = 46.4130 
+------> epoch: 711 --> Test loss = 0.0067 Test Accuracy = 63.1200 
+epoch: 712 --> Train loss = 0.0069 Train Accuracy = 49.3150 
+------> epoch: 712 --> Test loss = 0.0068 Test Accuracy = 63.4800 
+epoch: 713 --> Train loss = 0.0069 Train Accuracy = 47.8460 
+------> epoch: 713 --> Test loss = 0.0065 Test Accuracy = 63.9500 
+epoch: 714 --> Train loss = 0.0067 Train Accuracy = 49.1480 
+------> epoch: 714 --> Test loss = 0.0065 Test Accuracy = 63.3900 
+epoch: 715 --> Train loss = 0.0069 Train Accuracy = 52.1990 
+------> epoch: 715 --> Test loss = 0.0064 Test Accuracy = 64.3200 
+epoch: 716 --> Train loss = 0.0069 Train Accuracy = 47.1930 
+------> epoch: 716 --> Test loss = 0.0066 Test Accuracy = 63.1200 
+epoch: 717 --> Train loss = 0.0069 Train Accuracy = 47.5360 
+------> epoch: 717 --> Test loss = 0.0065 Test Accuracy = 64.3000 
+epoch: 718 --> Train loss = 0.0067 Train Accuracy = 45.8730 
+------> epoch: 718 --> Test loss = 0.0064 Test Accuracy = 64.1300 
+epoch: 719 --> Train loss = 0.0068 Train Accuracy = 48.0470 
+------> epoch: 719 --> Test loss = 0.0066 Test Accuracy = 63.8300 
+epoch: 720 --> Train loss = 0.0069 Train Accuracy = 46.0370 
+------> epoch: 720 --> Test loss = 0.0066 Test Accuracy = 63.6000 
+epoch: 721 --> Train loss = 0.0068 Train Accuracy = 47.9340 
+------> epoch: 721 --> Test loss = 0.0065 Test Accuracy = 64.6500 
+epoch: 722 --> Train loss = 0.0071 Train Accuracy = 49.2450 
+------> epoch: 722 --> Test loss = 0.0065 Test Accuracy = 63.5500 
+epoch: 723 --> Train loss = 0.0069 Train Accuracy = 47.8500 
+------> epoch: 723 --> Test loss = 0.0068 Test Accuracy = 62.0700 
+epoch: 724 --> Train loss = 0.0070 Train Accuracy = 44.3060 
+------> epoch: 724 --> Test loss = 0.0070 Test Accuracy = 63.0900 
+epoch: 725 --> Train loss = 0.0070 Train Accuracy = 49.2430 
+------> epoch: 725 --> Test loss = 0.0068 Test Accuracy = 62.7000 
+epoch: 726 --> Train loss = 0.0068 Train Accuracy = 48.2200 
+------> epoch: 726 --> Test loss = 0.0066 Test Accuracy = 63.4600 
+epoch: 727 --> Train loss = 0.0070 Train Accuracy = 46.6340 
+------> epoch: 727 --> Test loss = 0.0068 Test Accuracy = 63.0800 
+epoch: 728 --> Train loss = 0.0067 Train Accuracy = 50.0520 
+------> epoch: 728 --> Test loss = 0.0067 Test Accuracy = 63.8200 
+epoch: 729 --> Train loss = 0.0072 Train Accuracy = 45.8080 
+------> epoch: 729 --> Test loss = 0.0066 Test Accuracy = 62.9000 
+epoch: 730 --> Train loss = 0.0069 Train Accuracy = 45.1790 
+------> epoch: 730 --> Test loss = 0.0067 Test Accuracy = 63.3200 
+epoch: 731 --> Train loss = 0.0068 Train Accuracy = 50.3980 
+------> epoch: 731 --> Test loss = 0.0067 Test Accuracy = 63.0100 
+epoch: 732 --> Train loss = 0.0070 Train Accuracy = 49.1410 
+------> epoch: 732 --> Test loss = 0.0066 Test Accuracy = 63.3400 
+epoch: 733 --> Train loss = 0.0069 Train Accuracy = 47.3370 
+------> epoch: 733 --> Test loss = 0.0066 Test Accuracy = 63.4700 
+epoch: 734 --> Train loss = 0.0069 Train Accuracy = 48.4050 
+------> epoch: 734 --> Test loss = 0.0066 Test Accuracy = 63.3900 
+epoch: 735 --> Train loss = 0.0070 Train Accuracy = 46.1260 
+------> epoch: 735 --> Test loss = 0.0069 Test Accuracy = 62.9800 
+epoch: 736 --> Train loss = 0.0069 Train Accuracy = 46.4760 
+------> epoch: 736 --> Test loss = 0.0068 Test Accuracy = 62.7000 
+epoch: 737 --> Train loss = 0.0068 Train Accuracy = 46.8130 
+------> epoch: 737 --> Test loss = 0.0066 Test Accuracy = 63.6600 
+epoch: 738 --> Train loss = 0.0069 Train Accuracy = 49.4870 
+------> epoch: 738 --> Test loss = 0.0069 Test Accuracy = 63.1000 
+epoch: 739 --> Train loss = 0.0068 Train Accuracy = 49.5520 
+------> epoch: 739 --> Test loss = 0.0066 Test Accuracy = 63.6900 
+epoch: 740 --> Train loss = 0.0068 Train Accuracy = 45.6720 
+------> epoch: 740 --> Test loss = 0.0065 Test Accuracy = 63.4300 
+epoch: 741 --> Train loss = 0.0069 Train Accuracy = 47.9770 
+------> epoch: 741 --> Test loss = 0.0066 Test Accuracy = 63.6000 
+epoch: 742 --> Train loss = 0.0067 Train Accuracy = 47.2570 
+------> epoch: 742 --> Test loss = 0.0065 Test Accuracy = 63.5400 
+epoch: 743 --> Train loss = 0.0067 Train Accuracy = 46.3090 
+------> epoch: 743 --> Test loss = 0.0068 Test Accuracy = 63.1800 
+epoch: 744 --> Train loss = 0.0070 Train Accuracy = 47.9460 
+------> epoch: 744 --> Test loss = 0.0069 Test Accuracy = 62.8100 
+epoch: 745 --> Train loss = 0.0069 Train Accuracy = 47.0960 
+------> epoch: 745 --> Test loss = 0.0065 Test Accuracy = 63.5600 
+epoch: 746 --> Train loss = 0.0069 Train Accuracy = 47.4130 
+------> epoch: 746 --> Test loss = 0.0068 Test Accuracy = 63.1300 
+epoch: 747 --> Train loss = 0.0071 Train Accuracy = 48.4660 
+------> epoch: 747 --> Test loss = 0.0067 Test Accuracy = 63.3000 
+epoch: 748 --> Train loss = 0.0071 Train Accuracy = 43.4710 
+------> epoch: 748 --> Test loss = 0.0066 Test Accuracy = 63.9600 
+epoch: 749 --> Train loss = 0.0068 Train Accuracy = 47.3360 
+------> epoch: 749 --> Test loss = 0.0065 Test Accuracy = 63.7000 
+epoch: 750 --> Train loss = 0.0070 Train Accuracy = 49.6740 
+------> epoch: 750 --> Test loss = 0.0070 Test Accuracy = 61.9300 
+epoch: 751 --> Train loss = 0.0069 Train Accuracy = 47.3780 
+------> epoch: 751 --> Test loss = 0.0065 Test Accuracy = 63.6600 
+epoch: 752 --> Train loss = 0.0069 Train Accuracy = 49.2390 
+------> epoch: 752 --> Test loss = 0.0065 Test Accuracy = 63.8200 
+epoch: 753 --> Train loss = 0.0068 Train Accuracy = 47.6260 
+------> epoch: 753 --> Test loss = 0.0067 Test Accuracy = 63.7500 
+epoch: 754 --> Train loss = 0.0071 Train Accuracy = 50.4540 
+------> epoch: 754 --> Test loss = 0.0066 Test Accuracy = 63.4300 
+epoch: 755 --> Train loss = 0.0069 Train Accuracy = 47.9780 
+------> epoch: 755 --> Test loss = 0.0069 Test Accuracy = 62.7800 
+epoch: 756 --> Train loss = 0.0069 Train Accuracy = 47.6660 
+------> epoch: 756 --> Test loss = 0.0066 Test Accuracy = 63.1800 
+epoch: 757 --> Train loss = 0.0068 Train Accuracy = 44.4770 
+------> epoch: 757 --> Test loss = 0.0066 Test Accuracy = 63.8000 
+epoch: 758 --> Train loss = 0.0071 Train Accuracy = 47.3410 
+------> epoch: 758 --> Test loss = 0.0065 Test Accuracy = 63.7200 
+epoch: 759 --> Train loss = 0.0069 Train Accuracy = 48.9110 
+------> epoch: 759 --> Test loss = 0.0068 Test Accuracy = 63.5200 
+epoch: 760 --> Train loss = 0.0069 Train Accuracy = 47.2320 
+------> epoch: 760 --> Test loss = 0.0067 Test Accuracy = 63.0900 
+epoch: 761 --> Train loss = 0.0069 Train Accuracy = 44.2720 
+------> epoch: 761 --> Test loss = 0.0069 Test Accuracy = 62.7900 
+epoch: 762 --> Train loss = 0.0070 Train Accuracy = 47.5740 
+------> epoch: 762 --> Test loss = 0.0067 Test Accuracy = 63.4900 
+epoch: 763 --> Train loss = 0.0069 Train Accuracy = 46.9800 
+------> epoch: 763 --> Test loss = 0.0065 Test Accuracy = 63.6700 
+epoch: 764 --> Train loss = 0.0071 Train Accuracy = 48.2220 
+------> epoch: 764 --> Test loss = 0.0066 Test Accuracy = 62.4600 
+epoch: 765 --> Train loss = 0.0068 Train Accuracy = 50.1600 
+------> epoch: 765 --> Test loss = 0.0066 Test Accuracy = 63.5100 
+epoch: 766 --> Train loss = 0.0070 Train Accuracy = 45.4960 
+------> epoch: 766 --> Test loss = 0.0069 Test Accuracy = 63.2200 
+epoch: 767 --> Train loss = 0.0068 Train Accuracy = 45.2870 
+------> epoch: 767 --> Test loss = 0.0068 Test Accuracy = 62.3700 
+epoch: 768 --> Train loss = 0.0069 Train Accuracy = 50.2720 
+------> epoch: 768 --> Test loss = 0.0067 Test Accuracy = 63.6800 
+epoch: 769 --> Train loss = 0.0069 Train Accuracy = 47.2100 
+------> epoch: 769 --> Test loss = 0.0067 Test Accuracy = 63.4900 
+epoch: 770 --> Train loss = 0.0070 Train Accuracy = 45.9780 
+------> epoch: 770 --> Test loss = 0.0065 Test Accuracy = 63.9900 
+epoch: 771 --> Train loss = 0.0070 Train Accuracy = 46.1440 
+------> epoch: 771 --> Test loss = 0.0067 Test Accuracy = 62.4100 
+epoch: 772 --> Train loss = 0.0067 Train Accuracy = 47.6550 
+------> epoch: 772 --> Test loss = 0.0067 Test Accuracy = 62.7800 
+epoch: 773 --> Train loss = 0.0070 Train Accuracy = 45.5530 
+------> epoch: 773 --> Test loss = 0.0068 Test Accuracy = 63.4700 
+epoch: 774 --> Train loss = 0.0068 Train Accuracy = 45.1450 
+------> epoch: 774 --> Test loss = 0.0067 Test Accuracy = 62.9500 
+epoch: 775 --> Train loss = 0.0069 Train Accuracy = 44.0860 
+------> epoch: 775 --> Test loss = 0.0066 Test Accuracy = 63.5300 
+epoch: 776 --> Train loss = 0.0070 Train Accuracy = 43.4660 
+------> epoch: 776 --> Test loss = 0.0067 Test Accuracy = 62.6000 
+epoch: 777 --> Train loss = 0.0068 Train Accuracy = 48.2610 
+------> epoch: 777 --> Test loss = 0.0067 Test Accuracy = 62.9000 
+epoch: 778 --> Train loss = 0.0068 Train Accuracy = 50.2580 
+------> epoch: 778 --> Test loss = 0.0068 Test Accuracy = 62.7900 
+epoch: 779 --> Train loss = 0.0069 Train Accuracy = 46.5970 
+------> epoch: 779 --> Test loss = 0.0069 Test Accuracy = 62.1700 
+epoch: 780 --> Train loss = 0.0068 Train Accuracy = 45.3300 
+------> epoch: 780 --> Test loss = 0.0066 Test Accuracy = 63.0400 
+epoch: 781 --> Train loss = 0.0068 Train Accuracy = 48.0480 
+------> epoch: 781 --> Test loss = 0.0067 Test Accuracy = 63.3400 
+epoch: 782 --> Train loss = 0.0068 Train Accuracy = 49.1870 
+------> epoch: 782 --> Test loss = 0.0066 Test Accuracy = 63.7500 
+epoch: 783 --> Train loss = 0.0069 Train Accuracy = 46.2920 
+------> epoch: 783 --> Test loss = 0.0066 Test Accuracy = 63.1800 
+epoch: 784 --> Train loss = 0.0069 Train Accuracy = 47.3610 
+------> epoch: 784 --> Test loss = 0.0069 Test Accuracy = 63.1200 
+epoch: 785 --> Train loss = 0.0067 Train Accuracy = 46.8200 
+------> epoch: 785 --> Test loss = 0.0068 Test Accuracy = 63.1500 
+epoch: 786 --> Train loss = 0.0069 Train Accuracy = 48.2220 
+------> epoch: 786 --> Test loss = 0.0068 Test Accuracy = 63.3500 
+epoch: 787 --> Train loss = 0.0067 Train Accuracy = 49.8590 
+------> epoch: 787 --> Test loss = 0.0066 Test Accuracy = 63.1800 
+epoch: 788 --> Train loss = 0.0070 Train Accuracy = 45.5040 
+------> epoch: 788 --> Test loss = 0.0065 Test Accuracy = 63.3600 
+epoch: 789 --> Train loss = 0.0068 Train Accuracy = 48.0930 
+------> epoch: 789 --> Test loss = 0.0069 Test Accuracy = 62.9400 
+epoch: 790 --> Train loss = 0.0069 Train Accuracy = 44.6020 
+------> epoch: 790 --> Test loss = 0.0068 Test Accuracy = 62.7100 
+epoch: 791 --> Train loss = 0.0069 Train Accuracy = 49.2680 
+------> epoch: 791 --> Test loss = 0.0068 Test Accuracy = 62.8300 
+epoch: 792 --> Train loss = 0.0071 Train Accuracy = 46.8580 
+------> epoch: 792 --> Test loss = 0.0068 Test Accuracy = 62.7000 
+epoch: 793 --> Train loss = 0.0071 Train Accuracy = 48.4440 
+------> epoch: 793 --> Test loss = 0.0067 Test Accuracy = 62.6100 
+epoch: 794 --> Train loss = 0.0070 Train Accuracy = 48.1260 
+------> epoch: 794 --> Test loss = 0.0069 Test Accuracy = 62.6200 
+epoch: 795 --> Train loss = 0.0070 Train Accuracy = 45.4630 
+------> epoch: 795 --> Test loss = 0.0067 Test Accuracy = 62.7300 
+epoch: 796 --> Train loss = 0.0069 Train Accuracy = 48.1300 
+------> epoch: 796 --> Test loss = 0.0066 Test Accuracy = 62.6300 
+epoch: 797 --> Train loss = 0.0069 Train Accuracy = 47.2160 
+------> epoch: 797 --> Test loss = 0.0067 Test Accuracy = 62.1000 
+epoch: 798 --> Train loss = 0.0068 Train Accuracy = 48.9370 
+------> epoch: 798 --> Test loss = 0.0066 Test Accuracy = 63.5000 
+epoch: 799 --> Train loss = 0.0070 Train Accuracy = 48.6400 
+------> epoch: 799 --> Test loss = 0.0067 Test Accuracy = 62.9400 
+epoch: 800 --> Train loss = 0.0070 Train Accuracy = 47.5940 
+------> epoch: 800 --> Test loss = 0.0066 Test Accuracy = 62.7900 
+epoch: 801 --> Train loss = 0.0069 Train Accuracy = 47.2380 
+------> epoch: 801 --> Test loss = 0.0067 Test Accuracy = 63.1400 
+epoch: 802 --> Train loss = 0.0069 Train Accuracy = 48.1550 
+------> epoch: 802 --> Test loss = 0.0066 Test Accuracy = 62.8600 
+epoch: 803 --> Train loss = 0.0069 Train Accuracy = 46.3200 
+------> epoch: 803 --> Test loss = 0.0066 Test Accuracy = 62.8800 
+epoch: 804 --> Train loss = 0.0071 Train Accuracy = 50.1470 
+------> epoch: 804 --> Test loss = 0.0065 Test Accuracy = 63.2300 
+epoch: 805 --> Train loss = 0.0070 Train Accuracy = 46.0550 
+------> epoch: 805 --> Test loss = 0.0067 Test Accuracy = 62.9300 
+epoch: 806 --> Train loss = 0.0070 Train Accuracy = 47.4900 
+------> epoch: 806 --> Test loss = 0.0066 Test Accuracy = 63.1500 
+epoch: 807 --> Train loss = 0.0070 Train Accuracy = 47.2590 
+------> epoch: 807 --> Test loss = 0.0067 Test Accuracy = 63.0100 
+epoch: 808 --> Train loss = 0.0070 Train Accuracy = 48.9920 
+------> epoch: 808 --> Test loss = 0.0070 Test Accuracy = 62.3200 
+epoch: 809 --> Train loss = 0.0068 Train Accuracy = 45.9470 
+------> epoch: 809 --> Test loss = 0.0068 Test Accuracy = 62.0000 
+epoch: 810 --> Train loss = 0.0070 Train Accuracy = 50.9620 
+------> epoch: 810 --> Test loss = 0.0068 Test Accuracy = 62.9200 
+epoch: 811 --> Train loss = 0.0070 Train Accuracy = 45.8500 
+------> epoch: 811 --> Test loss = 0.0066 Test Accuracy = 63.0900 
+epoch: 812 --> Train loss = 0.0068 Train Accuracy = 45.3100 
+------> epoch: 812 --> Test loss = 0.0068 Test Accuracy = 62.4100 
+epoch: 813 --> Train loss = 0.0068 Train Accuracy = 44.3740 
+------> epoch: 813 --> Test loss = 0.0067 Test Accuracy = 63.3400 
+epoch: 814 --> Train loss = 0.0069 Train Accuracy = 48.3770 
+------> epoch: 814 --> Test loss = 0.0068 Test Accuracy = 62.5500 
+epoch: 815 --> Train loss = 0.0069 Train Accuracy = 49.7440 
+------> epoch: 815 --> Test loss = 0.0066 Test Accuracy = 63.2800 
+epoch: 816 --> Train loss = 0.0068 Train Accuracy = 47.0840 
+------> epoch: 816 --> Test loss = 0.0066 Test Accuracy = 63.6900 
+epoch: 817 --> Train loss = 0.0070 Train Accuracy = 46.8050 
+------> epoch: 817 --> Test loss = 0.0068 Test Accuracy = 63.0500 
+epoch: 818 --> Train loss = 0.0068 Train Accuracy = 49.0540 
+------> epoch: 818 --> Test loss = 0.0067 Test Accuracy = 62.6700 
+epoch: 819 --> Train loss = 0.0072 Train Accuracy = 45.6430 
+------> epoch: 819 --> Test loss = 0.0069 Test Accuracy = 62.5400 
+epoch: 820 --> Train loss = 0.0069 Train Accuracy = 46.4720 
+------> epoch: 820 --> Test loss = 0.0068 Test Accuracy = 61.9900 
+epoch: 821 --> Train loss = 0.0069 Train Accuracy = 48.6400 
+------> epoch: 821 --> Test loss = 0.0068 Test Accuracy = 63.0600 
+epoch: 822 --> Train loss = 0.0069 Train Accuracy = 47.3900 
+------> epoch: 822 --> Test loss = 0.0069 Test Accuracy = 63.1400 
+epoch: 823 --> Train loss = 0.0067 Train Accuracy = 47.4500 
+------> epoch: 823 --> Test loss = 0.0067 Test Accuracy = 62.9800 
+epoch: 824 --> Train loss = 0.0069 Train Accuracy = 43.7900 
+------> epoch: 824 --> Test loss = 0.0068 Test Accuracy = 62.3700 
+epoch: 825 --> Train loss = 0.0069 Train Accuracy = 45.6130 
+------> epoch: 825 --> Test loss = 0.0067 Test Accuracy = 63.3800 
+epoch: 826 --> Train loss = 0.0070 Train Accuracy = 47.9720 
+------> epoch: 826 --> Test loss = 0.0069 Test Accuracy = 61.8800 
+epoch: 827 --> Train loss = 0.0070 Train Accuracy = 50.2490 
+------> epoch: 827 --> Test loss = 0.0065 Test Accuracy = 63.4900 
+epoch: 828 --> Train loss = 0.0071 Train Accuracy = 49.3840 
+------> epoch: 828 --> Test loss = 0.0068 Test Accuracy = 62.5900 
+epoch: 829 --> Train loss = 0.0070 Train Accuracy = 45.5700 
+------> epoch: 829 --> Test loss = 0.0068 Test Accuracy = 62.4500 
+epoch: 830 --> Train loss = 0.0070 Train Accuracy = 45.6070 
+------> epoch: 830 --> Test loss = 0.0068 Test Accuracy = 62.5600 
+epoch: 831 --> Train loss = 0.0069 Train Accuracy = 45.3420 
+------> epoch: 831 --> Test loss = 0.0068 Test Accuracy = 62.0300 
+epoch: 832 --> Train loss = 0.0068 Train Accuracy = 47.3060 
+------> epoch: 832 --> Test loss = 0.0066 Test Accuracy = 63.0700 
+epoch: 833 --> Train loss = 0.0069 Train Accuracy = 45.9410 
+------> epoch: 833 --> Test loss = 0.0065 Test Accuracy = 63.8800 
+epoch: 834 --> Train loss = 0.0067 Train Accuracy = 46.5460 
+------> epoch: 834 --> Test loss = 0.0068 Test Accuracy = 62.3300 
+epoch: 835 --> Train loss = 0.0071 Train Accuracy = 47.4480 
+------> epoch: 835 --> Test loss = 0.0069 Test Accuracy = 62.4600 
+epoch: 836 --> Train loss = 0.0071 Train Accuracy = 46.8760 
+------> epoch: 836 --> Test loss = 0.0067 Test Accuracy = 62.6200 
+epoch: 837 --> Train loss = 0.0071 Train Accuracy = 45.8180 
+------> epoch: 837 --> Test loss = 0.0068 Test Accuracy = 62.0300 
+epoch: 838 --> Train loss = 0.0070 Train Accuracy = 44.5810 
+------> epoch: 838 --> Test loss = 0.0070 Test Accuracy = 61.8800 
+epoch: 839 --> Train loss = 0.0068 Train Accuracy = 48.6990 
+------> epoch: 839 --> Test loss = 0.0069 Test Accuracy = 62.4900 
+epoch: 840 --> Train loss = 0.0069 Train Accuracy = 50.0540 
+------> epoch: 840 --> Test loss = 0.0067 Test Accuracy = 62.9200 
+epoch: 841 --> Train loss = 0.0071 Train Accuracy = 51.0600 
+------> epoch: 841 --> Test loss = 0.0069 Test Accuracy = 61.9500 
+epoch: 842 --> Train loss = 0.0070 Train Accuracy = 46.1340 
+------> epoch: 842 --> Test loss = 0.0070 Test Accuracy = 62.3900 
+epoch: 843 --> Train loss = 0.0071 Train Accuracy = 47.1500 
+------> epoch: 843 --> Test loss = 0.0065 Test Accuracy = 62.9200 
+epoch: 844 --> Train loss = 0.0070 Train Accuracy = 51.1790 
+------> epoch: 844 --> Test loss = 0.0070 Test Accuracy = 62.0200 
+epoch: 845 --> Train loss = 0.0068 Train Accuracy = 50.2930 
+------> epoch: 845 --> Test loss = 0.0067 Test Accuracy = 62.9800 
+epoch: 846 --> Train loss = 0.0067 Train Accuracy = 52.6140 
+------> epoch: 846 --> Test loss = 0.0070 Test Accuracy = 62.3600 
+epoch: 847 --> Train loss = 0.0069 Train Accuracy = 44.9450 
+------> epoch: 847 --> Test loss = 0.0068 Test Accuracy = 62.5500 
+epoch: 848 --> Train loss = 0.0069 Train Accuracy = 47.1610 
+------> epoch: 848 --> Test loss = 0.0067 Test Accuracy = 63.3200 
+epoch: 849 --> Train loss = 0.0070 Train Accuracy = 48.6740 
+------> epoch: 849 --> Test loss = 0.0070 Test Accuracy = 62.0000 
+epoch: 850 --> Train loss = 0.0069 Train Accuracy = 42.8380 
+------> epoch: 850 --> Test loss = 0.0068 Test Accuracy = 62.4000 
+epoch: 851 --> Train loss = 0.0070 Train Accuracy = 45.5160 
+------> epoch: 851 --> Test loss = 0.0070 Test Accuracy = 61.8200 
+epoch: 852 --> Train loss = 0.0070 Train Accuracy = 46.4890 
+------> epoch: 852 --> Test loss = 0.0068 Test Accuracy = 62.7900 
+epoch: 853 --> Train loss = 0.0069 Train Accuracy = 48.2000 
+------> epoch: 853 --> Test loss = 0.0074 Test Accuracy = 60.6300 
+epoch: 854 --> Train loss = 0.0071 Train Accuracy = 47.2070 
+------> epoch: 854 --> Test loss = 0.0068 Test Accuracy = 62.4700 
+epoch: 855 --> Train loss = 0.0068 Train Accuracy = 48.6910 
+------> epoch: 855 --> Test loss = 0.0066 Test Accuracy = 62.7200 
+epoch: 856 --> Train loss = 0.0070 Train Accuracy = 49.7870 
+------> epoch: 856 --> Test loss = 0.0071 Test Accuracy = 61.8200 
+epoch: 857 --> Train loss = 0.0069 Train Accuracy = 47.4440 
+------> epoch: 857 --> Test loss = 0.0067 Test Accuracy = 62.4200 
+epoch: 858 --> Train loss = 0.0068 Train Accuracy = 48.8110 
+------> epoch: 858 --> Test loss = 0.0065 Test Accuracy = 63.6500 
+epoch: 859 --> Train loss = 0.0070 Train Accuracy = 46.2860 
+------> epoch: 859 --> Test loss = 0.0071 Test Accuracy = 62.2000 
+epoch: 860 --> Train loss = 0.0071 Train Accuracy = 43.8900 
+------> epoch: 860 --> Test loss = 0.0070 Test Accuracy = 61.1800 
+epoch: 861 --> Train loss = 0.0070 Train Accuracy = 48.6170 
+------> epoch: 861 --> Test loss = 0.0067 Test Accuracy = 62.4200 
+epoch: 862 --> Train loss = 0.0070 Train Accuracy = 47.1690 
+------> epoch: 862 --> Test loss = 0.0071 Test Accuracy = 61.8200 
+epoch: 863 --> Train loss = 0.0070 Train Accuracy = 50.1350 
+------> epoch: 863 --> Test loss = 0.0067 Test Accuracy = 62.7500 
+epoch: 864 --> Train loss = 0.0070 Train Accuracy = 46.9810 
+------> epoch: 864 --> Test loss = 0.0068 Test Accuracy = 62.2400 
+epoch: 865 --> Train loss = 0.0071 Train Accuracy = 46.0670 
+------> epoch: 865 --> Test loss = 0.0069 Test Accuracy = 61.8900 
+epoch: 866 --> Train loss = 0.0069 Train Accuracy = 48.3730 
+------> epoch: 866 --> Test loss = 0.0067 Test Accuracy = 62.6000 
+epoch: 867 --> Train loss = 0.0070 Train Accuracy = 44.2530 
+------> epoch: 867 --> Test loss = 0.0073 Test Accuracy = 61.2000 
+epoch: 868 --> Train loss = 0.0068 Train Accuracy = 46.6790 
+------> epoch: 868 --> Test loss = 0.0069 Test Accuracy = 62.1800 
+epoch: 869 --> Train loss = 0.0070 Train Accuracy = 51.7380 
+------> epoch: 869 --> Test loss = 0.0068 Test Accuracy = 62.5500 
+epoch: 870 --> Train loss = 0.0070 Train Accuracy = 50.7730 
+------> epoch: 870 --> Test loss = 0.0071 Test Accuracy = 61.8600 
+epoch: 871 --> Train loss = 0.0070 Train Accuracy = 49.0450 
+------> epoch: 871 --> Test loss = 0.0067 Test Accuracy = 62.3400 
+epoch: 872 --> Train loss = 0.0071 Train Accuracy = 49.6050 
+------> epoch: 872 --> Test loss = 0.0069 Test Accuracy = 62.4000 
+epoch: 873 --> Train loss = 0.0070 Train Accuracy = 45.8740 
+------> epoch: 873 --> Test loss = 0.0068 Test Accuracy = 62.3200 
+epoch: 874 --> Train loss = 0.0070 Train Accuracy = 42.2140 
+------> epoch: 874 --> Test loss = 0.0069 Test Accuracy = 62.3200 
+epoch: 875 --> Train loss = 0.0068 Train Accuracy = 44.2610 
+------> epoch: 875 --> Test loss = 0.0067 Test Accuracy = 62.5600 
+epoch: 876 --> Train loss = 0.0068 Train Accuracy = 46.9670 
+------> epoch: 876 --> Test loss = 0.0067 Test Accuracy = 62.4400 
+epoch: 877 --> Train loss = 0.0070 Train Accuracy = 49.0530 
+------> epoch: 877 --> Test loss = 0.0069 Test Accuracy = 61.7000 
+epoch: 878 --> Train loss = 0.0071 Train Accuracy = 47.6290 
+------> epoch: 878 --> Test loss = 0.0070 Test Accuracy = 61.6900 
+epoch: 879 --> Train loss = 0.0069 Train Accuracy = 45.0100 
+------> epoch: 879 --> Test loss = 0.0068 Test Accuracy = 63.0200 
+epoch: 880 --> Train loss = 0.0070 Train Accuracy = 45.4710 
+------> epoch: 880 --> Test loss = 0.0070 Test Accuracy = 61.9400 
+epoch: 881 --> Train loss = 0.0072 Train Accuracy = 46.9520 
+------> epoch: 881 --> Test loss = 0.0071 Test Accuracy = 62.3100 
+epoch: 882 --> Train loss = 0.0071 Train Accuracy = 46.9100 
+------> epoch: 882 --> Test loss = 0.0068 Test Accuracy = 62.1200 
+epoch: 883 --> Train loss = 0.0069 Train Accuracy = 46.0590 
+------> epoch: 883 --> Test loss = 0.0070 Test Accuracy = 62.1100 
+epoch: 884 --> Train loss = 0.0070 Train Accuracy = 49.9410 
+------> epoch: 884 --> Test loss = 0.0070 Test Accuracy = 62.0900 
+epoch: 885 --> Train loss = 0.0069 Train Accuracy = 46.4310 
+------> epoch: 885 --> Test loss = 0.0066 Test Accuracy = 62.8700 
+epoch: 886 --> Train loss = 0.0069 Train Accuracy = 48.0320 
+------> epoch: 886 --> Test loss = 0.0069 Test Accuracy = 62.0700 
+epoch: 887 --> Train loss = 0.0069 Train Accuracy = 44.6730 
+------> epoch: 887 --> Test loss = 0.0068 Test Accuracy = 62.7800 
+epoch: 888 --> Train loss = 0.0068 Train Accuracy = 47.0840 
+------> epoch: 888 --> Test loss = 0.0070 Test Accuracy = 62.4400 
+epoch: 889 --> Train loss = 0.0070 Train Accuracy = 46.4410 
+------> epoch: 889 --> Test loss = 0.0066 Test Accuracy = 63.3900 
+epoch: 890 --> Train loss = 0.0070 Train Accuracy = 50.2390 
+------> epoch: 890 --> Test loss = 0.0068 Test Accuracy = 62.4400 
+epoch: 891 --> Train loss = 0.0069 Train Accuracy = 48.0570 
+------> epoch: 891 --> Test loss = 0.0067 Test Accuracy = 63.1100 
+epoch: 892 --> Train loss = 0.0069 Train Accuracy = 49.1560 
+------> epoch: 892 --> Test loss = 0.0069 Test Accuracy = 61.4600 
+epoch: 893 --> Train loss = 0.0068 Train Accuracy = 46.8860 
+------> epoch: 893 --> Test loss = 0.0068 Test Accuracy = 62.6500 
+epoch: 894 --> Train loss = 0.0068 Train Accuracy = 45.0110 
+------> epoch: 894 --> Test loss = 0.0067 Test Accuracy = 62.8800 
+epoch: 895 --> Train loss = 0.0071 Train Accuracy = 46.5580 
+------> epoch: 895 --> Test loss = 0.0070 Test Accuracy = 61.5400 
+epoch: 896 --> Train loss = 0.0070 Train Accuracy = 49.9540 
+------> epoch: 896 --> Test loss = 0.0068 Test Accuracy = 62.6600 
+epoch: 897 --> Train loss = 0.0070 Train Accuracy = 47.9360 
+------> epoch: 897 --> Test loss = 0.0067 Test Accuracy = 63.3300 
+epoch: 898 --> Train loss = 0.0070 Train Accuracy = 50.4690 
+------> epoch: 898 --> Test loss = 0.0067 Test Accuracy = 63.2800 
+epoch: 899 --> Train loss = 0.0070 Train Accuracy = 47.8690 
+------> epoch: 899 --> Test loss = 0.0068 Test Accuracy = 62.7700 
+epoch: 900 --> Train loss = 0.0067 Train Accuracy = 48.6140 
+------> epoch: 900 --> Test loss = 0.0065 Test Accuracy = 64.5300 
+epoch: 901 --> Train loss = 0.0067 Train Accuracy = 46.1870 
+------> epoch: 901 --> Test loss = 0.0064 Test Accuracy = 64.7700 
+epoch: 902 --> Train loss = 0.0067 Train Accuracy = 45.6930 
+------> epoch: 902 --> Test loss = 0.0066 Test Accuracy = 64.5000 
+epoch: 903 --> Train loss = 0.0066 Train Accuracy = 48.2580 
+------> epoch: 903 --> Test loss = 0.0066 Test Accuracy = 64.5700 
+epoch: 904 --> Train loss = 0.0066 Train Accuracy = 45.8130 
+------> epoch: 904 --> Test loss = 0.0066 Test Accuracy = 64.6600 
+epoch: 905 --> Train loss = 0.0066 Train Accuracy = 45.0320 
+------> epoch: 905 --> Test loss = 0.0064 Test Accuracy = 65.0300 
+epoch: 906 --> Train loss = 0.0066 Train Accuracy = 48.1500 
+------> epoch: 906 --> Test loss = 0.0066 Test Accuracy = 64.8000 
+epoch: 907 --> Train loss = 0.0065 Train Accuracy = 49.2560 
+------> epoch: 907 --> Test loss = 0.0064 Test Accuracy = 64.9700 
+epoch: 908 --> Train loss = 0.0067 Train Accuracy = 49.0350 
+------> epoch: 908 --> Test loss = 0.0067 Test Accuracy = 64.7900 
+epoch: 909 --> Train loss = 0.0066 Train Accuracy = 49.1580 
+------> epoch: 909 --> Test loss = 0.0064 Test Accuracy = 64.8400 
+epoch: 910 --> Train loss = 0.0068 Train Accuracy = 46.6530 
+------> epoch: 910 --> Test loss = 0.0067 Test Accuracy = 64.3300 
+epoch: 911 --> Train loss = 0.0066 Train Accuracy = 48.3200 
+------> epoch: 911 --> Test loss = 0.0065 Test Accuracy = 65.0300 
+epoch: 912 --> Train loss = 0.0066 Train Accuracy = 45.6910 
+------> epoch: 912 --> Test loss = 0.0064 Test Accuracy = 65.2200 
+Saving..
+epoch: 913 --> Train loss = 0.0066 Train Accuracy = 47.1560 
+------> epoch: 913 --> Test loss = 0.0063 Test Accuracy = 65.2300 
+Saving..
+epoch: 914 --> Train loss = 0.0066 Train Accuracy = 44.9690 
+------> epoch: 914 --> Test loss = 0.0063 Test Accuracy = 65.3300 
+Saving..
+epoch: 915 --> Train loss = 0.0065 Train Accuracy = 43.0770 
+------> epoch: 915 --> Test loss = 0.0062 Test Accuracy = 65.5800 
+Saving..
+epoch: 916 --> Train loss = 0.0066 Train Accuracy = 50.8670 
+------> epoch: 916 --> Test loss = 0.0063 Test Accuracy = 65.4500 
+epoch: 917 --> Train loss = 0.0066 Train Accuracy = 46.6430 
+------> epoch: 917 --> Test loss = 0.0064 Test Accuracy = 65.3000 
+epoch: 918 --> Train loss = 0.0066 Train Accuracy = 49.0180 
+------> epoch: 918 --> Test loss = 0.0064 Test Accuracy = 65.0500 
+epoch: 919 --> Train loss = 0.0064 Train Accuracy = 47.3900 
+------> epoch: 919 --> Test loss = 0.0066 Test Accuracy = 65.0100 
+epoch: 920 --> Train loss = 0.0065 Train Accuracy = 46.9200 
+------> epoch: 920 --> Test loss = 0.0066 Test Accuracy = 64.9200 
+epoch: 921 --> Train loss = 0.0066 Train Accuracy = 51.0220 
+------> epoch: 921 --> Test loss = 0.0064 Test Accuracy = 65.5600 
+epoch: 922 --> Train loss = 0.0063 Train Accuracy = 45.9140 
+------> epoch: 922 --> Test loss = 0.0065 Test Accuracy = 65.3000 
+epoch: 923 --> Train loss = 0.0065 Train Accuracy = 46.7270 
+------> epoch: 923 --> Test loss = 0.0066 Test Accuracy = 64.8400 
+epoch: 924 --> Train loss = 0.0065 Train Accuracy = 47.3880 
+------> epoch: 924 --> Test loss = 0.0063 Test Accuracy = 65.6800 
+Saving..
+epoch: 925 --> Train loss = 0.0066 Train Accuracy = 49.2300 
+------> epoch: 925 --> Test loss = 0.0066 Test Accuracy = 65.1000 
+epoch: 926 --> Train loss = 0.0064 Train Accuracy = 43.7180 
+------> epoch: 926 --> Test loss = 0.0066 Test Accuracy = 65.1700 
+epoch: 927 --> Train loss = 0.0066 Train Accuracy = 48.0310 
+------> epoch: 927 --> Test loss = 0.0064 Test Accuracy = 65.5300 
+epoch: 928 --> Train loss = 0.0065 Train Accuracy = 50.8670 
+------> epoch: 928 --> Test loss = 0.0065 Test Accuracy = 65.5500 
+epoch: 929 --> Train loss = 0.0065 Train Accuracy = 46.2100 
+------> epoch: 929 --> Test loss = 0.0064 Test Accuracy = 65.3600 
+epoch: 930 --> Train loss = 0.0066 Train Accuracy = 49.6570 
+------> epoch: 930 --> Test loss = 0.0064 Test Accuracy = 65.3000 
+epoch: 931 --> Train loss = 0.0068 Train Accuracy = 50.1150 
+------> epoch: 931 --> Test loss = 0.0064 Test Accuracy = 65.5200 
+epoch: 932 --> Train loss = 0.0066 Train Accuracy = 46.3480 
+------> epoch: 932 --> Test loss = 0.0066 Test Accuracy = 65.1400 
+epoch: 933 --> Train loss = 0.0065 Train Accuracy = 51.6880 
+------> epoch: 933 --> Test loss = 0.0064 Test Accuracy = 65.7200 
+Saving..
+epoch: 934 --> Train loss = 0.0066 Train Accuracy = 47.6230 
+------> epoch: 934 --> Test loss = 0.0065 Test Accuracy = 65.1800 
+epoch: 935 --> Train loss = 0.0064 Train Accuracy = 47.0770 
+------> epoch: 935 --> Test loss = 0.0065 Test Accuracy = 65.3900 
+epoch: 936 --> Train loss = 0.0063 Train Accuracy = 51.3230 
+------> epoch: 936 --> Test loss = 0.0064 Test Accuracy = 65.5300 
+epoch: 937 --> Train loss = 0.0066 Train Accuracy = 49.2030 
+------> epoch: 937 --> Test loss = 0.0063 Test Accuracy = 65.7100 
+epoch: 938 --> Train loss = 0.0065 Train Accuracy = 48.8150 
+------> epoch: 938 --> Test loss = 0.0065 Test Accuracy = 64.9700 
+epoch: 939 --> Train loss = 0.0064 Train Accuracy = 47.4710 
+------> epoch: 939 --> Test loss = 0.0062 Test Accuracy = 65.5400 
+epoch: 940 --> Train loss = 0.0064 Train Accuracy = 48.8560 
+------> epoch: 940 --> Test loss = 0.0065 Test Accuracy = 65.3400 
+epoch: 941 --> Train loss = 0.0062 Train Accuracy = 49.3780 
+------> epoch: 941 --> Test loss = 0.0064 Test Accuracy = 65.5600 
+epoch: 942 --> Train loss = 0.0065 Train Accuracy = 46.3210 
+------> epoch: 942 --> Test loss = 0.0065 Test Accuracy = 65.1500 
+epoch: 943 --> Train loss = 0.0065 Train Accuracy = 51.4780 
+------> epoch: 943 --> Test loss = 0.0065 Test Accuracy = 65.1600 
+epoch: 944 --> Train loss = 0.0066 Train Accuracy = 45.5460 
+------> epoch: 944 --> Test loss = 0.0063 Test Accuracy = 65.4200 
+epoch: 945 --> Train loss = 0.0063 Train Accuracy = 47.2370 
+------> epoch: 945 --> Test loss = 0.0066 Test Accuracy = 64.9700 
+epoch: 946 --> Train loss = 0.0066 Train Accuracy = 50.4740 
+------> epoch: 946 --> Test loss = 0.0067 Test Accuracy = 65.2200 
+epoch: 947 --> Train loss = 0.0065 Train Accuracy = 46.1350 
+------> epoch: 947 --> Test loss = 0.0066 Test Accuracy = 65.3400 
+epoch: 948 --> Train loss = 0.0065 Train Accuracy = 46.1570 
+------> epoch: 948 --> Test loss = 0.0065 Test Accuracy = 64.9300 
+epoch: 949 --> Train loss = 0.0065 Train Accuracy = 44.3450 
+------> epoch: 949 --> Test loss = 0.0066 Test Accuracy = 65.0000 
+epoch: 950 --> Train loss = 0.0064 Train Accuracy = 47.7090 
+------> epoch: 950 --> Test loss = 0.0065 Test Accuracy = 65.3000 
+epoch: 951 --> Train loss = 0.0065 Train Accuracy = 50.2430 
+------> epoch: 951 --> Test loss = 0.0063 Test Accuracy = 65.6700 
+epoch: 952 --> Train loss = 0.0065 Train Accuracy = 48.7280 
+------> epoch: 952 --> Test loss = 0.0065 Test Accuracy = 64.8000 
+epoch: 953 --> Train loss = 0.0064 Train Accuracy = 47.6040 
+------> epoch: 953 --> Test loss = 0.0068 Test Accuracy = 64.6100 
+epoch: 954 --> Train loss = 0.0065 Train Accuracy = 44.1870 
+------> epoch: 954 --> Test loss = 0.0064 Test Accuracy = 65.3500 
+epoch: 955 --> Train loss = 0.0066 Train Accuracy = 48.7490 
+------> epoch: 955 --> Test loss = 0.0064 Test Accuracy = 65.4300 
+epoch: 956 --> Train loss = 0.0065 Train Accuracy = 50.3830 
+------> epoch: 956 --> Test loss = 0.0070 Test Accuracy = 63.9900 
+epoch: 957 --> Train loss = 0.0065 Train Accuracy = 44.3380 
+------> epoch: 957 --> Test loss = 0.0067 Test Accuracy = 65.0300 
+epoch: 958 --> Train loss = 0.0063 Train Accuracy = 47.0970 
+------> epoch: 958 --> Test loss = 0.0065 Test Accuracy = 65.2900 
+epoch: 959 --> Train loss = 0.0064 Train Accuracy = 47.1330 
+------> epoch: 959 --> Test loss = 0.0064 Test Accuracy = 65.4700 
+epoch: 960 --> Train loss = 0.0062 Train Accuracy = 44.4500 
+------> epoch: 960 --> Test loss = 0.0062 Test Accuracy = 65.7100 
+epoch: 961 --> Train loss = 0.0064 Train Accuracy = 47.6890 
+------> epoch: 961 --> Test loss = 0.0065 Test Accuracy = 65.0700 
+epoch: 962 --> Train loss = 0.0065 Train Accuracy = 47.6390 
+------> epoch: 962 --> Test loss = 0.0065 Test Accuracy = 65.1200 
+epoch: 963 --> Train loss = 0.0064 Train Accuracy = 47.8310 
+------> epoch: 963 --> Test loss = 0.0068 Test Accuracy = 64.4300 
+epoch: 964 --> Train loss = 0.0064 Train Accuracy = 47.1650 
+------> epoch: 964 --> Test loss = 0.0066 Test Accuracy = 65.4500 
+epoch: 965 --> Train loss = 0.0065 Train Accuracy = 46.6830 
+------> epoch: 965 --> Test loss = 0.0065 Test Accuracy = 65.1400 
+epoch: 966 --> Train loss = 0.0066 Train Accuracy = 45.4570 
+------> epoch: 966 --> Test loss = 0.0063 Test Accuracy = 65.7500 
+Saving..
+epoch: 967 --> Train loss = 0.0063 Train Accuracy = 46.6170 
+------> epoch: 967 --> Test loss = 0.0066 Test Accuracy = 64.9600 
+epoch: 968 --> Train loss = 0.0065 Train Accuracy = 46.3270 
+------> epoch: 968 --> Test loss = 0.0065 Test Accuracy = 65.0900 
+epoch: 969 --> Train loss = 0.0065 Train Accuracy = 51.2270 
+------> epoch: 969 --> Test loss = 0.0063 Test Accuracy = 65.5900 
+epoch: 970 --> Train loss = 0.0064 Train Accuracy = 50.7210 
+------> epoch: 970 --> Test loss = 0.0066 Test Accuracy = 65.2400 
+epoch: 971 --> Train loss = 0.0064 Train Accuracy = 50.5990 
+------> epoch: 971 --> Test loss = 0.0065 Test Accuracy = 65.3500 
+epoch: 972 --> Train loss = 0.0064 Train Accuracy = 48.5860 
+------> epoch: 972 --> Test loss = 0.0065 Test Accuracy = 65.4900 
+epoch: 973 --> Train loss = 0.0064 Train Accuracy = 51.1110 
+------> epoch: 973 --> Test loss = 0.0067 Test Accuracy = 64.7600 
+epoch: 974 --> Train loss = 0.0063 Train Accuracy = 50.5450 
+------> epoch: 974 --> Test loss = 0.0066 Test Accuracy = 64.8000 
+epoch: 975 --> Train loss = 0.0065 Train Accuracy = 45.3110 
+------> epoch: 975 --> Test loss = 0.0066 Test Accuracy = 65.2000 
+epoch: 976 --> Train loss = 0.0063 Train Accuracy = 48.0410 
+------> epoch: 976 --> Test loss = 0.0066 Test Accuracy = 65.3500 
+epoch: 977 --> Train loss = 0.0066 Train Accuracy = 55.5940 
+------> epoch: 977 --> Test loss = 0.0064 Test Accuracy = 65.6300 
+epoch: 978 --> Train loss = 0.0064 Train Accuracy = 46.1620 
+------> epoch: 978 --> Test loss = 0.0063 Test Accuracy = 65.6900 
+epoch: 979 --> Train loss = 0.0065 Train Accuracy = 47.1060 
+------> epoch: 979 --> Test loss = 0.0064 Test Accuracy = 65.2800 
+epoch: 980 --> Train loss = 0.0066 Train Accuracy = 51.4820 
+------> epoch: 980 --> Test loss = 0.0065 Test Accuracy = 65.1400 
+epoch: 981 --> Train loss = 0.0066 Train Accuracy = 50.0940 
+------> epoch: 981 --> Test loss = 0.0063 Test Accuracy = 65.4400 
+epoch: 982 --> Train loss = 0.0065 Train Accuracy = 47.1020 
+------> epoch: 982 --> Test loss = 0.0065 Test Accuracy = 65.5200 
+epoch: 983 --> Train loss = 0.0065 Train Accuracy = 50.5370 
+------> epoch: 983 --> Test loss = 0.0065 Test Accuracy = 65.5000 
+epoch: 984 --> Train loss = 0.0064 Train Accuracy = 51.2110 
+------> epoch: 984 --> Test loss = 0.0064 Test Accuracy = 65.6900 
+epoch: 985 --> Train loss = 0.0064 Train Accuracy = 49.4690 
+------> epoch: 985 --> Test loss = 0.0065 Test Accuracy = 65.3600 
+epoch: 986 --> Train loss = 0.0066 Train Accuracy = 47.5410 
+------> epoch: 986 --> Test loss = 0.0064 Test Accuracy = 65.3500 
+epoch: 987 --> Train loss = 0.0064 Train Accuracy = 46.8710 
+------> epoch: 987 --> Test loss = 0.0064 Test Accuracy = 65.2700 
+epoch: 988 --> Train loss = 0.0064 Train Accuracy = 49.0500 
+------> epoch: 988 --> Test loss = 0.0067 Test Accuracy = 65.1300 
+epoch: 989 --> Train loss = 0.0063 Train Accuracy = 49.4890 
+------> epoch: 989 --> Test loss = 0.0064 Test Accuracy = 65.3600 
+epoch: 990 --> Train loss = 0.0065 Train Accuracy = 46.7370 
+------> epoch: 990 --> Test loss = 0.0063 Test Accuracy = 65.5700 
+epoch: 991 --> Train loss = 0.0065 Train Accuracy = 52.2280 
+------> epoch: 991 --> Test loss = 0.0064 Test Accuracy = 65.7100 
+epoch: 992 --> Train loss = 0.0065 Train Accuracy = 50.3440 
+------> epoch: 992 --> Test loss = 0.0064 Test Accuracy = 65.3400 
+epoch: 993 --> Train loss = 0.0062 Train Accuracy = 47.4460 
+------> epoch: 993 --> Test loss = 0.0065 Test Accuracy = 65.6400 
+epoch: 994 --> Train loss = 0.0063 Train Accuracy = 50.0150 
+------> epoch: 994 --> Test loss = 0.0065 Test Accuracy = 65.8000 
+Saving..
+epoch: 995 --> Train loss = 0.0064 Train Accuracy = 45.7870 
+------> epoch: 995 --> Test loss = 0.0065 Test Accuracy = 65.4800 
+epoch: 996 --> Train loss = 0.0064 Train Accuracy = 49.9420 
+------> epoch: 996 --> Test loss = 0.0068 Test Accuracy = 64.5800 
+epoch: 997 --> Train loss = 0.0063 Train Accuracy = 50.3250 
+------> epoch: 997 --> Test loss = 0.0065 Test Accuracy = 65.5000 
+epoch: 998 --> Train loss = 0.0065 Train Accuracy = 46.8520 
+------> epoch: 998 --> Test loss = 0.0063 Test Accuracy = 65.4900 
+epoch: 999 --> Train loss = 0.0064 Train Accuracy = 47.0860 
+------> epoch: 999 --> Test loss = 0.0064 Test Accuracy = 65.4000 
+epoch: 1000 --> Train loss = 0.0064 Train Accuracy = 49.3060 
+------> epoch: 1000 --> Test loss = 0.0066 Test Accuracy = 65.2800 
+epoch: 1001 --> Train loss = 0.0065 Train Accuracy = 46.9290 
+------> epoch: 1001 --> Test loss = 0.0063 Test Accuracy = 65.8000 
+epoch: 1002 --> Train loss = 0.0062 Train Accuracy = 51.4910 
+------> epoch: 1002 --> Test loss = 0.0064 Test Accuracy = 65.6400 
+epoch: 1003 --> Train loss = 0.0065 Train Accuracy = 47.6660 
+------> epoch: 1003 --> Test loss = 0.0064 Test Accuracy = 65.5400 
+epoch: 1004 --> Train loss = 0.0065 Train Accuracy = 46.6350 
+------> epoch: 1004 --> Test loss = 0.0065 Test Accuracy = 65.1600 
+epoch: 1005 --> Train loss = 0.0066 Train Accuracy = 47.6620 
+------> epoch: 1005 --> Test loss = 0.0065 Test Accuracy = 65.1800 
+epoch: 1006 --> Train loss = 0.0064 Train Accuracy = 49.4340 
+------> epoch: 1006 --> Test loss = 0.0066 Test Accuracy = 65.2300 
+epoch: 1007 --> Train loss = 0.0065 Train Accuracy = 48.4000 
+------> epoch: 1007 --> Test loss = 0.0066 Test Accuracy = 64.7700 
+epoch: 1008 --> Train loss = 0.0064 Train Accuracy = 50.6570 
+------> epoch: 1008 --> Test loss = 0.0066 Test Accuracy = 65.0300 
+epoch: 1009 --> Train loss = 0.0065 Train Accuracy = 47.3250 
+------> epoch: 1009 --> Test loss = 0.0066 Test Accuracy = 65.1100 
+epoch: 1010 --> Train loss = 0.0065 Train Accuracy = 49.6860 
+------> epoch: 1010 --> Test loss = 0.0064 Test Accuracy = 65.2500 
+epoch: 1011 --> Train loss = 0.0065 Train Accuracy = 45.1120 
+------> epoch: 1011 --> Test loss = 0.0070 Test Accuracy = 64.8000 
+epoch: 1012 --> Train loss = 0.0065 Train Accuracy = 50.2300 
+------> epoch: 1012 --> Test loss = 0.0063 Test Accuracy = 65.6000 
+epoch: 1013 --> Train loss = 0.0065 Train Accuracy = 51.6140 
+------> epoch: 1013 --> Test loss = 0.0065 Test Accuracy = 65.3100 
+epoch: 1014 --> Train loss = 0.0065 Train Accuracy = 48.6140 
+------> epoch: 1014 --> Test loss = 0.0064 Test Accuracy = 65.4100 
+epoch: 1015 --> Train loss = 0.0065 Train Accuracy = 46.9780 
+------> epoch: 1015 --> Test loss = 0.0064 Test Accuracy = 65.6200 
+epoch: 1016 --> Train loss = 0.0063 Train Accuracy = 49.7310 
+------> epoch: 1016 --> Test loss = 0.0067 Test Accuracy = 64.5300 
+epoch: 1017 --> Train loss = 0.0063 Train Accuracy = 49.5100 
+------> epoch: 1017 --> Test loss = 0.0065 Test Accuracy = 65.8300 
+Saving..
+epoch: 1018 --> Train loss = 0.0063 Train Accuracy = 48.7720 
+------> epoch: 1018 --> Test loss = 0.0067 Test Accuracy = 64.7900 
+epoch: 1019 --> Train loss = 0.0063 Train Accuracy = 46.7640 
+------> epoch: 1019 --> Test loss = 0.0064 Test Accuracy = 65.5300 
+epoch: 1020 --> Train loss = 0.0063 Train Accuracy = 48.4190 
+------> epoch: 1020 --> Test loss = 0.0064 Test Accuracy = 65.7000 
+epoch: 1021 --> Train loss = 0.0063 Train Accuracy = 48.6800 
+------> epoch: 1021 --> Test loss = 0.0066 Test Accuracy = 65.5000 
+epoch: 1022 --> Train loss = 0.0064 Train Accuracy = 49.4640 
+------> epoch: 1022 --> Test loss = 0.0063 Test Accuracy = 65.6200 
+epoch: 1023 --> Train loss = 0.0063 Train Accuracy = 49.0120 
+------> epoch: 1023 --> Test loss = 0.0064 Test Accuracy = 65.6000 
+epoch: 1024 --> Train loss = 0.0064 Train Accuracy = 48.2590 
+------> epoch: 1024 --> Test loss = 0.0064 Test Accuracy = 65.6300 
+epoch: 1025 --> Train loss = 0.0065 Train Accuracy = 48.4660 
+------> epoch: 1025 --> Test loss = 0.0066 Test Accuracy = 64.8500 
+epoch: 1026 --> Train loss = 0.0064 Train Accuracy = 48.5690 
+------> epoch: 1026 --> Test loss = 0.0066 Test Accuracy = 64.5700 
+epoch: 1027 --> Train loss = 0.0065 Train Accuracy = 46.4550 
+------> epoch: 1027 --> Test loss = 0.0064 Test Accuracy = 65.6500 
+epoch: 1028 --> Train loss = 0.0063 Train Accuracy = 50.3500 
+------> epoch: 1028 --> Test loss = 0.0065 Test Accuracy = 65.4400 
+epoch: 1029 --> Train loss = 0.0062 Train Accuracy = 51.5080 
+------> epoch: 1029 --> Test loss = 0.0064 Test Accuracy = 65.5100 
+epoch: 1030 --> Train loss = 0.0064 Train Accuracy = 52.9590 
+------> epoch: 1030 --> Test loss = 0.0065 Test Accuracy = 65.4300 
+epoch: 1031 --> Train loss = 0.0063 Train Accuracy = 47.5840 
+------> epoch: 1031 --> Test loss = 0.0065 Test Accuracy = 65.2900 
+epoch: 1032 --> Train loss = 0.0064 Train Accuracy = 48.6670 
+------> epoch: 1032 --> Test loss = 0.0068 Test Accuracy = 64.9800 
+epoch: 1033 --> Train loss = 0.0064 Train Accuracy = 47.3310 
+------> epoch: 1033 --> Test loss = 0.0065 Test Accuracy = 65.3300 
+epoch: 1034 --> Train loss = 0.0064 Train Accuracy = 47.2330 
+------> epoch: 1034 --> Test loss = 0.0068 Test Accuracy = 64.9300 
+epoch: 1035 --> Train loss = 0.0065 Train Accuracy = 50.3370 
+------> epoch: 1035 --> Test loss = 0.0068 Test Accuracy = 64.7900 
+epoch: 1036 --> Train loss = 0.0065 Train Accuracy = 45.2630 
+------> epoch: 1036 --> Test loss = 0.0066 Test Accuracy = 65.2800 
+epoch: 1037 --> Train loss = 0.0063 Train Accuracy = 49.4180 
+------> epoch: 1037 --> Test loss = 0.0062 Test Accuracy = 65.9300 
+Saving..
+epoch: 1038 --> Train loss = 0.0064 Train Accuracy = 46.6210 
+------> epoch: 1038 --> Test loss = 0.0065 Test Accuracy = 65.2100 
+epoch: 1039 --> Train loss = 0.0064 Train Accuracy = 48.5710 
+------> epoch: 1039 --> Test loss = 0.0067 Test Accuracy = 65.3300 
+epoch: 1040 --> Train loss = 0.0064 Train Accuracy = 47.8620 
+------> epoch: 1040 --> Test loss = 0.0067 Test Accuracy = 64.8900 
+epoch: 1041 --> Train loss = 0.0064 Train Accuracy = 48.7250 
+------> epoch: 1041 --> Test loss = 0.0066 Test Accuracy = 65.3200 
+epoch: 1042 --> Train loss = 0.0064 Train Accuracy = 51.1400 
+------> epoch: 1042 --> Test loss = 0.0066 Test Accuracy = 65.1300 
+epoch: 1043 --> Train loss = 0.0063 Train Accuracy = 47.3280 
+------> epoch: 1043 --> Test loss = 0.0064 Test Accuracy = 65.5600 
+epoch: 1044 --> Train loss = 0.0065 Train Accuracy = 48.8810 
+------> epoch: 1044 --> Test loss = 0.0067 Test Accuracy = 64.8900 
+epoch: 1045 --> Train loss = 0.0065 Train Accuracy = 48.0190 
+------> epoch: 1045 --> Test loss = 0.0063 Test Accuracy = 65.8900 
+epoch: 1046 --> Train loss = 0.0064 Train Accuracy = 48.6170 
+------> epoch: 1046 --> Test loss = 0.0065 Test Accuracy = 65.0900 
+epoch: 1047 --> Train loss = 0.0064 Train Accuracy = 50.3340 
+------> epoch: 1047 --> Test loss = 0.0065 Test Accuracy = 65.6700 
+epoch: 1048 --> Train loss = 0.0065 Train Accuracy = 47.5620 
+------> epoch: 1048 --> Test loss = 0.0067 Test Accuracy = 65.0500 
+epoch: 1049 --> Train loss = 0.0064 Train Accuracy = 52.8600 
+------> epoch: 1049 --> Test loss = 0.0067 Test Accuracy = 64.7500 
+epoch: 1050 --> Train loss = 0.0065 Train Accuracy = 44.3330 
+------> epoch: 1050 --> Test loss = 0.0066 Test Accuracy = 64.8200 
+epoch: 1051 --> Train loss = 0.0064 Train Accuracy = 48.6020 
+------> epoch: 1051 --> Test loss = 0.0066 Test Accuracy = 65.4100 
+epoch: 1052 --> Train loss = 0.0063 Train Accuracy = 50.5240 
+------> epoch: 1052 --> Test loss = 0.0065 Test Accuracy = 65.4900 
+epoch: 1053 --> Train loss = 0.0063 Train Accuracy = 51.2490 
+------> epoch: 1053 --> Test loss = 0.0067 Test Accuracy = 64.9200 
+epoch: 1054 --> Train loss = 0.0064 Train Accuracy = 47.4930 
+------> epoch: 1054 --> Test loss = 0.0065 Test Accuracy = 65.7600 
+epoch: 1055 --> Train loss = 0.0064 Train Accuracy = 51.8050 
+------> epoch: 1055 --> Test loss = 0.0066 Test Accuracy = 65.2000 
+epoch: 1056 --> Train loss = 0.0063 Train Accuracy = 49.7760 
+------> epoch: 1056 --> Test loss = 0.0066 Test Accuracy = 64.9900 
+epoch: 1057 --> Train loss = 0.0065 Train Accuracy = 47.5980 
+------> epoch: 1057 --> Test loss = 0.0065 Test Accuracy = 65.6500 
+epoch: 1058 --> Train loss = 0.0063 Train Accuracy = 49.1530 
+------> epoch: 1058 --> Test loss = 0.0064 Test Accuracy = 66.2200 
+Saving..
+epoch: 1059 --> Train loss = 0.0063 Train Accuracy = 47.6750 
+------> epoch: 1059 --> Test loss = 0.0068 Test Accuracy = 65.1400 
+epoch: 1060 --> Train loss = 0.0065 Train Accuracy = 48.9790 
+------> epoch: 1060 --> Test loss = 0.0066 Test Accuracy = 65.2300 
+epoch: 1061 --> Train loss = 0.0064 Train Accuracy = 46.8900 
+------> epoch: 1061 --> Test loss = 0.0068 Test Accuracy = 65.2300 
+epoch: 1062 --> Train loss = 0.0063 Train Accuracy = 47.5670 
+------> epoch: 1062 --> Test loss = 0.0064 Test Accuracy = 65.3300 
+epoch: 1063 --> Train loss = 0.0064 Train Accuracy = 48.7510 
+------> epoch: 1063 --> Test loss = 0.0064 Test Accuracy = 65.4100 
+epoch: 1064 --> Train loss = 0.0064 Train Accuracy = 46.7180 
+------> epoch: 1064 --> Test loss = 0.0069 Test Accuracy = 64.5100 
+epoch: 1065 --> Train loss = 0.0065 Train Accuracy = 43.8130 
+------> epoch: 1065 --> Test loss = 0.0069 Test Accuracy = 64.5500 
+epoch: 1066 --> Train loss = 0.0063 Train Accuracy = 51.6590 
+------> epoch: 1066 --> Test loss = 0.0065 Test Accuracy = 65.4600 
+epoch: 1067 --> Train loss = 0.0064 Train Accuracy = 45.8190 
+------> epoch: 1067 --> Test loss = 0.0062 Test Accuracy = 65.7400 
+epoch: 1068 --> Train loss = 0.0064 Train Accuracy = 53.9150 
+------> epoch: 1068 --> Test loss = 0.0064 Test Accuracy = 65.9300 
+epoch: 1069 --> Train loss = 0.0064 Train Accuracy = 48.8330 
+------> epoch: 1069 --> Test loss = 0.0067 Test Accuracy = 64.8900 
+epoch: 1070 --> Train loss = 0.0065 Train Accuracy = 47.5800 
+------> epoch: 1070 --> Test loss = 0.0065 Test Accuracy = 65.5200 
+epoch: 1071 --> Train loss = 0.0065 Train Accuracy = 46.1990 
+------> epoch: 1071 --> Test loss = 0.0065 Test Accuracy = 65.7300 
+epoch: 1072 --> Train loss = 0.0063 Train Accuracy = 47.7730 
+------> epoch: 1072 --> Test loss = 0.0065 Test Accuracy = 65.2300 
+epoch: 1073 --> Train loss = 0.0064 Train Accuracy = 49.3360 
+------> epoch: 1073 --> Test loss = 0.0065 Test Accuracy = 65.2900 
+epoch: 1074 --> Train loss = 0.0064 Train Accuracy = 45.4970 
+------> epoch: 1074 --> Test loss = 0.0066 Test Accuracy = 65.2300 
+epoch: 1075 --> Train loss = 0.0064 Train Accuracy = 46.9980 
+------> epoch: 1075 --> Test loss = 0.0065 Test Accuracy = 65.4000 
+epoch: 1076 --> Train loss = 0.0063 Train Accuracy = 47.2300 
+------> epoch: 1076 --> Test loss = 0.0063 Test Accuracy = 65.4000 
+epoch: 1077 --> Train loss = 0.0066 Train Accuracy = 48.1860 
+------> epoch: 1077 --> Test loss = 0.0065 Test Accuracy = 65.4400 
+epoch: 1078 --> Train loss = 0.0063 Train Accuracy = 50.5670 
+------> epoch: 1078 --> Test loss = 0.0068 Test Accuracy = 65.2800 
+epoch: 1079 --> Train loss = 0.0063 Train Accuracy = 50.7260 
+------> epoch: 1079 --> Test loss = 0.0066 Test Accuracy = 64.8900 
+epoch: 1080 --> Train loss = 0.0062 Train Accuracy = 47.1850 
+------> epoch: 1080 --> Test loss = 0.0066 Test Accuracy = 65.5800 
+epoch: 1081 --> Train loss = 0.0062 Train Accuracy = 50.7330 
+------> epoch: 1081 --> Test loss = 0.0064 Test Accuracy = 65.7400 
+epoch: 1082 --> Train loss = 0.0064 Train Accuracy = 50.4350 
+------> epoch: 1082 --> Test loss = 0.0063 Test Accuracy = 65.7300 
+epoch: 1083 --> Train loss = 0.0064 Train Accuracy = 49.7620 
+------> epoch: 1083 --> Test loss = 0.0066 Test Accuracy = 65.8700 
+epoch: 1084 --> Train loss = 0.0065 Train Accuracy = 52.4860 
+------> epoch: 1084 --> Test loss = 0.0066 Test Accuracy = 65.4300 
+epoch: 1085 --> Train loss = 0.0062 Train Accuracy = 51.4130 
+------> epoch: 1085 --> Test loss = 0.0070 Test Accuracy = 64.8000 
+epoch: 1086 --> Train loss = 0.0065 Train Accuracy = 46.6950 
+------> epoch: 1086 --> Test loss = 0.0065 Test Accuracy = 65.5500 
+epoch: 1087 --> Train loss = 0.0062 Train Accuracy = 47.2770 
+------> epoch: 1087 --> Test loss = 0.0066 Test Accuracy = 64.9800 
+epoch: 1088 --> Train loss = 0.0063 Train Accuracy = 51.1900 
+------> epoch: 1088 --> Test loss = 0.0066 Test Accuracy = 65.8600 
+epoch: 1089 --> Train loss = 0.0063 Train Accuracy = 52.3420 
+------> epoch: 1089 --> Test loss = 0.0066 Test Accuracy = 65.5500 
+epoch: 1090 --> Train loss = 0.0063 Train Accuracy = 47.5210 
+------> epoch: 1090 --> Test loss = 0.0066 Test Accuracy = 65.2300 
+epoch: 1091 --> Train loss = 0.0064 Train Accuracy = 48.4310 
+------> epoch: 1091 --> Test loss = 0.0065 Test Accuracy = 65.8600 
+epoch: 1092 --> Train loss = 0.0066 Train Accuracy = 46.5830 
+------> epoch: 1092 --> Test loss = 0.0064 Test Accuracy = 66.0700 
+epoch: 1093 --> Train loss = 0.0063 Train Accuracy = 48.8460 
+------> epoch: 1093 --> Test loss = 0.0064 Test Accuracy = 65.9000 
+epoch: 1094 --> Train loss = 0.0065 Train Accuracy = 44.5690 
+------> epoch: 1094 --> Test loss = 0.0064 Test Accuracy = 65.6700 
+epoch: 1095 --> Train loss = 0.0064 Train Accuracy = 52.8190 
+------> epoch: 1095 --> Test loss = 0.0067 Test Accuracy = 64.9800 
+epoch: 1096 --> Train loss = 0.0064 Train Accuracy = 51.9330 
+------> epoch: 1096 --> Test loss = 0.0065 Test Accuracy = 65.6600 
+epoch: 1097 --> Train loss = 0.0063 Train Accuracy = 45.9670 
+------> epoch: 1097 --> Test loss = 0.0068 Test Accuracy = 65.2000 
+epoch: 1098 --> Train loss = 0.0064 Train Accuracy = 47.8500 
+------> epoch: 1098 --> Test loss = 0.0063 Test Accuracy = 65.5300 
+epoch: 1099 --> Train loss = 0.0065 Train Accuracy = 45.4940 
+------> epoch: 1099 --> Test loss = 0.0064 Test Accuracy = 66.0200 
+epoch: 1100 --> Train loss = 0.0063 Train Accuracy = 44.1640 
+------> epoch: 1100 --> Test loss = 0.0063 Test Accuracy = 65.8800 
+epoch: 1101 --> Train loss = 0.0065 Train Accuracy = 49.2260 
+------> epoch: 1101 --> Test loss = 0.0065 Test Accuracy = 65.5300 
+epoch: 1102 --> Train loss = 0.0063 Train Accuracy = 49.1020 
+------> epoch: 1102 --> Test loss = 0.0066 Test Accuracy = 65.3600 
+epoch: 1103 --> Train loss = 0.0063 Train Accuracy = 48.5600 
+------> epoch: 1103 --> Test loss = 0.0065 Test Accuracy = 65.5000 
+epoch: 1104 --> Train loss = 0.0063 Train Accuracy = 46.3140 
+------> epoch: 1104 --> Test loss = 0.0065 Test Accuracy = 65.2100 
+epoch: 1105 --> Train loss = 0.0063 Train Accuracy = 48.9300 
+------> epoch: 1105 --> Test loss = 0.0063 Test Accuracy = 65.4200 
+epoch: 1106 --> Train loss = 0.0064 Train Accuracy = 47.6870 
+------> epoch: 1106 --> Test loss = 0.0065 Test Accuracy = 65.4200 
+epoch: 1107 --> Train loss = 0.0062 Train Accuracy = 51.0900 
+------> epoch: 1107 --> Test loss = 0.0065 Test Accuracy = 65.3800 
+epoch: 1108 --> Train loss = 0.0065 Train Accuracy = 46.2440 
+------> epoch: 1108 --> Test loss = 0.0066 Test Accuracy = 64.8700 
+epoch: 1109 --> Train loss = 0.0063 Train Accuracy = 45.3470 
+------> epoch: 1109 --> Test loss = 0.0067 Test Accuracy = 65.2400 
+epoch: 1110 --> Train loss = 0.0065 Train Accuracy = 52.3110 
+------> epoch: 1110 --> Test loss = 0.0066 Test Accuracy = 64.9300 
+epoch: 1111 --> Train loss = 0.0065 Train Accuracy = 46.8020 
+------> epoch: 1111 --> Test loss = 0.0067 Test Accuracy = 65.2500 
+epoch: 1112 --> Train loss = 0.0065 Train Accuracy = 47.7560 
+------> epoch: 1112 --> Test loss = 0.0064 Test Accuracy = 65.5200 
+epoch: 1113 --> Train loss = 0.0063 Train Accuracy = 51.5340 
+------> epoch: 1113 --> Test loss = 0.0064 Test Accuracy = 65.7000 
+epoch: 1114 --> Train loss = 0.0064 Train Accuracy = 50.6830 
+------> epoch: 1114 --> Test loss = 0.0066 Test Accuracy = 65.2700 
+epoch: 1115 --> Train loss = 0.0064 Train Accuracy = 50.0400 
+------> epoch: 1115 --> Test loss = 0.0064 Test Accuracy = 65.5800 
+epoch: 1116 --> Train loss = 0.0064 Train Accuracy = 49.9170 
+------> epoch: 1116 --> Test loss = 0.0066 Test Accuracy = 65.7300 
+epoch: 1117 --> Train loss = 0.0062 Train Accuracy = 48.6840 
+------> epoch: 1117 --> Test loss = 0.0065 Test Accuracy = 65.3000 
+epoch: 1118 --> Train loss = 0.0064 Train Accuracy = 50.5840 
+------> epoch: 1118 --> Test loss = 0.0063 Test Accuracy = 65.5900 
+epoch: 1119 --> Train loss = 0.0063 Train Accuracy = 50.3730 
+------> epoch: 1119 --> Test loss = 0.0062 Test Accuracy = 66.1600 
+epoch: 1120 --> Train loss = 0.0065 Train Accuracy = 49.8380 
+------> epoch: 1120 --> Test loss = 0.0068 Test Accuracy = 65.1000 
+epoch: 1121 --> Train loss = 0.0064 Train Accuracy = 51.0670 
+------> epoch: 1121 --> Test loss = 0.0064 Test Accuracy = 65.8400 
+epoch: 1122 --> Train loss = 0.0064 Train Accuracy = 47.5540 
+------> epoch: 1122 --> Test loss = 0.0065 Test Accuracy = 65.5300 
+epoch: 1123 --> Train loss = 0.0062 Train Accuracy = 51.0680 
+------> epoch: 1123 --> Test loss = 0.0067 Test Accuracy = 64.6200 
+epoch: 1124 --> Train loss = 0.0064 Train Accuracy = 49.4040 
+------> epoch: 1124 --> Test loss = 0.0063 Test Accuracy = 65.8600 
+epoch: 1125 --> Train loss = 0.0063 Train Accuracy = 48.3830 
+------> epoch: 1125 --> Test loss = 0.0066 Test Accuracy = 65.2600 
+epoch: 1126 --> Train loss = 0.0064 Train Accuracy = 43.7830 
+------> epoch: 1126 --> Test loss = 0.0065 Test Accuracy = 65.5200 
+epoch: 1127 --> Train loss = 0.0063 Train Accuracy = 48.2570 
+------> epoch: 1127 --> Test loss = 0.0065 Test Accuracy = 65.4900 
+epoch: 1128 --> Train loss = 0.0064 Train Accuracy = 48.0180 
+------> epoch: 1128 --> Test loss = 0.0067 Test Accuracy = 65.2400 
+epoch: 1129 --> Train loss = 0.0063 Train Accuracy = 45.5990 
+------> epoch: 1129 --> Test loss = 0.0066 Test Accuracy = 65.0500 
+epoch: 1130 --> Train loss = 0.0063 Train Accuracy = 48.0310 
+------> epoch: 1130 --> Test loss = 0.0066 Test Accuracy = 65.4700 
+epoch: 1131 --> Train loss = 0.0064 Train Accuracy = 47.3490 
+------> epoch: 1131 --> Test loss = 0.0067 Test Accuracy = 64.7900 
+epoch: 1132 --> Train loss = 0.0063 Train Accuracy = 45.2610 
+------> epoch: 1132 --> Test loss = 0.0062 Test Accuracy = 65.6000 
+epoch: 1133 --> Train loss = 0.0063 Train Accuracy = 52.2960 
+------> epoch: 1133 --> Test loss = 0.0066 Test Accuracy = 65.4000 
+epoch: 1134 --> Train loss = 0.0063 Train Accuracy = 48.8910 
+------> epoch: 1134 --> Test loss = 0.0066 Test Accuracy = 65.1800 
+epoch: 1135 --> Train loss = 0.0064 Train Accuracy = 47.7730 
+------> epoch: 1135 --> Test loss = 0.0064 Test Accuracy = 65.2600 
+epoch: 1136 --> Train loss = 0.0065 Train Accuracy = 45.6340 
+------> epoch: 1136 --> Test loss = 0.0064 Test Accuracy = 65.3100 
+epoch: 1137 --> Train loss = 0.0063 Train Accuracy = 47.4080 
+------> epoch: 1137 --> Test loss = 0.0065 Test Accuracy = 65.2200 
+epoch: 1138 --> Train loss = 0.0063 Train Accuracy = 49.0580 
+------> epoch: 1138 --> Test loss = 0.0067 Test Accuracy = 64.7800 
+epoch: 1139 --> Train loss = 0.0064 Train Accuracy = 51.0260 
+------> epoch: 1139 --> Test loss = 0.0066 Test Accuracy = 64.9100 
+epoch: 1140 --> Train loss = 0.0065 Train Accuracy = 48.2350 
+------> epoch: 1140 --> Test loss = 0.0064 Test Accuracy = 65.5800 
+epoch: 1141 --> Train loss = 0.0064 Train Accuracy = 50.0160 
+------> epoch: 1141 --> Test loss = 0.0065 Test Accuracy = 65.5300 
+epoch: 1142 --> Train loss = 0.0064 Train Accuracy = 48.0720 
+------> epoch: 1142 --> Test loss = 0.0066 Test Accuracy = 65.2800 
+epoch: 1143 --> Train loss = 0.0063 Train Accuracy = 48.3350 
+------> epoch: 1143 --> Test loss = 0.0066 Test Accuracy = 65.1100 
+epoch: 1144 --> Train loss = 0.0063 Train Accuracy = 50.8650 
+------> epoch: 1144 --> Test loss = 0.0065 Test Accuracy = 65.2300 
+epoch: 1145 --> Train loss = 0.0065 Train Accuracy = 47.4890 
+------> epoch: 1145 --> Test loss = 0.0063 Test Accuracy = 65.6100 
+epoch: 1146 --> Train loss = 0.0064 Train Accuracy = 49.0220 
+------> epoch: 1146 --> Test loss = 0.0069 Test Accuracy = 64.6800 
+epoch: 1147 --> Train loss = 0.0064 Train Accuracy = 50.8760 
+------> epoch: 1147 --> Test loss = 0.0064 Test Accuracy = 65.7300 
+epoch: 1148 --> Train loss = 0.0064 Train Accuracy = 47.2910 
+------> epoch: 1148 --> Test loss = 0.0063 Test Accuracy = 66.1600 
+epoch: 1149 --> Train loss = 0.0064 Train Accuracy = 47.7520 
+------> epoch: 1149 --> Test loss = 0.0065 Test Accuracy = 65.4700 
+epoch: 1150 --> Train loss = 0.0064 Train Accuracy = 45.2310 
+------> epoch: 1150 --> Test loss = 0.0066 Test Accuracy = 65.1200 
+epoch: 1151 --> Train loss = 0.0065 Train Accuracy = 48.0200 
+------> epoch: 1151 --> Test loss = 0.0066 Test Accuracy = 65.5000 
+epoch: 1152 --> Train loss = 0.0065 Train Accuracy = 46.2880 
+------> epoch: 1152 --> Test loss = 0.0066 Test Accuracy = 65.6100 
+epoch: 1153 --> Train loss = 0.0064 Train Accuracy = 46.5850 
+------> epoch: 1153 --> Test loss = 0.0066 Test Accuracy = 65.4900 
+epoch: 1154 --> Train loss = 0.0061 Train Accuracy = 50.3940 
+------> epoch: 1154 --> Test loss = 0.0066 Test Accuracy = 65.5300 
+epoch: 1155 --> Train loss = 0.0064 Train Accuracy = 47.9940 
+------> epoch: 1155 --> Test loss = 0.0064 Test Accuracy = 66.0200 
+epoch: 1156 --> Train loss = 0.0064 Train Accuracy = 48.9870 
+------> epoch: 1156 --> Test loss = 0.0064 Test Accuracy = 65.2500 
+epoch: 1157 --> Train loss = 0.0064 Train Accuracy = 47.3890 
+------> epoch: 1157 --> Test loss = 0.0065 Test Accuracy = 65.6900 
+epoch: 1158 --> Train loss = 0.0064 Train Accuracy = 49.2670 
+------> epoch: 1158 --> Test loss = 0.0063 Test Accuracy = 65.9300 
+epoch: 1159 --> Train loss = 0.0064 Train Accuracy = 45.4230 
+------> epoch: 1159 --> Test loss = 0.0064 Test Accuracy = 65.8400 
+epoch: 1160 --> Train loss = 0.0063 Train Accuracy = 49.2390 
+------> epoch: 1160 --> Test loss = 0.0068 Test Accuracy = 64.4600 
+epoch: 1161 --> Train loss = 0.0065 Train Accuracy = 48.7830 
+------> epoch: 1161 --> Test loss = 0.0065 Test Accuracy = 65.6300 
+epoch: 1162 --> Train loss = 0.0063 Train Accuracy = 48.3310 
+------> epoch: 1162 --> Test loss = 0.0068 Test Accuracy = 64.6000 
+epoch: 1163 --> Train loss = 0.0064 Train Accuracy = 48.0240 
+------> epoch: 1163 --> Test loss = 0.0065 Test Accuracy = 65.9400 
+epoch: 1164 --> Train loss = 0.0064 Train Accuracy = 51.1720 
+------> epoch: 1164 --> Test loss = 0.0066 Test Accuracy = 65.1100 
+epoch: 1165 --> Train loss = 0.0065 Train Accuracy = 52.4880 
+------> epoch: 1165 --> Test loss = 0.0064 Test Accuracy = 65.6400 
+epoch: 1166 --> Train loss = 0.0065 Train Accuracy = 48.7850 
+------> epoch: 1166 --> Test loss = 0.0065 Test Accuracy = 65.4300 
+epoch: 1167 --> Train loss = 0.0062 Train Accuracy = 47.5600 
+------> epoch: 1167 --> Test loss = 0.0068 Test Accuracy = 65.0500 
+epoch: 1168 --> Train loss = 0.0064 Train Accuracy = 49.7910 
+------> epoch: 1168 --> Test loss = 0.0066 Test Accuracy = 65.2500 
+epoch: 1169 --> Train loss = 0.0064 Train Accuracy = 49.8650 
+------> epoch: 1169 --> Test loss = 0.0065 Test Accuracy = 65.4600 
+epoch: 1170 --> Train loss = 0.0064 Train Accuracy = 50.9630 
+------> epoch: 1170 --> Test loss = 0.0065 Test Accuracy = 65.8400 
+epoch: 1171 --> Train loss = 0.0064 Train Accuracy = 47.4690 
+------> epoch: 1171 --> Test loss = 0.0065 Test Accuracy = 65.3300 
+epoch: 1172 --> Train loss = 0.0064 Train Accuracy = 41.3350 
+------> epoch: 1172 --> Test loss = 0.0066 Test Accuracy = 65.5300 
+epoch: 1173 --> Train loss = 0.0061 Train Accuracy = 49.0610 
+------> epoch: 1173 --> Test loss = 0.0065 Test Accuracy = 65.3600 
+epoch: 1174 --> Train loss = 0.0063 Train Accuracy = 48.9510 
+------> epoch: 1174 --> Test loss = 0.0065 Test Accuracy = 65.1600 
+epoch: 1175 --> Train loss = 0.0064 Train Accuracy = 50.4870 
+------> epoch: 1175 --> Test loss = 0.0070 Test Accuracy = 63.9500 
+epoch: 1176 --> Train loss = 0.0062 Train Accuracy = 45.7890 
+------> epoch: 1176 --> Test loss = 0.0064 Test Accuracy = 66.8700 
+Saving..
+epoch: 1177 --> Train loss = 0.0065 Train Accuracy = 48.1780 
+------> epoch: 1177 --> Test loss = 0.0065 Test Accuracy = 65.8700 
+epoch: 1178 --> Train loss = 0.0062 Train Accuracy = 47.7130 
+------> epoch: 1178 --> Test loss = 0.0064 Test Accuracy = 65.8800 
+epoch: 1179 --> Train loss = 0.0064 Train Accuracy = 49.7800 
+------> epoch: 1179 --> Test loss = 0.0064 Test Accuracy = 65.6600 
+epoch: 1180 --> Train loss = 0.0063 Train Accuracy = 50.4690 
+------> epoch: 1180 --> Test loss = 0.0066 Test Accuracy = 65.1000 
+epoch: 1181 --> Train loss = 0.0064 Train Accuracy = 50.7920 
+------> epoch: 1181 --> Test loss = 0.0064 Test Accuracy = 65.8700 
+epoch: 1182 --> Train loss = 0.0064 Train Accuracy = 48.9380 
+------> epoch: 1182 --> Test loss = 0.0067 Test Accuracy = 64.6900 
+epoch: 1183 --> Train loss = 0.0062 Train Accuracy = 47.7090 
+------> epoch: 1183 --> Test loss = 0.0063 Test Accuracy = 65.8700 
+epoch: 1184 --> Train loss = 0.0063 Train Accuracy = 47.8560 
+------> epoch: 1184 --> Test loss = 0.0064 Test Accuracy = 65.7300 
+epoch: 1185 --> Train loss = 0.0064 Train Accuracy = 48.6300 
+------> epoch: 1185 --> Test loss = 0.0067 Test Accuracy = 65.0900 
+epoch: 1186 --> Train loss = 0.0065 Train Accuracy = 51.9480 
+------> epoch: 1186 --> Test loss = 0.0068 Test Accuracy = 64.5400 
+epoch: 1187 --> Train loss = 0.0065 Train Accuracy = 47.9140 
+------> epoch: 1187 --> Test loss = 0.0066 Test Accuracy = 64.8300 
+epoch: 1188 --> Train loss = 0.0063 Train Accuracy = 49.0030 
+------> epoch: 1188 --> Test loss = 0.0065 Test Accuracy = 65.4500 
+epoch: 1189 --> Train loss = 0.0063 Train Accuracy = 47.4170 
+------> epoch: 1189 --> Test loss = 0.0066 Test Accuracy = 65.2800 
+epoch: 1190 --> Train loss = 0.0064 Train Accuracy = 47.4470 
+------> epoch: 1190 --> Test loss = 0.0070 Test Accuracy = 64.4500 
+epoch: 1191 --> Train loss = 0.0064 Train Accuracy = 47.3330 
+------> epoch: 1191 --> Test loss = 0.0069 Test Accuracy = 64.9500 
+epoch: 1192 --> Train loss = 0.0063 Train Accuracy = 47.7910 
+------> epoch: 1192 --> Test loss = 0.0067 Test Accuracy = 65.2000 
+epoch: 1193 --> Train loss = 0.0063 Train Accuracy = 47.3080 
+------> epoch: 1193 --> Test loss = 0.0067 Test Accuracy = 65.3400 
+epoch: 1194 --> Train loss = 0.0063 Train Accuracy = 47.3290 
+------> epoch: 1194 --> Test loss = 0.0067 Test Accuracy = 64.9700 
+epoch: 1195 --> Train loss = 0.0065 Train Accuracy = 49.5610 
+------> epoch: 1195 --> Test loss = 0.0064 Test Accuracy = 65.7700 
+epoch: 1196 --> Train loss = 0.0065 Train Accuracy = 46.9920 
+------> epoch: 1196 --> Test loss = 0.0064 Test Accuracy = 65.2700 
+epoch: 1197 --> Train loss = 0.0063 Train Accuracy = 47.2470 
+------> epoch: 1197 --> Test loss = 0.0066 Test Accuracy = 65.2800 
+epoch: 1198 --> Train loss = 0.0063 Train Accuracy = 47.6100 
+------> epoch: 1198 --> Test loss = 0.0068 Test Accuracy = 64.7000 
+epoch: 1199 --> Train loss = 0.0065 Train Accuracy = 49.3130 
+------> epoch: 1199 --> Test loss = 0.0063 Test Accuracy = 65.7900 
+Best Accuracy =  tensor(66.8700)
