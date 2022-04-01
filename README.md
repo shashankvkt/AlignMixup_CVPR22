@@ -108,9 +108,9 @@ python main.py --data_dir path_to_imagenet_directory --save_dir path_to_save_che
 
 |  Dataset       | Network   | AlignMixup |   |
 |:--------------:|:---------:|:----------:|---|
-| CIFAR-10       | Resnet-18 | 97.05%     | [log](logfiles/cifar10/log.txt)  |
+| CIFAR-10       | Resnet-18 | 97.05%     | [log](logfiles/cifar10/log_r18.txt)  |
 | CIFAR-10       | WRN 16x8  | 96.91%     | [log](logfiles/cifar10/log_wrn16x8.txt) |  
-| CIFAR-100      | Resnet-18 | 81.71%     | [log](logfiles/cifar100/log.txt)        |  
+| CIFAR-100      | Resnet-18 | 81.71%     | [log](logfiles/cifar100/log_r18.txt)        |  
 | CIFAR-100      | WRN 16x8  | 81.23%     | [log](logfiles/cifar100/log_wrn16x8.txt)|  
 | Tiny-Imagenet  | Resnet-18 | 66.87%     | [log](logfiles/TI/log.txt)              |  
 | Imagenet       | Resnet-50 | 79.32%     | [log](logfiles/imnet/log.txt)           |  
