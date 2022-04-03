@@ -5,15 +5,17 @@ from torch import nn
 from torch.autograd import Variable
 from utils.OT import SinkhornDistance
 import numpy as np
-from models.resnet import ResNet18
 import random
+from torchvision.models import resnet50
+import torch.utils.model_zoo as model_zoo
+from models.resnet import ResNet
 
 
 def mixup_process(out, y, lam):
     indices = np.random.permutation(out.size(0))
     out = out*lam + out[indices]*(1-lam)
     y_a, y_b = y, y[indices]
-    return out,  y_a, y_b
+    return out, y_a, y_b
 
 
 
@@ -44,46 +46,44 @@ def mixup_aligned(out, y, lam):
     y_a, y_b = y,y[indices]
 
     return final, y_a, y_b
-    
+
+
 
 
 class Resnet_classifier(nn.Module):
-    def __init__(self, num_classes, z_dim=512):
+    def __init__(self, num_classes, z_dim=2048):
         super(Resnet_classifier, self).__init__()
         
-        self.encoder = ResNet18()
+        self.model = ResNet()
         self.classifier = nn.Linear(z_dim, num_classes)
 
 
     def forward(self, x, targets, lam, mode):
         
         if (mode == 'train'):
-            
             layer_mix = random.randint(0,1)
-
+            
             if layer_mix == 0:
                 x,t_a,t_b = mixup_process(x, targets, lam)
 
-            out = self.encoder(x, lin=0, lout=0)
-            out = self.encoder.layer1(out)
-            out = self.encoder.layer2(out)
-            out = self.encoder.layer3(out)
-            out = self.encoder.layer4(out)
+            x = self.model(x)
 
             if layer_mix == 1:
-                out,t_a,t_b = mixup_aligned(out, targets, lam)  
+                x,t_a,t_b = mixup_aligned(x, targets, lam)
 
-            out = F.avg_pool2d(out, 8)
-            out = out.reshape(out.size(0), -1)
-            cls_output = self.classifier(out)
+            # print(x.shape)
+            # exit()
+            x = F.avg_pool2d(x, 7)
+            x = x.view(x.size(0), -1)
+            cls_output = self.classifier(x)
 
-            return cls_output, t_a, t_b
+            return cls_output, t_a,t_b
 
-            
+        
         elif (mode == 'test'):
-            out = self.encoder(x)
-            out = F.avg_pool2d(out, 8)
+            out = self.model(x)
+            out = F.avg_pool2d(out, 7)
             out = out.reshape(out.size(0), -1)
             cls_output = self.classifier(out)
-
-            return  cls_output
+        
+            return cls_output

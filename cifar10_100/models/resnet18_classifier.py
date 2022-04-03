@@ -21,11 +21,11 @@ def mixup_aligned(out, y, lam):
     # out shape = batch_size x 512 x 4 x 4 (cifar10/100)
 
     indices = np.random.permutation(out.size(0))
-    feat1 = out.view(out.shape[0], out.shape[1], -1) # batch_size x 16 x 512
-    feat2 = out[indices].view(out.shape[0], out.shape[1], -1) # batch_size x 16 x 512
+    feat1 = out.view(out.shape[0], out.shape[1], -1) # batch_size x 512 x 16
+    feat2 = out[indices].view(out.shape[0], out.shape[1], -1) # batch_size x 512 x 16
     
     sinkhorn = SinkhornDistance(eps=0.1, max_iter=100, reduction=None)
-    P = sinkhorn(feat1.permute(0,2,1), feat2.permute(0,2,1)).detach()  # optimal plan 16 x 16
+    P = sinkhorn(feat1.permute(0,2,1), feat2.permute(0,2,1)).detach()  # optimal plan batch x 16 x 16
     
     P = P*(out.size(2)*out.size(3)) # assignment matrix 
 
