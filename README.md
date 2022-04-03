@@ -104,6 +104,10 @@ python main.py --data_dir path_to_imagenet_directory --save_dir path_to_save_che
 		--mini_imagenet False --num_classes 1000 --epochs 300 --alpha 2.0 --batch_size 1024
 ```
 
+#### TODO  
+Imagenet using Distributed data parallel (multiple nodes) - coming soon
+
+
 ## Results
 
 |  Dataset       | Network   | AlignMixup |   |
