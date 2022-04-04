@@ -5,7 +5,7 @@ This repo consists of the official Pytorch code for our CVPR 2022 paper AlignMix
 This code has been tested with  
 python 3.8.11  
 torch 1.10.1  
-torchvision 0.11.2
+torchvision 0.11.2  
 numpy==1.21.0
 
 ### Additional package versions
